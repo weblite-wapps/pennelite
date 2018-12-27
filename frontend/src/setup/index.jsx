@@ -1,16 +1,19 @@
+// modules
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+// components
+import Root from './root'
 
-import App from './root'
 
-const renderPennelite = () =>
-  render(
-    <AppContainer>
-      <App />
-    </AppContainer>,
-    window.document.getElementById('root'),
-  )
+const renderLoglite = () => render(
+  <AppContainer>
+    <Root />
+  </AppContainer>,
+  window.document.getElementById('root'),
+)
 
-renderPennelite()
-if (module.hot) module.hot.accept('./root', renderPennelite)
+renderLoglite()
+
+// Hot Module Replacement API
+if (module.hot) module.hot.accept('./root', renderLoglite)

@@ -1,8 +1,9 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "pennelight",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "../../../tools/buildlite/src/index.js default dev"
+    "dev": "../../../tools/buildlite/src/index.js default dev",
+    "build": "../../../tools/buildlite/src/index.js default build"
   },
   "buildlite": {
     "default": {
@@ -26,15 +27,27 @@
     }
   },
   "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-hot-loader": "^4.6.3",
-    "react-scripts": "2.1.2"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
+    "date-fns": "^1.29.0",
+    "history": "^4.7.2",
+    "ramda": "^0.25.0",
+    "react": "^16.4.1",
+    "react-autocomplete": "^1.7.2",
+    "react-csv": "^1.0.8",
+    "react-dom": "^16.4.1",
+    "react-hot-loader": "^4.3.3",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "recharts": "^1.0.0-beta.7",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-observable": "^0.17.0",
+    "remove": "^0.1.5",
+    "reselect": "^3.0.1",
+    "rxjs": "^5.5.2",
+    "superagent": "^3.8.1",
+    "typeface-roboto": "^0.0.45"
+  }
 }
