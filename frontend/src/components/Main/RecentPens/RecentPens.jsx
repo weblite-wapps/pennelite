@@ -4,6 +4,8 @@ import { Link } from '@reach/router'
 // local modules
 
 export default class Recentpens extends React.Component {
+  componentDidMount() {}
+
   render() {
     return (
       <div>
