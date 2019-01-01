@@ -10,16 +10,12 @@ export default class CreatePen extends React.Component {
 
   componentDidUpdate() {
     const { codes } = this.props
-    console.log('codes 1', codes)
+    // console.log('codes 1', codes)
     const iframe = document.getElementById('iframeId')
     iframe.contentWindow.document.open()
     iframe.contentWindow.document.write(codes.html)
     iframe.contentWindow.document.write(`<style> ${codes.css} </style>`)
     iframe.contentWindow.document.write(`<script>${codes.js}</script>`)
-    // console.log(
-    //   'iframe.contentWindow.document: ',
-    //   iframe.contentWindow.document,
-    // )
     iframe.contentWindow.document.close()
   }
 
@@ -30,7 +26,7 @@ export default class CreatePen extends React.Component {
 
   render() {
     const { codes } = this.props
-    console.log('codes 2 ', codes)
+    console.log('codes : ', codes)
 
     return (
       <div>

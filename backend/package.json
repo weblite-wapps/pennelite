@@ -1,0 +1,33 @@
+{
+  "name": "pennelite-backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node ../../../tools/buildlite/src/index.js default dev",
+    "start": "node ./node_modules/nodemon/bin/nodemon.js src/setup/dev.index.js"
+  },
+  "buildlite": {
+    "default": {
+      "context": "src",
+      "outputPath": "dist",
+      "outputName": "server.js",
+      "babel": true,
+      "target": "node",
+      "externals": [
+        "nodeModules"
+      ]
+    },
+    "dev": {
+      "watch": true,
+      "entry": "./setup/dev.index.js"
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.1",
+    "nodemon": "^1.18.9"
+  }
+}
