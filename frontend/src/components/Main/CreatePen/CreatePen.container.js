@@ -7,7 +7,7 @@ import { codesView } from './CreatePen.reducer'
 
 const mapDispatchTpProps = () => ({
   changeHtmlCode: dispatchChangeHtmlCode,
-  savePen: () => dispatchSavePen,
+  savePen: dispatchSavePen,
   codes: codesView(),
 })
 

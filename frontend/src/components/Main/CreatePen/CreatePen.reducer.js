@@ -15,6 +15,8 @@ const initialState = {
   html: defaultHtml,
   css: '',
   js: '',
+  writer: 'writeer',
+  title: 'titleee',
 }
 
 // lens
@@ -25,6 +27,8 @@ export const codesView = () => ({
   html: R.path(['CreatePen', 'html'])(getState()),
   css: R.path(['CreatePen', 'css'])(getState()),
   js: R.path(['CreatePen', 'js'])(getState()),
+  writer: R.path(['CreatePen', 'writer'])(getState()),
+  title: R.path(['CreatePen', 'title'])(getState()),
 })
 
 const reducers = {
