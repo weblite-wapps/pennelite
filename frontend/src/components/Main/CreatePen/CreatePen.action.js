@@ -8,4 +8,7 @@ export const changeHtmlCode = createAction(CHANGE_HTML_CODE, (value, type) => ({
 }))
 export const dispatchChangeHtmlCode = (...args) =>
   dispatch(changeHtmlCode(...args))
-//  console.log(...args)
+
+export const SAVE_PEN = 'SAVE_PEN'
+export const savePen = createAction(SAVE_PEN)
+export const dispatchSavePen = (...args) => dispatch(savePen(...args))

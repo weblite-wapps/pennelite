@@ -6,6 +6,7 @@ export default class CreatePen extends React.Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSaveClick = this.handleSaveClick.bind(this)
   }
 
   componentDidUpdate() {
@@ -19,9 +20,18 @@ export default class CreatePen extends React.Component {
     iframe.contentWindow.document.close()
   }
 
+  componentWillUnmount() {
+    prompt('unmount')
+  }
+
   handleChange(text, type) {
     const { changeHtmlCode } = this.props
     changeHtmlCode(text, type)
+  }
+
+  handleSaveClick() {
+    const { savePen } = this.props
+    savePen()
   }
 
   render() {
@@ -33,6 +43,7 @@ export default class CreatePen extends React.Component {
         <Link to="/">Home</Link>
         <Link to="/CreatePen">CreatePen</Link>
         <Link to="/Dashboard">Dashboard</Link>
+        <button onClick={() => this.handleSaveClick()}>Save Pen</button>
         <p>CreatePen</p>
         <textarea
           onChange={e => this.handleChange(e.target.value, 'html')}
@@ -68,6 +79,7 @@ export default class CreatePen extends React.Component {
 CreatePen.propTypes = {
   changeHtmlCode: PropTypes.func,
   codes: PropTypes.objectOf(PropTypes.string),
+  savePen: PropTypes.func.isRequired,
 }
 
 CreatePen.defaultProps = {
