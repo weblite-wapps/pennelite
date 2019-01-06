@@ -86,6 +86,42 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./logic/Pen.js":
+/*!**********************!*\
+  !*** ./logic/Pen.js ***!
+  \**********************/
+/*! exports provided: savePen, deletePen, getLastNinePens, getWriterPens */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"savePen\", function() { return savePen; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"deletePen\", function() { return deletePen; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLastNinePens\", function() { return getLastNinePens; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getWriterPens\", function() { return getWriterPens; });\n/* harmony import */ var _models_Pen__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/Pen */ \"./models/Pen.js\");\n// :)\n\nconst savePen = async ({\n  title,\n  writer,\n  html,\n  css,\n  js\n}) => _models_Pen__WEBPACK_IMPORTED_MODULE_0__[\"default\"].updateOne({\n  title,\n  writer\n}, {\n  html,\n  css,\n  js\n}, {\n  upsert: true\n}).exec();\nconst deletePen = ({\n  title,\n  writer\n}) => _models_Pen__WEBPACK_IMPORTED_MODULE_0__[\"default\"].update({\n  title,\n  writer\n}).exec();\nconst getLastNinePens = async () => _models_Pen__WEBPACK_IMPORTED_MODULE_0__[\"default\"].find().limit(1).exec();\nconst getWriterPens = ({\n  writer\n}) => _models_Pen__WEBPACK_IMPORTED_MODULE_0__[\"default\"].find({\n  writer\n}).exec();\n\n//# sourceURL=webpack:///./logic/Pen.js?");
+
+/***/ }),
+
+/***/ "./logic/router.js":
+/*!*************************!*\
+  !*** ./logic/router.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Pen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pen */ \"./logic/Pen.js\");\n// import bodyParser from 'body-parser'\n\n // Router.use(JSON.stringify())\n\nconst router = Object(express__WEBPACK_IMPORTED_MODULE_0__[\"Router\"])();\nrouter.get('/', (req, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"getLastNinePens\"])().then(pens => res.send(pens)).catch(console.log('there is not nine in db')));\nrouter.post('/updateCurrentPen', ({\n  body\n}, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"savePen\"])(body).then(resp => res.send(resp)).catch(console.log(\"couldn't save current pen\")) // console.log('body :', typeof body),\n);\n/* harmony default export */ __webpack_exports__[\"default\"] = (router);\n\n//# sourceURL=webpack:///./logic/router.js?");
+
+/***/ }),
+
+/***/ "./models/Pen.js":
+/*!***********************!*\
+  !*** ./models/Pen.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nconst PenSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.Schema({\n  writer: String,\n  title: String,\n  html: String,\n  css: String,\n  js: String\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.model('Pen', PenSchema));\n\n//# sourceURL=webpack:///./models/Pen.js?");
+
+/***/ }),
+
 /***/ "./setup/dev.index.js":
 /*!****************************!*\
   !*** ./setup/dev.index.js ***!
@@ -94,7 +130,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(3080);\n\n//# sourceURL=webpack:///./setup/dev.index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(3080, () => console.log('listening  3080'));\n\n//# sourceURL=webpack:///./setup/dev.index.js?");
 
 /***/ }),
 
@@ -106,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nmongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connect('mongodb://localhost:27017/Pennelite', {\n  useNewUrlParser: true\n});\nconst db = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connection;\ndb.on('connected', () => console.log('Connection Stablished!'));\ndb.on('error', console.log);\n\n//# sourceURL=webpack:///./setup/mongodb.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nmongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connect('mongodb://localhost:27017/Pennelite', {\n  useNewUrlParser: true\n});\nconst db = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connection;\ndb.on('connected', () => console.log('Connection to MongoDb is  Stablished!'));\ndb.on('error', console.log);\n\n//# sourceURL=webpack:///./setup/mongodb.js?");
 
 /***/ }),
 
@@ -118,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mong
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cors */ \"cors\");\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! body-parser */ \"body-parser\");\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(body_parser__WEBPACK_IMPORTED_MODULE_2__);\n// modules\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\napp.use(cors__WEBPACK_IMPORTED_MODULE_1___default()({\n  origin: '*'\n}));\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_2___default.a.json());\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_2___default.a.urlencoded({\n  extended: true\n}));\n/* harmony default export */ __webpack_exports__[\"default\"] = (app);\n\n//# sourceURL=webpack:///./setup/server.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cors */ \"cors\");\n/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! body-parser */ \"body-parser\");\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(body_parser__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _logic_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../logic/router */ \"./logic/router.js\");\n// modules\n\n\n\n\nconst app = express__WEBPACK_IMPORTED_MODULE_0___default()();\napp.use(cors__WEBPACK_IMPORTED_MODULE_1___default()({\n  origin: '*'\n}));\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_2___default.a.json());\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_2___default.a.urlencoded({\n  extended: true\n}));\napp.use('/', _logic_router__WEBPACK_IMPORTED_MODULE_3__[\"default\"]);\n/* harmony default export */ __webpack_exports__[\"default\"] = (app);\n\n//# sourceURL=webpack:///./setup/server.js?");
 
 /***/ }),
 

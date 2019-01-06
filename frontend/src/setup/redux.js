@@ -8,6 +8,7 @@ import CreatePenReducer from '../components/Main/CreatePen/CreatePen.reducer'
 
 // epics
 import CreatePensEffect from '../components/Main/CreatePen/CreatePen.effect'
+import RecentPensEffect from '../components/Main/RecentPens/RecentPens.effect'
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers =
@@ -18,7 +19,7 @@ const composeEnhancers =
     : compose
 /* eslint-enable */
 
-const rootEpic = combineEpics(CreatePensEffect)
+const rootEpic = combineEpics(CreatePensEffect, RecentPensEffect)
 const epicMiddleware = createEpicMiddleware()
 
 const store = createStore(

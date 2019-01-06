@@ -1,10 +1,19 @@
 // Modules
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 // local modules
 
 export default class Recentpens extends React.Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    const { fetchPens } = this.props
+    console.log('mounted')
+    fetchPens()
+  }
 
   render() {
     return (
@@ -18,4 +27,10 @@ export default class Recentpens extends React.Component {
   }
 }
 
-Recentpens.propTypes = {}
+Recentpens.propTypes = {
+  fetchPens: PropTypes.func,
+}
+
+Recentpens.defaultProps = {
+  fetchPens: '',
+}

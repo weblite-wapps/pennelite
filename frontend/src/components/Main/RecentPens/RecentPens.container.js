@@ -9,11 +9,7 @@ import RecentPens from './RecentPens'
 // './RecentPens.reducer'
 
 // actions
-// import  dispatchChangeTab,
-//   dispatchSetApi,
-//   dispatchFetchTodayData,
-//   dispatchSetAboutMode,
-// './RecentPens'
+import { dispatchFetchRecentPens } from './RecentPens.action'
 
 const mapStateToProps = () => ({
   //   isLoading: isLoadingView(),
@@ -22,7 +18,7 @@ const mapStateToProps = () => ({
 })
 
 const mapDispatchToProps = () => ({
-  // changeTab: dispatchChangeTab,
+  fetchPens: dispatchFetchRecentPens,
   //   setAPI: dispatchSetApi,
   //   fetchTodayData: dispatchFetchTodayData,
   //   setAboutMode: dispatchSetAboutMode,

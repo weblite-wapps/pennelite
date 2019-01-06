@@ -15,13 +15,9 @@ export default class CreatePen extends React.Component {
     const iframe = document.getElementById('iframeId')
     iframe.contentWindow.document.open()
     iframe.contentWindow.document.write(codes.html)
-    iframe.contentWindow.document.write(`<style> ${codes.css} </style>`)
+    iframe.contentWindow.document.write(`<style>${codes.css}</style>`)
     iframe.contentWindow.document.write(`<script>${codes.js}</script>`)
     iframe.contentWindow.document.close()
-  }
-
-  componentWillUnmount() {
-    prompt('unmount')
   }
 
   handleChange(text, type) {
@@ -45,28 +41,44 @@ export default class CreatePen extends React.Component {
         <Link to="/Dashboard">Dashboard</Link>
         <button onClick={() => this.handleSaveClick()}>Save Pen</button>
         <p>CreatePen</p>
+
+        <input
+          onChange={e => this.handleChange(e.target.value, 'title')}
+          defaultValue={codes.title}
+          placeholder="title"
+          type="text"
+        />
+
+        <input
+          onChange={e => this.handleChange(e.target.value, 'writer')}
+          defaultValue={codes.writer}
+          placeholder="writer"
+          type="text"
+        />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'html')}
           defaultValue={codes.html}
           name="1"
           id=""
-          cols="30"
+          cols="100"
           rows="10"
           placeholder="Html"
         />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'css')}
+          defaultValue={codes.css}
           name="2"
           id=""
-          cols="30"
+          cols="100"
           rows="10"
           placeholder="css"
         />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'js')}
+          defaultValue={codes.js}
           name=""
           id=""
-          cols="30"
+          cols="100"
           rows="10"
           placeholder="js"
         />

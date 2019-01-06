@@ -1,22 +1,25 @@
 // import bodyParser from 'body-parser'
-import app from '../setup/server'
+import { Router } from 'express'
 import { getLastNinePens, savePen } from './Pen'
 
-app.get(
-  '/',
-  (req, res) => console.log('sawwwwwwww'),
-  // getLastNinePens()
-  //   .then(pens => res.send(pens))
-  //   .catch(console.log('there is not nine in db')),
+// Router.use(JSON.stringify())
+
+const router = Router()
+
+router.get('/', (req, res) =>
+  getLastNinePens()
+    .then(pens => res.send(pens))
+    .catch(console.log('there is not nine in db')),
 )
 
-app.post(
+router.post(
   '/updateCurrentPen',
-  (req, res) => console.log('yooooohooo'),
+  ({ body }, res) =>
+    savePen(body)
+      .then(resp => res.send(resp))
+      .catch(console.log("couldn't save current pen")),
 
-  // savePen().then(() =>
-  //     res.send(res).catch(console.log("couldn't save current pen")),
-  //   ),
+  // console.log('body :', typeof body),
 )
 
 export default router

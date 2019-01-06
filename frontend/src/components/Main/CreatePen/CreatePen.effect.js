@@ -1,7 +1,7 @@
 // import rxjs from 'rxjs'
-import { combineEpics, ofType, filter } from 'redux-observable'
+import { combineEpics, ofType } from 'redux-observable'
 import { ignoreElements, tap } from 'rxjs/operators'
-import { SAVE_PEN, CHANGE_HTML_CODE } from './CreatePen.action'
+import { SAVE_PEN } from './CreatePen.action'
 import { codesView } from './CreatePen.reducer'
 
 import { postRequests } from '../../../helper/functions/request.helper'

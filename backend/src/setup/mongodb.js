@@ -5,5 +5,5 @@ mongoose.connect(
   { useNewUrlParser: true },
 )
 const db = mongoose.connection
-db.on('connected', () => console.log('Connection Stablished!'))
+db.on('connected', () => console.log('Connection to MongoDb is  Stablished!'))
 db.on('error', console.log)
