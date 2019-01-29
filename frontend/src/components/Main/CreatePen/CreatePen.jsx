@@ -9,9 +9,15 @@ export default class CreatePen extends React.Component {
     this.handleSaveClick = this.handleSaveClick.bind(this)
   }
 
+  componentWillMount() {
+    const { fetchPen, codes } = this.props
+    fetchPen(codes.writer, codes.title)
+    console.log('codes11 :', codes)
+  }
+
   componentDidUpdate() {
     const { codes } = this.props
-    // console.log('codes 1', codes)
+    console.log('codes 22', codes)
     const iframe = document.getElementById('iframeId')
     iframe.contentWindow.document.open()
     iframe.contentWindow.document.write(codes.html)
@@ -20,9 +26,14 @@ export default class CreatePen extends React.Component {
     iframe.contentWindow.document.close()
   }
 
+  componentWillUnmount() {
+    console.log('componentWillUnmount :')
+  }
+
   handleChange(text, type) {
-    const { changeHtmlCode } = this.props
-    changeHtmlCode(text, type)
+    const { changePen } = this.props
+    changePen(text, type)
+    // console.log('text, type :', text, type)
   }
 
   handleSaveClick() {
@@ -32,7 +43,7 @@ export default class CreatePen extends React.Component {
 
   render() {
     const { codes } = this.props
-    console.log('codes : ', codes)
+    console.log('codes 333 : ', codes)
 
     return (
       <div>
@@ -45,6 +56,7 @@ export default class CreatePen extends React.Component {
         <input
           onChange={e => this.handleChange(e.target.value, 'title')}
           defaultValue={codes.title}
+          value={codes.title}
           placeholder="title"
           type="text"
         />
@@ -52,12 +64,14 @@ export default class CreatePen extends React.Component {
         <input
           onChange={e => this.handleChange(e.target.value, 'writer')}
           defaultValue={codes.writer}
+          value={codes.writer}
           placeholder="writer"
           type="text"
         />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'html')}
           defaultValue={codes.html}
+          value={codes.html}
           name="1"
           id=""
           cols="100"
@@ -67,6 +81,7 @@ export default class CreatePen extends React.Component {
         <textarea
           onChange={e => this.handleChange(e.target.value, 'css')}
           defaultValue={codes.css}
+          value={codes.css}
           name="2"
           id=""
           cols="100"
@@ -76,6 +91,7 @@ export default class CreatePen extends React.Component {
         <textarea
           onChange={e => this.handleChange(e.target.value, 'js')}
           defaultValue={codes.js}
+          value={codes.js}
           name=""
           id=""
           cols="100"
@@ -89,12 +105,14 @@ export default class CreatePen extends React.Component {
 }
 
 CreatePen.propTypes = {
-  changeHtmlCode: PropTypes.func,
+  fetchPen: PropTypes.func,
+  changePen: PropTypes.func,
   codes: PropTypes.objectOf(PropTypes.string),
   savePen: PropTypes.func.isRequired,
 }
 
 CreatePen.defaultProps = {
-  changeHtmlCode: null,
+  fetchPen: null,
+  changePen: null,
   codes: null,
 }

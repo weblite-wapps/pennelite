@@ -3,7 +3,7 @@ import * as R from 'ramda'
 import { getState } from '../../../setup/redux'
 
 // actions
-import { CHANGE_HTML_CODE } from './CreatePen.action'
+import { CHANGE_PEN } from './CreatePen.action'
 
 const defaultHtml = `<html>
   <body>
@@ -16,7 +16,8 @@ const initialState = {
   css: '',
   js: '',
   writer: 'writeer',
-  title: 'titleee',
+  title: 'titleeeldkfdnldkf',
+  isSaved: true,
 }
 
 // lens
@@ -29,11 +30,15 @@ export const codesView = () => ({
   js: R.path(['CreatePen', 'js'])(getState()),
   writer: R.path(['CreatePen', 'writer'])(getState()),
   title: R.path(['CreatePen', 'title'])(getState()),
+  isSaved: R.path(['CreatePen', 'isSaved'])(getState()),
 })
 
 const reducers = {
-  [CHANGE_HTML_CODE]: (state, { value, type }) =>
-    R.set(getlLens(type), value, state),
+  [CHANGE_PEN]: (state, { value, type }) => ({
+    ...state,
+    [type]: value,
+    isSaved: false,
+  }),
   // console.log(html),
 }
 

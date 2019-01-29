@@ -1,24 +1,26 @@
+import * as R from 'ramda'
 import { combineEpics, ofType } from 'redux-observable'
-import { tap, mergeMap, ignoreElements } from 'rxjs/operators'
-import { FETCH_RECENT_PENS } from './RecentPens.action'
-import {
-  CHANGE_HTML_CODE,
-  dispatchChangeHtmlCode,
-} from '../CreatePen/CreatePen.action'
+import { tap, mergeMap, ignoreElements, map } from 'rxjs/operators'
+import { FETCH_RECENT_PENS, dispatchSetRecentPens } from './RecentPens.action'
+import // CHANGE_HTML_CODE,
+// dispatchChangeHtmlCode,
+'../CreatePen/CreatePen.action'
 import { getRequests } from '../../../helper/functions/request.helper'
 
 const effectFetchRecentPensEpic = action$ =>
   action$.pipe(
     ofType(FETCH_RECENT_PENS),
     mergeMap(
-      () => getRequests('/'),
-      // .then(res => console.log('res ', res))
-      // .catch(() => console.log('cant get from server')),
+      () =>
+        getRequests('/')
+          // .then(res => R.prop('body', res))
+          .catch(() => console.log("can't get from server")),
       // TODO GET REQUEST SHOULD BE COMPLETED
     ),
-    tap(console.log),
+    map(R.prop('body')),
+    tap(dispatchSetRecentPens),
     // tap(({ body }) => console.log(body[0])),
-    tap(({ body }) => dispatchChangeHtmlCode(body[0].html, 'html')),
+    // tap(({ body }) => dispatchChangeHtmlCode(body[0].html, 'html')),
     ignoreElements(),
   )
 

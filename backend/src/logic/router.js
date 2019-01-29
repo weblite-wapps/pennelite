@@ -1,6 +1,7 @@
 // import bodyParser from 'body-parser'
+import * as R from 'ramda'
 import { Router } from 'express'
-import { getLastNinePens, savePen } from './Pen'
+import { getLastNinePens, savePen, fetchSinglePen } from './Pen'
 
 // Router.use(JSON.stringify())
 
@@ -20,6 +21,13 @@ router.post(
       .catch(console.log("couldn't save current pen")),
 
   // console.log('body :', typeof body),
+)
+
+router.get(
+  '/fetSinglePen',
+  ({ query: { user, title } }, res) =>
+    fetchSinglePen(user, title).then(pen => res.send(R.dissoc('_id', pen))),
+  // console.log(user, title),
 )
 
 export default router
