@@ -13,7 +13,7 @@ const effectFetchRecentPensEpic = action$ =>
     mergeMap(
       () =>
         getRequests('/')
-          // .then(res => R.prop('body', res))
+          .then(Promise.resolve('Dummy response to keep the console quiet'))
           .catch(() => console.log("can't get from server")),
       // TODO GET REQUEST SHOULD BE COMPLETED
     ),

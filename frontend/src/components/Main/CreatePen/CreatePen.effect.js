@@ -27,7 +27,7 @@ const effectFetchPenEpic = action$ =>
     ofType(FETCH_PEN),
     pluck('payload'),
     mergeMap(({ user, title }) =>
-      getRequests('/fetSinglePen')
+      getRequests('/fetchSinglePen')
         .query({ user, title })
         .catch(() => console.log('couldnt fetch')),
     ),

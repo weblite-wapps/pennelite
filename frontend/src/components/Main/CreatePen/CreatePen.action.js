@@ -1,6 +1,17 @@
 import { createAction } from 'redux-actions'
 import { dispatch } from '../../../setup/redux'
 
+export const SET_USER_AND_TITLE = 'SET_USER_AND_TITLE'
+export const setUserAndTitle = createAction(
+  SET_USER_AND_TITLE,
+  (user, title) => ({
+    user,
+    title,
+  }),
+)
+export const dispatchSetUserAndTitle = (...args) =>
+  dispatch(setUserAndTitle(...args))
+
 export const FETCH_PEN = 'FETCH_PEN'
 export const fetchPen = createAction(FETCH_PEN, (user, title) => ({
   user,

@@ -16,6 +16,6 @@ const mapDispatchTpProps = () => ({
   codes: codesView(),
 })
 
-const mapStateToprops = () => ({})
+// const mapStateToprops = () => ({})
 
 export default connect(mapDispatchTpProps)(CreatePen)

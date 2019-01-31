@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { userView } from '../App/App.reducer'
+
 import { Link } from '@reach/router'
 
 export default class CreatePen extends React.Component {
@@ -10,14 +12,15 @@ export default class CreatePen extends React.Component {
   }
 
   componentWillMount() {
+    console.log(userView().user)
     const { fetchPen, codes } = this.props
     fetchPen(codes.writer, codes.title)
-    console.log('codes11 :', codes)
+    // console.log('codes11 :', codes)
   }
 
   componentDidUpdate() {
     const { codes } = this.props
-    console.log('codes 22', codes)
+    // console.log('codes 22', codes)
     const iframe = document.getElementById('iframeId')
     iframe.contentWindow.document.open()
     iframe.contentWindow.document.write(codes.html)
@@ -46,16 +49,17 @@ export default class CreatePen extends React.Component {
     console.log('codes 333 : ', codes)
 
     return (
-      <div>
+      <div style={{ width: '300px', border: '1px solid black' }}>
         <Link to="/">Home</Link>
-        <Link to="/CreatePen">CreatePen</Link>
+        <br />
         <Link to="/Dashboard">Dashboard</Link>
+        <br />
         <button onClick={() => this.handleSaveClick()}>Save Pen</button>
         <p>CreatePen</p>
 
         <input
           onChange={e => this.handleChange(e.target.value, 'title')}
-          defaultValue={codes.title}
+          // defaultValue={codes.title}
           value={codes.title}
           placeholder="title"
           type="text"
@@ -63,39 +67,40 @@ export default class CreatePen extends React.Component {
 
         <input
           onChange={e => this.handleChange(e.target.value, 'writer')}
-          defaultValue={codes.writer}
+          // defaultValue={codes.writer}
           value={codes.writer}
           placeholder="writer"
           type="text"
         />
+
         <textarea
           onChange={e => this.handleChange(e.target.value, 'html')}
-          defaultValue={codes.html}
+          // defaultValue={codes.html}
           value={codes.html}
           name="1"
           id=""
-          cols="100"
-          rows="10"
+          cols="38"
+          rows="7"
           placeholder="Html"
         />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'css')}
-          defaultValue={codes.css}
+          // defaultValue={codes.css}
           value={codes.css}
           name="2"
           id=""
-          cols="100"
-          rows="10"
+          cols="38"
+          rows="7"
           placeholder="css"
         />
         <textarea
           onChange={e => this.handleChange(e.target.value, 'js')}
-          defaultValue={codes.js}
+          // defaultValue={codes.js}
           value={codes.js}
           name=""
           id=""
-          cols="100"
-          rows="10"
+          cols="38"
+          rows="7"
           placeholder="js"
         />
         <iframe title="peneliteIframe" id="iframeId" src="" frameBorder="0" />

@@ -16,4 +16,6 @@ export const fetchSinglePen = (writer, title) =>
   Pen.find({ writer, title }).exec()
 // console.log('writer, title :', writer, title)
 
-export const getWriterPens = ({ writer }) => Pen.find({ writer }).exec()
+export const getUserPens = writer =>
+  Pen.find({ writer }, { title: 1, _id: 0 }).exec()
+// console.log('writer :', writer)
