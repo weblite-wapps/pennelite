@@ -1,5 +1,4 @@
 // modules
-import * as R from 'ramda'
 import { createAction } from 'redux-actions'
 import { dispatch } from '../../../setup/redux'
 

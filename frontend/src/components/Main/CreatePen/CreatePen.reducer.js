@@ -4,7 +4,7 @@ import { getState } from '../../../setup/redux'
 
 // actions
 import { CHANGE_PEN, SET_USER_AND_TITLE } from './CreatePen.action'
-import { userView } from '../App/App.reducer'
+// import { userView } from '../App/App.reducer'
 
 const defaultHtml = `<html>
   <body>

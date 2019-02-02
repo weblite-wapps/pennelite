@@ -29,10 +29,6 @@ export default class CreatePen extends React.Component {
     iframe.contentWindow.document.close()
   }
 
-  componentWillUnmount() {
-    console.log('componentWillUnmount :')
-  }
-
   handleChange(text, type) {
     const { changePen } = this.props
     changePen(text, type)
@@ -44,12 +40,30 @@ export default class CreatePen extends React.Component {
     savePen()
   }
 
+  handleFullScreenClick() {
+    const element = document.getElementById('iframeId')
+    if (!document.fullscreenElement) {
+      element
+        .requestFullscreen()
+        .then({})
+        .catch(err => {
+          alert(
+            `Error attempting to enable full-screen mode: ${err.message} (${
+              err.name
+            })`,
+          )
+        })
+    } else {
+      document.exitFullscreen()
+    }
+  }
+
   render() {
     const { codes } = this.props
     console.log('codes 333 : ', codes)
 
     return (
-      <div style={{ width: '300px', border: '1px solid black' }}>
+      <div style={{ width: '320px', border: '1px solid red' }}>
         <Link to="/">Home</Link>
         <br />
         <Link to="/Dashboard">Dashboard</Link>
@@ -103,7 +117,18 @@ export default class CreatePen extends React.Component {
           rows="7"
           placeholder="js"
         />
-        <iframe title="peneliteIframe" id="iframeId" src="" frameBorder="0" />
+        <button onClick={() => this.handleFullScreenClick()}>fullScreen</button>
+        <iframe
+          display="block"
+          frameBorder="1"
+          width="800px"
+          style={{ background: 'white' }}
+          allowFullScreen="true"
+          height="200px"
+          title="peneliteIframe"
+          id="iframeId"
+          src=""
+        />
       </div>
     )
   }

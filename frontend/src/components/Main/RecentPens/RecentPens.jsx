@@ -35,6 +35,7 @@ export default class Recentpens extends React.Component {
           <ul>
             <li>{pen.title}</li>
             <li>{pen.writer}</li>
+            <li>Send * Edit</li>
           </ul>
         </Link>
       </div>

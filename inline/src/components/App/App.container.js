@@ -1,22 +1,22 @@
 // modules
 import { connect } from 'react-redux'
 // components
-import RecentPens from './RecentPens'
+import App from './App'
 // views
-import { pensView } from './RecentPens.reducer'
+import { penView } from './App.reduer'
 
 // actions
-import { dispatchFetchRecentPens } from './RecentPens.action'
+import { dispatchFetchPen } from './App.action'
 
 const mapStateToProps = () => ({
-  pens: pensView(),
+  pen: penView(),
 })
 
 const mapDispatchToProps = () => ({
-  fetchPens: dispatchFetchRecentPens,
+  fetchPen: dispatchFetchPen,
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RecentPens)
+)(App)

@@ -13,7 +13,7 @@ export const getLastNinePens = async () =>
     .exec()
 
 export const fetchSinglePen = (writer, title) =>
-  Pen.find({ writer, title }).exec()
+  Pen.find({ writer, title }, { _id: 0, __v: 0 }).exec()
 // console.log('writer, title :', writer, title)
 
 export const getUserPens = writer =>
