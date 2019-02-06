@@ -1,31 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { userView } from '../App/App.reducer'
-
+// import { ContextMenu } from 'weblite-web-relite'
 import { Link } from '@reach/router'
+// import { Tab, Tabs } from '@material-ui/core'
+import MenuContent from './Components/MenuContent'
+import CodesContent from './Components/CodesContent'
 
 export default class CreatePen extends React.Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    // this.handleTabChange = this.handleTabChange.bind(this)
     this.handleSaveClick = this.handleSaveClick.bind(this)
+    this.handleFullScreenClick = this.handleFullScreenClick.bind(this)
   }
 
   componentWillMount() {
-    console.log(userView().user)
-    const { fetchPen, codes } = this.props
-    fetchPen(codes.writer, codes.title)
-    // console.log('codes11 :', codes)
+    const { fetchPen, writerName, title, setUser, user } = this.props
+    setUser(user)
+    fetchPen(writerName, title)
+    console.log('codes.writer, codes.title :', writerName, title)
   }
 
   componentDidUpdate() {
-    const { codes } = this.props
-    // console.log('codes 22', codes)
+    const { htmlContent, cssContent, jsContent } = this.props
     const iframe = document.getElementById('iframeId')
     iframe.contentWindow.document.open()
-    iframe.contentWindow.document.write(codes.html)
-    iframe.contentWindow.document.write(`<style>${codes.css}</style>`)
-    iframe.contentWindow.document.write(`<script>${codes.js}</script>`)
+    iframe.contentWindow.document.write(htmlContent)
+    iframe.contentWindow.document.write(`<style>${cssContent}</style>`)
+    iframe.contentWindow.document.write(`<script>${jsContent}</script>`)
     iframe.contentWindow.document.close()
   }
 
@@ -58,76 +61,105 @@ export default class CreatePen extends React.Component {
     }
   }
 
-  render() {
-    const { codes } = this.props
-    console.log('codes 333 : ', codes)
+  // handleTabChange(event, value) {
+  //   const { changeTab } = this.props
+  //   changeTab(value)
+  //   // console.log('event, value', event, value)
+  // }
 
+  render() {
+    const {
+      // codes,
+      menuIsOpen,
+      changeMenu,
+      closeMenu,
+      changePreviewMode,
+      previewIsOpen,
+      changeViewMode,
+      viewMode,
+      tabIndex,
+      clearState,
+      writerName,
+      title,
+      htmlContent,
+      cssContent,
+      jsContent,
+      changeTab,
+      changePen,
+    } = this.props
+    // console.log('codes 333 : ', codes)
     return (
       <div style={{ width: '320px', border: '1px solid red' }}>
-        <Link to="/">Home</Link>
-        <br />
-        <Link to="/Dashboard">Dashboard</Link>
-        <br />
-        <button onClick={() => this.handleSaveClick()}>Save Pen</button>
-        <p>CreatePen</p>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <button type="button" onClick={changeMenu}>
+                    Menu
+                  </button>
+                </td>
+                <td>
+                  <button type="button" onClick={clearState}>
+                    <Link to="/">Home</Link>
+                  </button>
+                </td>
+                <td>
+                  <button type="button" onClick={clearState}>
+                    <Link to="/Dashboard">Dashboard</Link>
+                  </button>
+                </td>
+                <button type="button" onClick={this.handleSaveClick}>
+                  Save pen
+                </button>
+              </tr>
+            </tbody>
+          </table>
 
-        <input
-          onChange={e => this.handleChange(e.target.value, 'title')}
-          // defaultValue={codes.title}
-          value={codes.title}
-          placeholder="title"
-          type="text"
-        />
+          <p>CreatePen</p>
+        </div>
+        <div onClick={closeMenu}>
+          <MenuContent
+            menuIsOpen={menuIsOpen}
+            changePreviewMode={changePreviewMode}
+            changeViewMode={changeViewMode}
+          />
+        </div>
 
-        <input
-          onChange={e => this.handleChange(e.target.value, 'writer')}
-          // defaultValue={codes.writer}
-          value={codes.writer}
-          placeholder="writer"
-          type="text"
-        />
+        {<p>written by : {writerName} </p>}
 
-        <textarea
-          onChange={e => this.handleChange(e.target.value, 'html')}
-          // defaultValue={codes.html}
-          value={codes.html}
-          name="1"
-          id=""
-          cols="38"
-          rows="7"
-          placeholder="Html"
-        />
-        <textarea
-          onChange={e => this.handleChange(e.target.value, 'css')}
-          // defaultValue={codes.css}
-          value={codes.css}
-          name="2"
-          id=""
-          cols="38"
-          rows="7"
-          placeholder="css"
-        />
-        <textarea
-          onChange={e => this.handleChange(e.target.value, 'js')}
-          // defaultValue={codes.js}
-          value={codes.js}
-          name=""
-          id=""
-          cols="38"
-          rows="7"
-          placeholder="js"
-        />
-        <button onClick={() => this.handleFullScreenClick()}>fullScreen</button>
-        <iframe
-          display="block"
-          frameBorder="1"
-          width="800px"
-          style={{ background: 'white' }}
-          allowFullScreen="true"
-          height="200px"
-          title="peneliteIframe"
-          id="iframeId"
-          src=""
+        <div>
+          <input
+            onChange={e => this.handleChange(e.target.value, 'title')}
+            // defaultValue={codes.title}
+            value={title}
+            placeholder="title"
+            type="text"
+          />
+
+          <button type="button" onClick={this.handleFullScreenClick}>
+            fullScreen
+          </button>
+          <iframe
+            width="300px"
+            style={{
+              background: 'white',
+              display: previewIsOpen ? 'inline' : 'none',
+            }}
+            allowFullScreen
+            height="200px"
+            title="peneliteIframe"
+            id="iframeId"
+          />
+        </div>
+        <CodesContent
+          viewMode={viewMode}
+          tabIndex={tabIndex}
+          htmlContent={htmlContent}
+          cssContent={cssContent}
+          jsContent={jsContent}
+          changeTab={changeTab}
+          changePen={changePen}
         />
       </div>
     )
@@ -137,12 +169,46 @@ export default class CreatePen extends React.Component {
 CreatePen.propTypes = {
   fetchPen: PropTypes.func,
   changePen: PropTypes.func,
-  codes: PropTypes.objectOf(PropTypes.string),
   savePen: PropTypes.func.isRequired,
+  menuIsOpen: PropTypes.bool,
+  changeMenu: PropTypes.func,
+  closeMenu: PropTypes.func,
+  changePreviewMode: PropTypes.func,
+  previewIsOpen: PropTypes.bool,
+  changeViewMode: PropTypes.func,
+  viewMode: PropTypes.string,
+  tabIndex: PropTypes.number,
+  changeTab: PropTypes.func,
+  setUser: PropTypes.func,
+  user: PropTypes.string,
+  clearState: PropTypes.func,
+  htmlContent: PropTypes.string,
+  cssContent: PropTypes.string,
+  jsContent: PropTypes.string,
+  writerName: PropTypes.string,
+  title: PropTypes.string,
+  isSaved: PropTypes.bool,
 }
 
 CreatePen.defaultProps = {
   fetchPen: null,
   changePen: null,
-  codes: null,
+  menuIsOpen: false,
+  changeMenu: null,
+  closeMenu: null,
+  changePreviewMode: null,
+  previewIsOpen: true,
+  changeViewMode: null,
+  viewMode: 'simple',
+  tabIndex: 1,
+  changeTab: null,
+  setUser: null,
+  user: 'javad',
+  clearState: null,
+  htmlContent: '',
+  cssContent: '',
+  jsContent: '',
+  writerName: 'javad',
+  title: 'no title received',
+  isSaved: false,
 }

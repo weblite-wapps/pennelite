@@ -27,6 +27,7 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
     "@reach/router": "^1.2.1",
     "history": "^4.7.2",
     "node-sass": "^4.11.0",
@@ -41,5 +42,8 @@
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
     "superagent": "^4.1.0"
-  }
+  },
+  "local-dependencies": [
+    "weblite-web-relite"
+  ]
 }

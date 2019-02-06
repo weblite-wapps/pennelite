@@ -6,16 +6,59 @@ import {
   dispatchChangePen,
   dispatchSavePen,
   dispatchFetchPen,
+  dispatchChangeMenuMode,
+  dispatchCloseMenu,
+  dispatchChangePreviewMode,
+  dispatchChangePenViewMode,
+  dispatchChangeTabIndex,
+  dispatchSetUserCurrentPen,
+  dispatchResetState,
 } from './CreatePen.action'
-import { codesView } from './CreatePen.reducer'
+import {
+  // codesView,
+  htmlView,
+  cssView,
+  jsView,
+  writerView,
+  titleView,
+  menuView,
+  previewView,
+  viewModeView,
+  tabIndexView,
+  // htmlView,
+  isSavedView,
+} from './CreatePen.reducer'
+import { userView } from '../App/App.reducer'
 
 const mapDispatchTpProps = () => ({
   fetchPen: dispatchFetchPen,
   changePen: dispatchChangePen,
   savePen: dispatchSavePen,
-  codes: codesView(),
+  changeMenu: dispatchChangeMenuMode,
+  closeMenu: dispatchCloseMenu,
+  changePreviewMode: dispatchChangePreviewMode,
+  changeViewMode: dispatchChangePenViewMode,
+  changeTab: dispatchChangeTabIndex,
+  setUser: dispatchSetUserCurrentPen,
+  clearState: dispatchResetState,
 })
 
-// const mapStateToprops = () => ({})
+const mapStateToprops = () => ({
+  // codes: codesView(),
+  htmlContent: htmlView(),
+  cssContent: cssView(),
+  jsContent: jsView(),
+  writerName: writerView(),
+  title: titleView(),
+  isSaved: isSavedView(),
+  menuIsOpen: menuView(),
+  previewIsOpen: previewView(),
+  viewMode: viewModeView(),
+  tabIndex: tabIndexView(),
+  user: userView(),
+})
 
-export default connect(mapDispatchTpProps)(CreatePen)
+export default connect(
+  mapStateToprops,
+  mapDispatchTpProps,
+)(CreatePen)

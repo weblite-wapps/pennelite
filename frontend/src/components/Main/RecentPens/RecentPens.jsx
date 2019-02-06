@@ -2,15 +2,15 @@
 import * as R from 'ramda'
 import React from 'react'
 import PropTypes, { object } from 'prop-types'
-import { Link, Redirect } from '@reach/router'
+import { Link } from '@reach/router'
 // local modules
 // modules
-import { dispatchSetUserAndTitle } from '../CreatePen/CreatePen.action'
 
 export default class Recentpens extends React.Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.handleSendClick = this.handleSendClick.bind(this)
   }
 
   componentDidMount() {
@@ -19,34 +19,57 @@ export default class Recentpens extends React.Component {
   }
 
   handleClick({ writer, title }) {
+    const { setUserAndTitleChoosedPen } = this.props
     // console.log('writer title :', writer, title)
-    dispatchSetUserAndTitle(writer, title)
+    setUserAndTitleChoosedPen(writer, title)
+  }
+
+  handleSendClick() {
+    const { W } = window
+    // W.sendMessageToCurrentChat({})
   }
 
   render() {
     const { pens } = this.props
     const penItems = pens.map(pen => (
       <div
-        onClick={() => this.handleClick(pen)}
         key={`${pen.writer} + ${pen.title}`}
-        style={{ border: '2px solid black', margin: '40px' }}
+        style={{ border: '1px solid red' }}
       >
         <Link to="/CreatePen">
-          <ul>
-            <li>{pen.title}</li>
-            <li>{pen.writer}</li>
-            <li>Send * Edit</li>
-          </ul>
+          <div
+            onClick={() => this.handleClick(pen)}
+            key={`${pen.writer} + ${pen.title}`}
+            style={{ border: '1px solid blue', margin: '0px 20px' }}
+          >
+            <table>
+              <tbody>
+                <tr style={{ display: 'inline-block' }}>
+                  <td>{pen.title}</td>
+                </tr>
+                <tr />
+                <tr style={{ display: 'inline-block' }}>
+                  <td>{pen.writer}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </Link>
+
+        <div style={{ border: '1px solid green', margin: '0px 20px' }}>
+          <button type="button" onClick={() => this.handleSendClick()}>
+            Send
+          </button>
+        </div>
       </div>
     ))
     return (
-      <div style={{ width: '350px', border: '2px solid black' }}>
+      <div style={{ width: '300px', border: '2px solid black' }}>
         <Link to="/CreatePen">CreatePen</Link>
         <br />
         <Link to="/Dashboard">Dashboard</Link>
         <p>Recent pens</p>
-        <ul>{penItems}</ul>
+        {penItems}
       </div>
     )
   }
@@ -55,9 +78,11 @@ export default class Recentpens extends React.Component {
 Recentpens.propTypes = {
   fetchPens: PropTypes.func,
   pens: PropTypes.arrayOf(object),
+  setUserAndTitleChoosedPen: PropTypes.func,
 }
 
 Recentpens.defaultProps = {
   fetchPens: '',
   pens: [],
+  setUserAndTitleChoosedPen: null,
 }

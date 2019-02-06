@@ -2,7 +2,12 @@
 import * as R from 'ramda'
 import { combineEpics, ofType } from 'redux-observable'
 import { ignoreElements, tap, pluck, mergeMap, map } from 'rxjs/operators'
-import { dispatchChangePen, SAVE_PEN, FETCH_PEN } from './CreatePen.action'
+import {
+  dispatchChangePen,
+  SAVE_PEN,
+  FETCH_PEN,
+  dispatchSetIsSavedToTrue,
+} from './CreatePen.action'
 import { codesView } from './CreatePen.reducer'
 
 import {
@@ -19,6 +24,7 @@ const effectSavePenEpic = action$ =>
         .then(res => console.log('res: ', res))
         .catch(() => console.log("couldn't update")),
     ),
+    tap(dispatchSetIsSavedToTrue),
     ignoreElements(),
   )
 

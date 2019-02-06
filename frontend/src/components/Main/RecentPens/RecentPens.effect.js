@@ -10,17 +10,13 @@ import { getRequests } from '../../../helper/functions/request.helper'
 const effectFetchRecentPensEpic = action$ =>
   action$.pipe(
     ofType(FETCH_RECENT_PENS),
-    mergeMap(
-      () =>
-        getRequests('/')
-          .then(Promise.resolve('Dummy response to keep the console quiet'))
-          .catch(() => console.log("can't get from server")),
-      // TODO GET REQUEST SHOULD BE COMPLETED
+    mergeMap(() =>
+      getRequests('/')
+        .then(Promise.resolve('Dummy response to keep the console quiet'))
+        .catch(() => console.log("can't get from server")),
     ),
     map(R.prop('body')),
     tap(dispatchSetRecentPens),
-    // tap(({ body }) => console.log(body[0])),
-    // tap(({ body }) => dispatchChangeHtmlCode(body[0].html, 'html')),
     ignoreElements(),
   )
 

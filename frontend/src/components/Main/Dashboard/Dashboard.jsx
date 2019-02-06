@@ -2,37 +2,49 @@ import React from 'react'
 import PropTypes, { object } from 'prop-types'
 import { Link } from '@reach/router'
 // modules
-import { dispatchSetUserAndTitle } from '../CreatePen/CreatePen.action'
-import { userView } from '../App/App.reducer'
 
 export default class Dashboard extends React.PureComponent {
   constructor(props) {
     super(props)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleSendClick = this.handleSendClick.bind(this)
   }
 
   componentWillMount() {
-    const { fetchPens } = this.props
-    fetchPens(userView().user)
-    // console.log('componentWillMount :')
+    const { user, fetchPens } = this.props
+    fetchPens(user)
   }
 
   handleClick({ title }) {
-    dispatchSetUserAndTitle(userView().user, title)
+    const { user, setUserAndTitleChoosedPen } = this.props
+    setUserAndTitleChoosedPen(user, title)
+  }
+
+  handleSendClick({ writer, title }) {
+    const { W } = window
+    // W.sendMessageToCurrentChat({})
+    console.log('save is clicked', writer, title)
   }
 
   render() {
     const { pens } = this.props
     const penitems = pens.map(pen => (
       <div
-        onClick={() => this.handleClick(pen)}
         key={pen.title}
-        style={{ border: '2px solid black', margin: '40px' }}
+        style={{ border: '2px solid black', margin: '0px 40px' }}
       >
-        <Link to="/CreatePen">
-          <ul>
-            <li>{pen.title}</li>
-          </ul>
-        </Link>
+        <div onClick={() => this.handleClick(pen)}>
+          <Link to="/CreatePen">
+            <ul>
+              <li>{pen.title}</li>
+            </ul>
+          </Link>
+        </div>
+        <div>
+          <button type="button" onClick={() => this.handleSendClick(pen)}>
+            Send
+          </button>
+        </div>
       </div>
     ))
     return (
@@ -42,7 +54,6 @@ export default class Dashboard extends React.PureComponent {
         <Link to="/CreatePen">CreatePen</Link>
         <p>Dashboard</p>
         {penitems}
-        {console.log('userView().user :', userView().user)}
       </div>
     )
   }
@@ -51,96 +62,13 @@ export default class Dashboard extends React.PureComponent {
 Dashboard.propTypes = {
   fetchPens: PropTypes.func,
   pens: PropTypes.arrayOf(object),
+  user: PropTypes.string,
+  setUserAndTitleChoosedPen: PropTypes.func,
 }
 
 Dashboard.defaultProps = {
   fetchPens: null,
   pens: [],
+  user: 'javad',
+  setUserAndTitleChoosedPen: null,
 }
-
-// import React from 'react'
-// import { render } from 'react-dom'
-// import { Router, Link } from '@reach/router'
-
-// const App = () => (
-//   <div>
-//     <h1>Tutorial!</h1>
-//     <nav>
-//       <Link to="/">Home</Link> <Link to="dashboard">Dashboard</Link>{' '}
-//       <Link to="invoices">Invoices</Link>
-//     </nav>
-
-//     <Router>
-//       <Home path="/" />
-//       <Dashboard path="/dashboard" />
-//       <Invoices path="invoices">
-//         <InvoicesIndex path="/" />
-//         <Invoice path=":invoiceId" />
-//       </Invoices>
-//       <NotFound default />
-//     </Router>
-//   </div>
-// )
-
-// const Home = () => (
-//   <div>
-//     <h2>Welcome</h2>
-//   </div>
-// )
-
-// const Dashboard = () => (
-//   <div>
-//     <h2>Dashboard</h2>
-//   </div>
-// )
-
-// const Invoice = props => (
-//   <div>
-//     <h2>Invoice {props.invoiceId}</h2>
-//   </div>
-// )
-
-// const Invoices = props => (
-//   <div>
-//     <h2>Invoices</h2>
-//     <ul>
-//       <li>
-//         <Link to="/invoices/123">Invoice 123</Link>
-//       </li>
-//       <li>
-//         <Link to="/invoices/abc">Invoice ABC</Link>
-//       </li>
-//     </ul>
-
-//     <form
-//       onSubmit={event => {
-//         event.preventDefault()
-//         const id = event.target.elements[0].value
-//         event.target.reset()
-
-//         // pretend like we saved a record to the DB here
-//         // and then we navigate imperatively
-//         props.navigate(id)
-//       }}
-//     >
-//       <p>
-//         <label>
-//           New Invoice ID: <input type="text" />
-//         </label>
-//         <button type="submit">create</button>
-//       </p>
-//     </form>
-
-//     {props.children}
-//   </div>
-// )
-
-// const InvoicesIndex = () => (
-//   <div>
-//     <p>Maybe put some pretty graphs here or something.</p>
-//   </div>
-// )
-
-// const NotFound = () => <p>Sorry, nothing here</p>
-
-// render(<App />, document.getElementById('root'))

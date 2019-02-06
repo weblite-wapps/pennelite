@@ -11,6 +11,7 @@ const effectFetchUserPensEpic = action$ =>
     mergeMap(user =>
       getRequests('/fetchUserPens')
         .query(user)
+        .then(Promise.resolve('Dummy response to keep the console quiet'))
         .catch(console.log("couldm't find user pens :")),
     ),
     map(R.prop('body')),

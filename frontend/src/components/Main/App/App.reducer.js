@@ -4,11 +4,10 @@ import { SET_USER } from './App.action'
 
 const initialState = {
   user: '',
+  wisId: (window.W && window.W.wisId) || '110',
 }
 
-export const userView = () => ({
-  user: R.path(['App', 'user'])(getState()),
-})
+export const userView = () => R.path(['App', 'user'])(getState())
 
 const reducer = {
   [SET_USER]: (state, { user }) => ({
