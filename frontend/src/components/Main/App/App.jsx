@@ -14,8 +14,8 @@ export default class App extends React.Component {
 
   handleWappMode() {
     const { setUser } = this.props
-    window.w.loadData().then(({ user }) => {
-      setUser(user)
+    window.W.loadData().then(({ user: { name } }) => {
+      setUser(name)
     })
     console.log('wappmode :')
   }
