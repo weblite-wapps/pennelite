@@ -1,21 +1,21 @@
 import * as R from 'ramda'
 import { ofType, combineEpics } from 'redux-observable'
 import { ignoreElements, tap, map, mergeMap } from 'rxjs/operators'
-import { FETCH_USER_PENS, dispatchSetUserPens } from './Dashboard.action'
+import { FETCH_WRITER_PENS, dispatchSetWriterPens } from './Dashboard.action'
 import { getRequests } from '../../../helper/functions/request.helper'
 
 const effectFetchUserPensEpic = action$ =>
   action$.pipe(
-    ofType(FETCH_USER_PENS),
+    ofType(FETCH_WRITER_PENS),
     map(R.prop('payload')),
-    mergeMap(user =>
-      getRequests('/fetchUserPens')
-        .query(user)
+    mergeMap(writer =>
+      getRequests('/fetchWriterPens')
+        .query(writer)
         .then(Promise.resolve('Dummy response to keep the console quiet'))
         .catch(console.log("couldm't find user pens :")),
     ),
     map(R.prop('body')),
-    tap(dispatchSetUserPens),
+    tap(dispatchSetWriterPens),
     ignoreElements(),
   )
 

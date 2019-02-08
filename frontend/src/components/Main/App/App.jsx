@@ -23,7 +23,7 @@ export default class App extends React.Component {
   handleNormalMode() {
     const { setUser } = this.props
     setUser('javad')
-    console.log('normalMode :')
+    // console.log('normalMode :')
   }
 
   render() {

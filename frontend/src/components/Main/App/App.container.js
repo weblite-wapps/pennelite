@@ -6,9 +6,4 @@ const mapDispatchToProps = () => ({
   setUser: dispatchSetUser,
 })
 
-const mapStateToProps = () => ({})
-
-export default connect(
-  mapDispatchToProps,
-  mapStateToProps,
-)(App)
+export default connect(mapDispatchToProps)(App)

@@ -1,14 +1,15 @@
-// import bodyParser from 'body-parser'
-import * as R from 'ramda'
 import { Router } from 'express'
-import { getLastNinePens, savePen, fetchSinglePen, getUserPens } from './Pen'
-
-// Router.use(JSON.stringify())
+import {
+  fetchLastNinePens,
+  savePen,
+  fetchSinglePen,
+  fetchWriterPens,
+} from './Pen'
 
 const router = Router()
 
 router.get('/', (req, res) =>
-  getLastNinePens()
+  fetchLastNinePens()
     .then(pens => res.send(pens))
     .catch(console.log('there is not nine in db')),
 )
@@ -25,15 +26,15 @@ router.post(
 
 router.get(
   '/fetchSinglePen',
-  ({ query: { user, title } }, res) =>
-    fetchSinglePen(user, title).then(pen => res.send(R.dissoc('_id', pen))),
+  ({ query: { writer, title } }, res) =>
+    fetchSinglePen(writer, title).then(pen => res.send(pen)),
   // console.log(user, title),
 )
 
 router.get(
-  '/fetchUserPens',
-  ({ query: { user } }, res) => getUserPens(user).then(pens => res.send(pens)),
-  // console.log('query :', query),
+  '/fetchWriterPens',
+  ({ query: { writer } }, res) =>
+    fetchWriterPens(writer).then(pens => res.send(pens)),
   // console.log('query :', query),
 )
 

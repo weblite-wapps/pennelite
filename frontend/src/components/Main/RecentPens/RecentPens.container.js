@@ -7,7 +7,7 @@ import { pensView } from './RecentPens.reducer'
 
 // actions
 import { dispatchFetchRecentPens } from './RecentPens.action'
-import { dispatchSetUserAndTitle } from '../CreatePen/CreatePen.action'
+import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: pensView(),
@@ -15,7 +15,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchRecentPens,
-  setUserAndTitleChoosedPen: dispatchSetUserAndTitle,
+  setUserAndTitleChoosedPen: dispatchSetWriterAndTitle,
 })
 
 export default connect(

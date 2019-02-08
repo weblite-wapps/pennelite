@@ -7,14 +7,13 @@ const initialState = {
   wisId: (window.W && window.W.wisId) || '110',
 }
 
-export const userView = () => R.path(['App', 'user'])(getState())
+export const appUserView = () => R.path(['App', 'user'])(getState())
 
 const reducer = {
   [SET_USER]: (state, { user }) => ({
     ...state,
     user,
   }),
-  // console.log('user in reducer :', user),
 }
 
 export default (state = initialState, { type, payload }) =>

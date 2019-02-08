@@ -1,17 +1,18 @@
 import * as R from 'ramda'
 import { getState } from '../../../setup/redux'
 
-import { SET_USER_PENS } from './Dashboard.action'
+import { SET_WRITER_PENS } from './Dashboard.action'
 
 const initialState = {
-  userPens: [],
+  writerPens: [],
 }
 
-export const userPensView = () => R.path(['Dashboard', 'userPens'])(getState())
+export const userPensView = () =>
+  R.path(['Dashboard', 'writerPens'])(getState())
 
 const reducers = {
-  [SET_USER_PENS]: (state, { pens }) => ({
-    userPens: pens,
+  [SET_WRITER_PENS]: (state, { pens }) => ({
+    writerPens: pens,
   }),
   // console.log('pens :', pens[0]),
 }

@@ -1,13 +1,9 @@
 // Modules
 import React from 'react'
-import PropTypes, { object } from 'prop-types'
+import PropTypes from 'prop-types'
 import { ContextMenu } from 'weblite-web-relite'
 
 export default class MenuContent extends React.PureComponent {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { menuIsOpen, changePreviewMode, changeViewMode } = this.props
     return (

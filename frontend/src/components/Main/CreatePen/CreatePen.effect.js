@@ -21,7 +21,7 @@ const effectSavePenEpic = action$ =>
     tap(() =>
       postRequests('/updateCurrentPen')
         .send(codesView())
-        .then(res => console.log('res: ', res))
+        // .then(res => console.log('res: ', res))
         .catch(() => console.log("couldn't update")),
     ),
     tap(dispatchSetIsSavedToTrue),
@@ -32,9 +32,9 @@ const effectFetchPenEpic = action$ =>
   action$.pipe(
     ofType(FETCH_PEN),
     pluck('payload'),
-    mergeMap(({ user, title }) =>
+    mergeMap(({ writer, title }) =>
       getRequests('/fetchSinglePen')
-        .query({ user, title })
+        .query({ writer, title })
         .catch(() => console.log('couldnt fetch')),
     ),
     map(R.prop('body')),

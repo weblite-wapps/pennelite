@@ -1,20 +1,20 @@
 import { createAction } from 'redux-actions'
 import { dispatch } from '../../../setup/redux'
 
-export const SET_USER_AND_TITLE = 'SET_USER_AND_TITLE'
-export const setUserAndTitle = createAction(
-  SET_USER_AND_TITLE,
-  (user, title) => ({
-    user,
+export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
+export const setWriterAndTitle = createAction(
+  SET_WRITER_AND_TITLE,
+  (writer, title) => ({
+    writer,
     title,
   }),
 )
-export const dispatchSetUserAndTitle = (...args) =>
-  dispatch(setUserAndTitle(...args))
+export const dispatchSetWriterAndTitle = (...args) =>
+  dispatch(setWriterAndTitle(...args))
 
 export const FETCH_PEN = 'FETCH_PEN'
-export const fetchPen = createAction(FETCH_PEN, (user, title) => ({
-  user,
+export const fetchPen = createAction(FETCH_PEN, (writer, title) => ({
+  writer,
   title,
 }))
 export const dispatchFetchPen = (...args) => dispatch(fetchPen(...args))
@@ -56,12 +56,15 @@ export const changeTabIndex = createAction(CHANGE_TAB_INDEX, value => ({
 export const dispatchChangeTabIndex = (...args) =>
   dispatch(changeTabIndex(...args))
 
-export const SET_USER_CURRENT_PEN = 'SET_USER_CURRENT_PEN'
-export const setUserCurrentPen = createAction(SET_USER_CURRENT_PEN, user => ({
-  user,
-}))
-export const dispatchSetUserCurrentPen = (...args) =>
-  dispatch(setUserCurrentPen(...args))
+export const SET_WRITER_CURRENT_PEN = 'SET_WRITER_CURRENT_PEN'
+export const setWriterCurrentPen = createAction(
+  SET_WRITER_CURRENT_PEN,
+  writer => ({
+    writer,
+  }),
+)
+export const dispatchSetWriterCurrentPen = (...args) =>
+  dispatch(setWriterCurrentPen(...args))
 
 export const RESET_STATE = 'RESET_STATE'
 export const resetState = createAction(RESET_STATE)

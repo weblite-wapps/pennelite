@@ -11,7 +11,7 @@ import {
   dispatchChangePreviewMode,
   dispatchChangePenViewMode,
   dispatchChangeTabIndex,
-  dispatchSetUserCurrentPen,
+  dispatchSetWriterCurrentPen,
   dispatchResetState,
 } from './CreatePen.action'
 import {
@@ -28,7 +28,7 @@ import {
   // htmlView,
   isSavedView,
 } from './CreatePen.reducer'
-import { userView } from '../App/App.reducer'
+import { appUserView } from '../App/App.reducer'
 
 const mapDispatchTpProps = () => ({
   fetchPen: dispatchFetchPen,
@@ -39,7 +39,7 @@ const mapDispatchTpProps = () => ({
   changePreviewMode: dispatchChangePreviewMode,
   changeViewMode: dispatchChangePenViewMode,
   changeTab: dispatchChangeTabIndex,
-  setUser: dispatchSetUserCurrentPen,
+  setWriter: dispatchSetWriterCurrentPen,
   clearState: dispatchResetState,
 })
 
@@ -55,7 +55,7 @@ const mapStateToprops = () => ({
   previewIsOpen: previewView(),
   viewMode: viewModeView(),
   tabIndex: tabIndexView(),
-  user: userView(),
+  appUser: appUserView(),
 })
 
 export default connect(

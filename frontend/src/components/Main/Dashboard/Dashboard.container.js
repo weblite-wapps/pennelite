@@ -1,19 +1,19 @@
 import { connect } from 'react-redux'
 
 import Dashboard from './Dashboard'
-import { dispatchFetchUserPens } from './Dashboard.action'
+import { dispatchFetchWriterPens } from './Dashboard.action'
 import { userPensView } from './Dashboard.reducer'
-import { userView } from '../App/App.reducer'
-import { dispatchSetUserAndTitle } from '../CreatePen/CreatePen.action'
+import { appUserView } from '../App/App.reducer'
+import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: userPensView(),
-  user: userView(),
+  user: appUserView(),
 })
 
 const mapDispatchToProps = () => ({
-  fetchPens: dispatchFetchUserPens,
-  setUserAndTitleChoosedPen: dispatchSetUserAndTitle,
+  fetchPens: dispatchFetchWriterPens,
+  setUserAndTitleChoosedPen: dispatchSetWriterAndTitle,
 })
 
 export default connect(

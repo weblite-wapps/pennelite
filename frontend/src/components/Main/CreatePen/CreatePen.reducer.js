@@ -5,13 +5,13 @@ import { getState } from '../../../setup/redux'
 // actions
 import {
   CHANGE_PEN,
-  SET_USER_AND_TITLE,
+  SET_WRITER_AND_TITLE,
   CHANGE_MENU_MODE,
   CLOSE_MENU,
   CHANGE_PREVIEW_MODE,
   CHANGE_PEN_VIEW_MODE,
   CHANGE_TAB_INDEX,
-  SET_USER_CURRENT_PEN,
+  SET_WRITER_CURRENT_PEN,
   RESET_STATE,
   SET_ISSAVED_TO_TRUE,
 } from './CreatePen.action'
@@ -70,9 +70,9 @@ export const viewModeView = () => R.path(['CreatePen', 'viewMode'])(getState())
 export const tabIndexView = () => R.path(['CreatePen', 'tabIndex'])(getState())
 
 const reducers = {
-  [SET_USER_AND_TITLE]: (state, { user, title }) => ({
+  [SET_WRITER_AND_TITLE]: (state, { writer, title }) => ({
     ...state,
-    writer: user,
+    writer,
     title,
   }),
 
@@ -98,7 +98,8 @@ const reducers = {
 
   [CHANGE_TAB_INDEX]: (state, { value }) => R.set(tabIndexLens, value, state),
 
-  [SET_USER_CURRENT_PEN]: (state, { user }) => R.set(writerLens, user, state),
+  [SET_WRITER_CURRENT_PEN]: (state, { writer }) =>
+    R.set(writerLens, writer, state),
 
   [RESET_STATE]: () => initialState,
 

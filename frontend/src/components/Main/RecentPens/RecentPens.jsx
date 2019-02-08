@@ -20,7 +20,7 @@ export default class Recentpens extends React.Component {
 
   handleClick({ writer, title }) {
     const { setUserAndTitleChoosedPen } = this.props
-    // console.log('writer title :', writer, title)
+    console.log('writer11 title :', writer, title)
     setUserAndTitleChoosedPen(writer, title)
   }
 

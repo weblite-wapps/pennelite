@@ -10,16 +10,16 @@ export default class CreatePen extends React.Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
-    // this.handleTabChange = this.handleTabChange.bind(this)
     this.handleSaveClick = this.handleSaveClick.bind(this)
     this.handleFullScreenClick = this.handleFullScreenClick.bind(this)
   }
 
   componentWillMount() {
-    const { fetchPen, writerName, title, setUser, user } = this.props
-    setUser(user)
+    const { fetchPen, writerName, title, setWriter, appUser } = this.props
+    // console.log('appUser :', appUser)
+    setWriter(appUser)
     fetchPen(writerName, title)
-    console.log('codes.writer, codes.title :', writerName, title)
+    // console.log('codes.writer, codes.title :', writerName, title)
   }
 
   componentDidUpdate() {
@@ -179,8 +179,8 @@ CreatePen.propTypes = {
   viewMode: PropTypes.string,
   tabIndex: PropTypes.number,
   changeTab: PropTypes.func,
-  setUser: PropTypes.func,
-  user: PropTypes.string,
+  setWriter: PropTypes.func,
+  appUser: PropTypes.string,
   clearState: PropTypes.func,
   htmlContent: PropTypes.string,
   cssContent: PropTypes.string,
@@ -202,8 +202,8 @@ CreatePen.defaultProps = {
   viewMode: 'simple',
   tabIndex: 1,
   changeTab: null,
-  setUser: null,
-  user: 'javad',
+  setWriter: null,
+  appUser: 'javad',
   clearState: null,
   htmlContent: '',
   cssContent: '',
