@@ -35,7 +35,8 @@ const effectFetchPenEpic = action$ =>
     mergeMap(({ writer, title }) =>
       getRequests('/fetchSinglePen')
         .query({ writer, title })
-        .catch(() => console.log('couldnt fetch')),
+        .then(Promise.resolve('Dummy response to keep the console quiet'))
+        .catch(() => console.log("couldn't fetch")),
     ),
     map(R.prop('body')),
     map(R.head),

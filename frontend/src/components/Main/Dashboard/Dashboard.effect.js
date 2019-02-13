@@ -12,7 +12,7 @@ const effectFetchUserPensEpic = action$ =>
       getRequests('/fetchWriterPens')
         .query(writer)
         .then(Promise.resolve('Dummy response to keep the console quiet'))
-        .catch(console.log("couldm't find user pens :")),
+        .catch(console.log("couldn't find user pens :")),
     ),
     map(R.prop('body')),
     tap(dispatchSetWriterPens),
