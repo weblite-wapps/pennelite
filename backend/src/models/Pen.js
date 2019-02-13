@@ -7,5 +7,8 @@ const PenSchema = new mongoose.Schema({
   css: String,
   js: String,
 })
-
+// timeStamps
+// disable __v
+// composite index of writer, title
+// lean
 export default mongoose.model('Pen', PenSchema)

@@ -13,7 +13,7 @@ import { codesView } from './CreatePen.reducer'
 import {
   postRequests,
   getRequests,
-} from '../../../helper/functions/request.helper'
+} from '../../helper/functions/request.helper'
 
 const effectSavePenEpic = action$ =>
   action$.pipe(
@@ -33,10 +33,7 @@ const effectFetchPenEpic = action$ =>
     ofType(FETCH_PEN),
     pluck('payload'),
     mergeMap(({ writer, title }) =>
-      getRequests('/fetchSinglePen')
-        .query({ writer, title })
-        .then(Promise.resolve('Dummy response to keep the console quiet'))
-        .catch(() => console.log("couldn't fetch")),
+      getRequests('/fetchSinglePen').query({ writer, title }),
     ),
     map(R.prop('body')),
     map(R.head),

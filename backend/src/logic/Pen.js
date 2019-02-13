@@ -4,17 +4,15 @@ export const savePen = ({ title, writer, html, css, js }) =>
   Pen.updateOne({ title, writer }, { html, css, js }, { upsert: true }).exec()
 
 export const deletePen = ({ writer, title }) =>
-  Pen.update({ title, writer }).exec()
+  Pen.deleteOne({ title, writer }).exec()
 
 export const fetchLastNinePens = () =>
-  Pen.find({}, { writer: 1, title: 1, _id: false })
+  Pen.find({}, { writer: 1, title: 1, _id: 0 })
     .limit(9)
     .exec()
 
 export const fetchSinglePen = (writer, title) =>
-  Pen.find({ writer, title }, { _id: 0, __v: 0 })
-    .limit(1)
-    .exec()
+  Pen.findOne({ writer, title }, { _id: 0, __v: 0 }).exec()
 // console.log('writer, title :', writer, title)
 
 export const fetchWriterPens = writer =>

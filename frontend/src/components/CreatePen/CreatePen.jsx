@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-// import { ContextMenu } from 'weblite-web-relite'
 import { Link } from '@reach/router'
-// import { Tab, Tabs } from '@material-ui/core'
 import MenuContent from './Components/MenuContent'
 import CodesContent from './Components/CodesContent'
 
-export default class CreatePen extends React.Component {
+class CreatePen extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -16,15 +14,15 @@ export default class CreatePen extends React.Component {
 
   componentWillMount() {
     const { fetchPen, writerName, title, setWriter, appUser } = this.props
-    // console.log('appUser :', appUser)
     setWriter(appUser)
     fetchPen(writerName, title)
-    // console.log('codes.writer, codes.title :', writerName, title)
   }
 
   componentDidUpdate() {
     const { htmlContent, cssContent, jsContent } = this.props
-    const iframe = document.getElementById('iframeId')
+    // const { iframe } = this.iframe
+    // console.log('iframe ', iframe)
+    const iframe = document.getElementById('iframe')
     iframe.contentWindow.document.open()
     iframe.contentWindow.document.write(htmlContent)
     iframe.contentWindow.document.write(`<style>${cssContent}</style>`)
@@ -44,13 +42,13 @@ export default class CreatePen extends React.Component {
   }
 
   handleFullScreenClick() {
-    const element = document.getElementById('iframeId')
+    const element = document.getElementById('iframe')
     if (!document.fullscreenElement) {
       element
         .requestFullscreen()
         .then({})
         .catch(err => {
-          alert(
+          console.log(
             `Error attempting to enable full-screen mode: ${err.message} (${
               err.name
             })`,
@@ -61,16 +59,9 @@ export default class CreatePen extends React.Component {
     }
   }
 
-  // handleTabChange(event, value) {
-  //   const { changeTab } = this.props
-  //   changeTab(value)
-  //   // console.log('event, value', event, value)
-  // }
-
   render() {
     const {
-      // codes,
-      menuIsOpen,
+      isMenuOpen,
       changeMenu,
       closeMenu,
       changePreviewMode,
@@ -120,18 +111,17 @@ export default class CreatePen extends React.Component {
         </div>
         <div onClick={closeMenu}>
           <MenuContent
-            menuIsOpen={menuIsOpen}
+            isMenuOpen={isMenuOpen}
             changePreviewMode={changePreviewMode}
             changeViewMode={changeViewMode}
           />
         </div>
 
-        {<p>written by : {writerName} </p>}
+        <p>written by : {writerName} </p>
 
         <div>
           <input
             onChange={e => this.handleChange(e.target.value, 'title')}
-            // defaultValue={codes.title}
             value={title}
             placeholder="title"
             type="text"
@@ -146,10 +136,13 @@ export default class CreatePen extends React.Component {
               background: 'white',
               display: previewIsOpen ? 'inline' : 'none',
             }}
+            // ref={iframe => {
+            //   this.iframe = iframe
+            // }}
             allowFullScreen
             height="200px"
-            title="peneliteIframe"
-            id="iframeId"
+            title="penneliteIframe"
+            id="iframe"
           />
         </div>
         <CodesContent
@@ -170,7 +163,7 @@ CreatePen.propTypes = {
   fetchPen: PropTypes.func,
   changePen: PropTypes.func,
   savePen: PropTypes.func.isRequired,
-  menuIsOpen: PropTypes.bool,
+  isMenuOpen: PropTypes.bool,
   changeMenu: PropTypes.func,
   closeMenu: PropTypes.func,
   changePreviewMode: PropTypes.func,
@@ -191,20 +184,20 @@ CreatePen.propTypes = {
 }
 
 CreatePen.defaultProps = {
-  fetchPen: null,
-  changePen: null,
-  menuIsOpen: false,
-  changeMenu: null,
-  closeMenu: null,
-  changePreviewMode: null,
+  fetchPen: Function.prototype,
+  changePen: Function.prototype,
+  isMenuOpen: false,
+  changeMenu: Function.prototype,
+  closeMenu: Function.prototype,
+  changePreviewMode: Function.prototype,
   previewIsOpen: true,
-  changeViewMode: null,
+  changeViewMode: Function.prototype,
   viewMode: 'simple',
   tabIndex: 1,
-  changeTab: null,
-  setWriter: null,
+  changeTab: Function.prototype,
+  setWriter: Function.prototype,
   appUser: 'javad',
-  clearState: null,
+  clearState: Function.prototype,
   htmlContent: '',
   cssContent: '',
   jsContent: '',
@@ -212,3 +205,5 @@ CreatePen.defaultProps = {
   title: 'no title received',
   isSaved: false,
 }
+
+export default CreatePen

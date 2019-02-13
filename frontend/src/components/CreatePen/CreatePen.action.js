@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import { dispatch } from '../../../setup/redux'
+import { dispatch } from '../../setup/redux'
 
 export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
 export const setWriterAndTitle = createAction(

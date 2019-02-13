@@ -11,10 +11,10 @@ import {
 import store from './redux'
 
 // Component
-import RecentPens from '../components/Main/RecentPens/RecentPens.container'
-import CreatePen from '../components/Main/CreatePen/CreatePen.container'
-import Dashboard from '../components/Main/Dashboard/Dashboard.container'
-import App from '../components/Main/App/App.container'
+import RecentPens from '../components/RecentPens/RecentPens.container'
+import CreatePen from '../components/CreatePen/CreatePen.container'
+import Dashboard from '../components/Dashboard/Dashboard.container'
+import App from '../components/App/App.container'
 
 const source = createMemorySource()
 const history = createHistory(source)

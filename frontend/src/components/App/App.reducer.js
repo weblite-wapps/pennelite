@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import { getState } from '../../../setup/redux'
+import { getState } from '../../setup/redux'
 import { SET_USER } from './App.action'
 
 const initialState = {

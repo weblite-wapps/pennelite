@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 
-import { getState } from '../../../setup/redux'
+import { getState } from '../../setup/redux'
 
 // actions
 import {
@@ -44,7 +44,7 @@ const writerLens = R.lensProp('writer')
 // const titleLens = R.lensProp('title')
 const isSavedLens = R.lensProp('isSaved')
 const menuIsOpenLens = R.lensProp('menuIsOpen')
-const previousIsShownLens = R.lensProp('previousIsShown')
+const previewIsShown = R.lensProp('previewIsShown')
 const viewModeLens = R.lensProp('viewMode')
 const tabIndexLens = R.lensProp('tabIndex')
 
@@ -87,7 +87,7 @@ const reducers = {
   [CHANGE_MENU_MODE]: state => R.set(menuIsOpenLens, !state.menuIsOpen, state),
 
   [CHANGE_PREVIEW_MODE]: state =>
-    R.set(previousIsShownLens, !state.previewIsShown, state),
+    R.set(previewIsShown, !state.previewIsShown, state),
 
   [CHANGE_PEN_VIEW_MODE]: state =>
     R.set(

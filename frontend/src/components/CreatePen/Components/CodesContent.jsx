@@ -1,6 +1,7 @@
 // Modules
 import React from 'react'
 import PropTypes from 'prop-types'
+// material Components
 import { Tab, Tabs } from '@material-ui/core'
 
 export default class CodesContent extends React.PureComponent {
@@ -26,7 +27,6 @@ export default class CodesContent extends React.PureComponent {
     const {
       viewMode,
       tabIndex,
-      //   handleCodeChange,
       htmlContent,
       cssContent,
       jsContent,
@@ -44,7 +44,6 @@ export default class CodesContent extends React.PureComponent {
           <textarea
             onChange={e => this.handleCodeChange(e.target.value, 'html')}
             value={htmlContent}
-            name="1"
             cols="38"
             rows="7"
             placeholder="Html"
@@ -54,8 +53,6 @@ export default class CodesContent extends React.PureComponent {
           <textarea
             onChange={e => this.handleCodeChange(e.target.value, 'css')}
             value={cssContent}
-            name="2"
-            id=""
             cols="38"
             rows="7"
             placeholder="css"
@@ -65,7 +62,6 @@ export default class CodesContent extends React.PureComponent {
           <textarea
             onChange={e => this.handleCodeChange(e.target.value, 'js')}
             value={jsContent}
-            name="3"
             cols="38"
             rows="7"
             placeholder="js"
@@ -77,8 +73,6 @@ export default class CodesContent extends React.PureComponent {
 }
 
 CodesContent.propTypes = {
-  //   handleTabChange: PropTypes.func,
-  //   handleCodeChange: PropTypes.func,
   viewMode: PropTypes.string,
   tabIndex: PropTypes.number,
   htmlContent: PropTypes.string,
@@ -91,11 +85,9 @@ CodesContent.propTypes = {
 CodesContent.defaultProps = {
   viewMode: 'simple',
   tabIndex: 1,
-  //   handleTabChange: null,
-  //   handleCodeChange: null,
   htmlContent: '',
   cssContent: '',
   jsContent: '',
-  changeTab: null,
-  changePen: null,
+  changeTab: Function.prototype,
+  changePen: Function.prototype,
 }

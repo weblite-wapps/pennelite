@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import { dispatch } from '../../../setup/redux'
+import { dispatch } from '../../setup/redux'
 
 export const FETCH_WRITER_PENS = 'FETCH_WRITER_PENS'
 export const fetchWriterPens = createAction(FETCH_WRITER_PENS, writer => ({

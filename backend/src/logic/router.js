@@ -11,7 +11,7 @@ const router = Router()
 router.get('/', (req, res) =>
   fetchLastNinePens()
     .then(pens => res.send(pens))
-    .catch(console.log('there is not nine in db')),
+    .catch(() => console.log('there is not nine in db')),
 )
 
 router.post(
@@ -19,7 +19,7 @@ router.post(
   ({ body }, res) =>
     savePen(body)
       .then(resp => res.send(resp))
-      .catch(console.log("couldn't save current pen")),
+      .catch(() => console.log("couldn't save current pen")),
 
   // console.log('body :', typeof body),
 )

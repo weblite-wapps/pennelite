@@ -15,7 +15,6 @@ import {
   dispatchResetState,
 } from './CreatePen.action'
 import {
-  // codesView,
   htmlView,
   cssView,
   jsView,
@@ -25,7 +24,6 @@ import {
   previewView,
   viewModeView,
   tabIndexView,
-  // htmlView,
   isSavedView,
 } from './CreatePen.reducer'
 import { appUserView } from '../App/App.reducer'
@@ -44,14 +42,13 @@ const mapDispatchTpProps = () => ({
 })
 
 const mapStateToprops = () => ({
-  // codes: codesView(),
   htmlContent: htmlView(),
   cssContent: cssView(),
   jsContent: jsView(),
   writerName: writerView(),
   title: titleView(),
   isSaved: isSavedView(),
-  menuIsOpen: menuView(),
+  isMenuOpen: menuView(),
   previewIsOpen: previewView(),
   viewMode: viewModeView(),
   tabIndex: tabIndexView(),

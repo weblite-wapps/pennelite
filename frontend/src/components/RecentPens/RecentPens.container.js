@@ -15,7 +15,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchRecentPens,
-  setUserAndTitleChoosedPen: dispatchSetWriterAndTitle,
+  setWriterAndTitleChoosedPen: dispatchSetWriterAndTitle,
 })
 
 export default connect(
