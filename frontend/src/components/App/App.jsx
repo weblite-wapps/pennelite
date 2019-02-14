@@ -16,17 +16,17 @@ export default class App extends Component {
   }
 
   handleWappMode() {
-    const { setUser } = this.props
+    const { setData } = this.props
     window.W.loadData().then(({ user: { name } }) => {
-      setUser(name)
+      setData(name, window.W.wisId)
       // TODO SET USER AND WIS ID
     })
     console.log('wappmode :')
   }
 
   handleNormalMode() {
-    const { setUser } = this.props
-    setUser('javad')
+    const { setData } = this.props
+    setData('javad', '110')
     // console.log('normalMode :')
   }
 
@@ -36,8 +36,8 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  setUser: PropTypes.func,
+  setData: PropTypes.func,
 }
 App.defaultProps = {
-  setUser: Function.prototype,
+  setData: Function.prototype,
 }

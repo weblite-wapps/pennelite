@@ -12,7 +12,14 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchWriterPens,
-  setUserAndTitleChoosedPen: dispatchSetWriterAndTitle,
+  penClick: dispatchSetWriterAndTitle,
+  send: (user, title, wisId) =>
+    window.W.sendMessageToCurrentChat('wapp', {
+      wappId: '',
+      wisId,
+      user,
+      title,
+    }),
 })
 
 export default connect(

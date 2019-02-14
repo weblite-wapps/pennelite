@@ -31,7 +31,7 @@ const initialState = {
   title: '',
   isSaved: 'true',
   menuIsOpen: false,
-  previewIsShown: true,
+  previewIsShown: false,
   viewMode: 'simple',
   tabIndex: 0,
 }

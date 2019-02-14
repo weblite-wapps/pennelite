@@ -1,33 +1,23 @@
+// modules
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
-import MenuContent from './Components/MenuContent'
-import CodesContent from './Components/CodesContent'
+import Menu from './Components/Menu/Menu.container'
+import Codes from './Components/Codes/Codes.container'
+// local modules
+import Iframe from './Components/Iframe/Iframe.container'
 
 class CreatePen extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
     this.handleSaveClick = this.handleSaveClick.bind(this)
-    this.handleFullScreenClick = this.handleFullScreenClick.bind(this)
   }
 
   componentWillMount() {
     const { fetchPen, writerName, title, setWriter, appUser } = this.props
     setWriter(appUser)
     fetchPen(writerName, title)
-  }
-
-  componentDidUpdate() {
-    const { htmlContent, cssContent, jsContent } = this.props
-    // const { iframe } = this.iframe
-    // console.log('iframe ', iframe)
-    const iframe = document.getElementById('iframe')
-    iframe.contentWindow.document.open()
-    iframe.contentWindow.document.write(htmlContent)
-    iframe.contentWindow.document.write(`<style>${cssContent}</style>`)
-    iframe.contentWindow.document.write(`<script>${jsContent}</script>`)
-    iframe.contentWindow.document.close()
   }
 
   handleChange(text, type) {
@@ -39,24 +29,6 @@ class CreatePen extends Component {
   handleSaveClick() {
     const { savePen } = this.props
     savePen()
-  }
-
-  handleFullScreenClick() {
-    const element = document.getElementById('iframe')
-    if (!document.fullscreenElement) {
-      element
-        .requestFullscreen()
-        .then({})
-        .catch(err => {
-          console.log(
-            `Error attempting to enable full-screen mode: ${err.message} (${
-              err.name
-            })`,
-          )
-        })
-    } else {
-      document.exitFullscreen()
-    }
   }
 
   render() {
@@ -110,7 +82,7 @@ class CreatePen extends Component {
           <p>CreatePen</p>
         </div>
         <div onClick={closeMenu}>
-          <MenuContent
+          <Menu
             isMenuOpen={isMenuOpen}
             changePreviewMode={changePreviewMode}
             changeViewMode={changeViewMode}
@@ -126,26 +98,14 @@ class CreatePen extends Component {
             placeholder="title"
             type="text"
           />
-
-          <button type="button" onClick={this.handleFullScreenClick}>
-            fullScreen
-          </button>
-          <iframe
-            width="300px"
-            style={{
-              background: 'white',
-              display: previewIsOpen ? 'inline' : 'none',
-            }}
-            // ref={iframe => {
-            //   this.iframe = iframe
-            // }}
-            allowFullScreen
-            height="200px"
-            title="penneliteIframe"
-            id="iframe"
-          />
         </div>
-        <CodesContent
+        <Iframe
+          htmlContent={htmlContent}
+          cssContent={cssContent}
+          jsContent={jsContent}
+          previewIsOpen={previewIsOpen}
+        />
+        <Codes
           viewMode={viewMode}
           tabIndex={tabIndex}
           htmlContent={htmlContent}

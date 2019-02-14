@@ -19,7 +19,7 @@ export default class CodesContent extends React.PureComponent {
 
   handleCodeChange(text, type) {
     const { changePen } = this.props
-    console.log('text, type :', text, type)
+    // console.log('text, type :', text, type)
     changePen(text, type)
   }
 

@@ -1,47 +1,42 @@
-// refactor this kind of shit
-
 // Modules
-import * as R from 'ramda'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 // local modules
-import PenItems from './Contents/PenItems'
+import Search from './Svgs/Search'
+import Plus from './Svgs/Plus'
+import PenItems from './Components/PenItems/PenItems.container'
+// styles
+import classes from './RecentPens.scss'
 
 class Recentpens extends Component {
   componentDidMount() {
     const { fetchPens } = this.props
     fetchPens()
-    this.Send = this.Send.bind(this)
-  }
-  // in container
-
-  // handlePenClick({ writer, title }) {
-  //   const { setWriterAndTitleChoosedPen } = this.props
-  //   console.log('writer11 title :', writer, title)
-  //   setWriterAndTitleChoosedPen(writer, title)
-  // }
-
-  Send() {
-    const { W } = window
-    console.log('send')
-    // W.sendMessageToCurrentChat({})
   }
 
   render() {
-    const { pens, setWriterAndTitleChoosedPen } = this.props
+    const { pens, penClick } = this.props
 
     return (
-      <div style={{ width: '300px', border: '2px solid black' }}>
-        <Link to="/CreatePen">CreatePen</Link>
-        <br />
-        <Link to="/Dashboard">Dashboard</Link>
-        <p>Recent pens</p>
-        <PenItems
-          pens={pens}
-          send={this.Send}
-          setWriterAndTitleChoosedPen={setWriterAndTitleChoosedPen}
-        />
+      <div
+        className={classes.root}
+        style={{ width: '300px', border: '2px solid black' }}
+      >
+        <header className={classes.header}>
+          <Link to="/CreatePen">
+            <Plus className={classes.plus} />
+          </Link>
+          <div className={classes.title}>
+            <div className={classes.pene}>PENNE</div>
+            <div className={classes.lite}>LITE</div>
+          </div>
+
+          <Link to="/Dashboard">
+            <Search className={classes.search} />
+          </Link>
+        </header>
+        <PenItems pens={pens} send={this.Send} penClick={penClick} />
       </div>
     )
   }
@@ -55,13 +50,13 @@ Recentpens.propTypes = {
       title: PropTypes.string,
     }),
   ),
-  setWriterAndTitleChoosedPen: PropTypes.func,
+  penClick: PropTypes.func,
 }
 
 Recentpens.defaultProps = {
   fetchPens: '',
   pens: [],
-  setWriterAndTitleChoosedPen: Function.prototype,
+  penClick: Function.prototype,
 }
 
 export default Recentpens

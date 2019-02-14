@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 
-const PenItems = ({ pens, handlePenClick, send, user }) =>
+const PenItems = ({ pens, penClick, send, user }) =>
   pens.map(pen => (
     <div
       key={pen.title}
       style={{ border: '2px solid black', margin: '0px 40px' }}
     >
-      <div onClick={() => handlePenClick(pen)}>
+      <div role="presentation" onClick={() => penClick(pen)}>
         <Link to="/CreatePen">
           <ul>
             <li>{pen.title}</li>
@@ -16,7 +16,7 @@ const PenItems = ({ pens, handlePenClick, send, user }) =>
         </Link>
       </div>
       <div>
-        <button type="button" onClick={() => send(user, pen.title)}>
+        <button type="button" onClick={() => send(user, pen.title, 'wis')}>
           Send
         </button>
       </div>
@@ -31,14 +31,14 @@ PenItems.propTypes = {
       title: PropTypes.string,
     }),
   ),
-  handlePenClick: PropTypes.func,
+  penClick: PropTypes.func,
   user: PropTypes.string,
 }
 
 PenItems.defaultProps = {
   send: Function.prototype,
   pens: [],
-  handlePenClick: Function.prototype,
+  penClick: Function.prototype,
   user: 'javad',
 }
 export default PenItems

@@ -4,7 +4,7 @@ import { dispatch } from '../../setup/redux'
 export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
 export const setWriterAndTitle = createAction(
   SET_WRITER_AND_TITLE,
-  (writer, title) => ({
+  ({ writer, title }) => ({
     writer,
     title,
   }),

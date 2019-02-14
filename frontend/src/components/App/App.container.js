@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import App from './App'
-import { dispatchSetUser } from './App.action'
+import { dispatchSetData } from './App.action'
 
 const mapDispatchToProps = () => ({
-  setUser: dispatchSetUser,
+  setData: dispatchSetData,
 })
 
 export default connect(mapDispatchToProps)(App)

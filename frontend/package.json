@@ -10,7 +10,7 @@
       "entry": "./src/setup/index.jsx",
       "outputPath": "dist",
       "outputName": "[name].[hash].js",
-      "style": "style.[hash].css",
+      "style": "style.[hash].scss",
       "html": {
         "templatePath": "./public/index.html"
       },
@@ -29,6 +29,9 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@reach/router": "^1.2.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
     "history": "^4.7.2",
     "node-sass": "^4.11.0",
     "ramda": "^0.25.0",
@@ -41,6 +44,7 @@
     "redux-actions": "^2.6.4",
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
+    "sass-loader": "^7.1.0",
     "superagent": "^4.1.0"
   },
   "local-dependencies": [

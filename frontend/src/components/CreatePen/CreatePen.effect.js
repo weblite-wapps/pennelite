@@ -1,7 +1,14 @@
 // import rxjs from 'rxjs'
 import * as R from 'ramda'
 import { combineEpics, ofType } from 'redux-observable'
-import { ignoreElements, tap, pluck, mergeMap, map } from 'rxjs/operators'
+import {
+  ignoreElements,
+  tap,
+  pluck,
+  mergeMap,
+  map,
+  filter,
+} from 'rxjs/operators'
 import {
   dispatchChangePen,
   SAVE_PEN,
@@ -18,6 +25,7 @@ import {
 const effectSavePenEpic = action$ =>
   action$.pipe(
     ofType(SAVE_PEN),
+    tap(console.log),
     tap(() =>
       postRequests('/updateCurrentPen')
         .send(codesView())
@@ -35,11 +43,10 @@ const effectFetchPenEpic = action$ =>
     mergeMap(({ writer, title }) =>
       getRequests('/fetchSinglePen').query({ writer, title }),
     ),
+    filter(R.prop('body')),
     map(R.prop('body')),
-    map(R.head),
     tap(R.forEachObjIndexed(dispatchChangePen)),
     ignoreElements(),
   )
-// res => console.log('res :', res.body[0].html)
 
 export default combineEpics(effectSavePenEpic, effectFetchPenEpic)
