@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
+// local modules
 import { IconButton } from 'weblite-web-relite'
 import classes from '../../RecentPens.scss'
+// svgs
 import Disliked from '../../Svgs/disliked'
 
 const PenItems = ({ pens, send, penClick }) =>
@@ -50,7 +52,8 @@ const PenItems = ({ pens, send, penClick }) =>
           </IconButton>
         </div>
         <div className={classes.likesPanel}>
-          53 <Disliked className={classes.disliked} />
+          {pen.likeCnt}
+          <Disliked className={classes.disliked} />
         </div>
       </div>
     </div>

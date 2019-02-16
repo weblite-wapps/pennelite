@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { Link } from '@reach/router'
 // module
+
+// Svgs
 import Plus from '../../Svgs/Plus'
 import More from '../../Svgs/more'
 import Menu from './Components/Menu.container'

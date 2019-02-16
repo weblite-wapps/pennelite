@@ -1,14 +1,11 @@
 // Modules
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@reach/router'
+
 // local modules
 import PenItems from './Components/PenItems/PenItems.container'
 import Header from './Components/Header/Header.container'
-// Svgs
-// import Search from './Svgs/Search'
-// import Plus from './Svgs/Plus'
-// import More from './Svgs/more'
+
 // styles
 import classes from './RecentPens.scss'
 

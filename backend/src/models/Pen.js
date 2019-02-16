@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const PenSchema = new mongoose.Schema({
+  likeCnt: { type: Number, default: 12 },
   writer: String,
   title: String,
   html: String,
