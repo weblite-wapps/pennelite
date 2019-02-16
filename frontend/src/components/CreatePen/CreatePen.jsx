@@ -81,13 +81,12 @@ class CreatePen extends Component {
 
           <p>CreatePen</p>
         </div>
-        <div onClick={closeMenu}>
-          <Menu
-            isMenuOpen={isMenuOpen}
-            changePreviewMode={changePreviewMode}
-            changeViewMode={changeViewMode}
-          />
-        </div>
+        <Menu
+          closeMenu={closeMenu}
+          isMenuOpen={isMenuOpen}
+          changePreviewMode={changePreviewMode}
+          changeViewMode={changeViewMode}
+        />
 
         <p>written by : {writerName} </p>
 

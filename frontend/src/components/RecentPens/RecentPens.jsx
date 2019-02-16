@@ -3,9 +3,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 // local modules
-import Search from './Svgs/Search'
-import Plus from './Svgs/Plus'
 import PenItems from './Components/PenItems/PenItems.container'
+import Header from './Components/Header/Header.container'
+// Svgs
+// import Search from './Svgs/Search'
+// import Plus from './Svgs/Plus'
+// import More from './Svgs/more'
 // styles
 import classes from './RecentPens.scss'
 
@@ -16,26 +19,23 @@ class Recentpens extends Component {
   }
 
   render() {
-    const { pens, penClick } = this.props
+    const { pens, penClick, showSearch, ...props } = this.props
 
     return (
       <div
         className={classes.root}
         style={{ width: '300px', border: '2px solid black' }}
+        role="presentation"
       >
-        <header className={classes.header}>
-          <Link to="/CreatePen">
-            <Plus className={classes.plus} />
-          </Link>
-          <div className={classes.title}>
-            <div className={classes.pene}>PENNE</div>
-            <div className={classes.lite}>LITE</div>
-          </div>
+        <Header {...props} />
+        {showSearch && (
+          <input
+            className={classes.searchBar}
+            type="text"
+            placeholder="Search here ..."
+          />
+        )}
 
-          <Link to="/Dashboard">
-            <Search className={classes.search} />
-          </Link>
-        </header>
         <PenItems pens={pens} send={this.Send} penClick={penClick} />
       </div>
     )
@@ -51,12 +51,14 @@ Recentpens.propTypes = {
     }),
   ),
   penClick: PropTypes.func,
+  closeMenu: PropTypes.func,
 }
 
 Recentpens.defaultProps = {
   fetchPens: '',
   pens: [],
   penClick: Function.prototype,
+  closeMenu: Function.prototype,
 }
 
 export default Recentpens

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
-import { iconButton } from 'weblite-web-relite'
+import { IconButton } from 'weblite-web-relite'
 import classes from '../../RecentPens.scss'
 import Disliked from '../../Svgs/disliked'
 
@@ -30,24 +30,24 @@ const PenItems = ({ pens, send, penClick }) =>
 
       <div className={classes.penFooter}>
         <div className={classes.buttonPanel}>
-          <iconButton
+          <IconButton
             className={classes.edit}
             onClick={() => console.log('EDIT')}
           >
             EDIT
-          </iconButton>
-          <iconButton
+          </IconButton>
+          <IconButton
             className={classes.run}
             onClick={() => console.log('RUN')}
           >
             RUN
-          </iconButton>
-          <iconButton
+          </IconButton>
+          <IconButton
             className={classes.send}
             onClick={() => send(pen.writer, pen.title, 'wis')}
           >
-            Send
-          </iconButton>
+            SEND
+          </IconButton>
         </div>
         <div className={classes.likesPanel}>
           53 <Disliked className={classes.disliked} />

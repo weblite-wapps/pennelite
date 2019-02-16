@@ -16,6 +16,9 @@
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 1000;
+  :hover {
+    cursor: pointer;
+  }
 }
 .lite {
   background: red;
@@ -54,34 +57,53 @@
 .edit {
   background: #444343;
   height: 20px;
-  margin: 2px;
+  margin-left: 5px;
   width: 45px;
   padding-left: 10px;
-  padding-top: 3px;
+  padding-top: 0px;
+  border-radius: 0px;
+  letter-spacing: 1px;
 }
 .run {
   background: #aa0000;
-  margin: 2px;
+  margin-left: 5px;
   height: 20px;
-  width: 45px;
-  padding-left: 10px;
-  padding-top: 3px;
+  width: 40px;
+  padding-left: 7px;
+  padding-top: 0px;
+  border-radius: 0px;
+  letter-spacing: 1px;
 }
 
 .send {
   background: #0074aa;
-  margin: 2px;
-  width: 45px;
+  margin-left: 5px;
+  width: 55px;
   height: 20px;
   padding-left: 10px;
-  padding-top: 3px;
+  padding-top: 0px;
+  border-radius: 0px;
+  letter-spacing: 1px;
+}
+.likesPanel {
+  height: 30px;
+  font-size: 17px;
 }
 
 .disliked {
-  height: 30px;
+  height: 15px;
   margin-right: 0px;
   padding-right: 0px;
   //   background: #ffffff;
 }
-.likesPanel {
+
+.searchBar {
+  background: #1a1a1a;
+  border: 0.5px solid #444343;
+  width: 90%;
+  height: 20px;
+  border-radius: 5px;
+  color: white;
+  padding-left: 15px;
+  margin: 0px 10px 10px 10px;
 }

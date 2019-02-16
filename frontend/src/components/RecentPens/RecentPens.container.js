@@ -3,14 +3,25 @@ import { connect } from 'react-redux'
 // components
 import RecentPens from './RecentPens'
 // views
-import { pensView } from './RecentPens.reducer'
+import {
+  pensView,
+  searchIsShownView,
+  menuIsShownView,
+} from './RecentPens.reducer'
 
 // actions
-import { dispatchFetchRecentPens } from './RecentPens.action'
+import {
+  dispatchFetchRecentPens,
+  dispatchSetSearchIsShown,
+  dispatchSetMenuIsShown,
+  dispatchSetCloseMenu,
+} from './RecentPens.action'
 import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: pensView(),
+  showSearch: searchIsShownView(),
+  isMenuOpen: menuIsShownView(),
 })
 
 const mapDispatchToProps = () => ({
@@ -23,6 +34,9 @@ const mapDispatchToProps = () => ({
       user,
       title,
     }),
+  menuClick: dispatchSetMenuIsShown,
+  searchClick: dispatchSetSearchIsShown,
+  closeMenu: dispatchSetCloseMenu,
 })
 
 export default connect(
