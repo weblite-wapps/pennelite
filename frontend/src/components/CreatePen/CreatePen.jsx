@@ -1,17 +1,22 @@
 // modules
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from '@reach/router'
+
+// local modules
+import { IconButton } from 'weblite-web-relite'
 import Menu from './Components/Menu/Menu.container'
 import Codes from './Components/Codes/Codes.container'
-// local modules
 import Iframe from './Components/Iframe/Iframe.container'
+import Header from './Components/Header/Header.container'
+import Edit from './Components/Svgs/Edit'
+
+// styles
+import classes from './CreatePen.scss'
 
 class CreatePen extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSaveClick = this.handleSaveClick.bind(this)
   }
 
   componentWillMount() {
@@ -24,11 +29,6 @@ class CreatePen extends Component {
     const { changePen } = this.props
     changePen(text, type)
     // console.log('text, type :', text, type)
-  }
-
-  handleSaveClick() {
-    const { savePen } = this.props
-    savePen()
   }
 
   render() {
@@ -49,37 +49,29 @@ class CreatePen extends Component {
       jsContent,
       changeTab,
       changePen,
+      titleModeChange,
+      editableTitle,
     } = this.props
     // console.log('codes 333 : ', codes)
     return (
-      <div style={{ width: '320px', border: '1px solid red' }}>
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <button type="button" onClick={changeMenu}>
-                    Menu
-                  </button>
-                </td>
-                <td>
-                  <button type="button" onClick={clearState}>
-                    <Link to="/">Home</Link>
-                  </button>
-                </td>
-                <td>
-                  <button type="button" onClick={clearState}>
-                    <Link to="/Dashboard">Dashboard</Link>
-                  </button>
-                </td>
-                <button type="button" onClick={this.handleSaveClick}>
-                  Save pen
-                </button>
-              </tr>
-            </tbody>
-          </table>
-
-          <p>CreatePen</p>
+      <div className={classes.root}>
+        <Header clearState={clearState} changeMenu={changeMenu} />
+        <div className={classes.title_run}>
+          <div style={{ display: 'flex' }}>
+            {(editableTitle && (
+              <input
+                className={classes.title}
+                onChange={e => this.handleChange(e.target.value, 'title')}
+                value={title}
+                placeholder="title"
+                type="search"
+              />
+            )) || <div style={{ width: '50px' }}>title</div>}
+            <Edit onClick={titleModeChange} className={classes.edit} />
+          </div>
+          <IconButton onClick={this.handleClick} className={classes.run}>
+            RUN
+          </IconButton>
         </div>
         <Menu
           closeMenu={closeMenu}
@@ -90,14 +82,6 @@ class CreatePen extends Component {
 
         <p>written by : {writerName} </p>
 
-        <div>
-          <input
-            onChange={e => this.handleChange(e.target.value, 'title')}
-            value={title}
-            placeholder="title"
-            type="text"
-          />
-        </div>
         <Iframe
           htmlContent={htmlContent}
           cssContent={cssContent}
@@ -121,7 +105,6 @@ class CreatePen extends Component {
 CreatePen.propTypes = {
   fetchPen: PropTypes.func,
   changePen: PropTypes.func,
-  savePen: PropTypes.func.isRequired,
   isMenuOpen: PropTypes.bool,
   changeMenu: PropTypes.func,
   closeMenu: PropTypes.func,
@@ -140,6 +123,8 @@ CreatePen.propTypes = {
   writerName: PropTypes.string,
   title: PropTypes.string,
   isSaved: PropTypes.bool,
+  titleModeChange: PropTypes.func,
+  editableTitle: PropTypes.bool,
 }
 
 CreatePen.defaultProps = {
@@ -163,6 +148,8 @@ CreatePen.defaultProps = {
   writerName: 'javad',
   title: 'no title received',
   isSaved: false,
+  titleModeChange: Function.prototype,
+  editableTitle: false,
 }
 
 export default CreatePen

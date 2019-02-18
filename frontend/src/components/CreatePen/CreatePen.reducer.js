@@ -14,6 +14,8 @@ import {
   SET_WRITER_CURRENT_PEN,
   RESET_STATE,
   SET_ISSAVED_TO_TRUE,
+  SET_TITLE_EDIT_MODE,
+  SET_RUNNING_MODE,
 } from './CreatePen.action'
 // import { userView } from '../App/App.reducer'
 
@@ -34,19 +36,17 @@ const initialState = {
   previewIsShown: false,
   viewMode: 'simple',
   tabIndex: 0,
+  titleEditMode: false,
 }
 
 // lens
-// const htmlLens = R.lensProp('html')
-// const cssLens = R.lensProp('css')
-// const jsLens = R.lensProp('js')
 const writerLens = R.lensProp('writer')
-// const titleLens = R.lensProp('title')
 const isSavedLens = R.lensProp('isSaved')
 const menuIsOpenLens = R.lensProp('menuIsOpen')
-const previewIsShown = R.lensProp('previewIsShown')
+const previewIsShownLens = R.lensProp('previewIsShown')
 const viewModeLens = R.lensProp('viewMode')
 const tabIndexLens = R.lensProp('tabIndex')
+const titleEditModeLens = R.lensProp('titleEditMode')
 
 // views
 export const codesView = () => ({
@@ -68,6 +68,8 @@ export const previewView = () =>
   R.path(['CreatePen', 'previewIsShown'])(getState())
 export const viewModeView = () => R.path(['CreatePen', 'viewMode'])(getState())
 export const tabIndexView = () => R.path(['CreatePen', 'tabIndex'])(getState())
+export const titleEditModeView = () =>
+  R.path(['CreatePen', 'titleEditMode'])(getState())
 
 const reducers = {
   [SET_WRITER_AND_TITLE]: (state, { writer, title }) => ({
@@ -87,7 +89,7 @@ const reducers = {
   [CHANGE_MENU_MODE]: state => R.set(menuIsOpenLens, !state.menuIsOpen, state),
 
   [CHANGE_PREVIEW_MODE]: state =>
-    R.set(previewIsShown, !state.previewIsShown, state),
+    R.set(previewIsShownLens, !state.previewIsShown, state),
 
   [CHANGE_PEN_VIEW_MODE]: state =>
     R.set(
@@ -104,6 +106,15 @@ const reducers = {
   [RESET_STATE]: () => initialState,
 
   [SET_ISSAVED_TO_TRUE]: state => R.set(isSavedLens, true, state),
+
+  [SET_TITLE_EDIT_MODE]: state =>
+    R.set(titleEditModeLens, !state.titleEditMode, state),
+
+  [SET_RUNNING_MODE]: state => ({
+    ...state,
+    previewIsShown: true,
+    viewMode: 'tabular',
+  }),
 }
 
 export default (state = initialState, { type, payload }) =>

@@ -9,11 +9,12 @@ const MenuContent = ({
   changePreviewMode,
   changeViewMode,
   closeMenu,
+  savePen,
 }) => (
   <ContextMenu
     open={isMenuOpen}
     x={150}
-    y={150}
+    y={125}
     onClose={closeMenu}
     menus={[
       {
@@ -25,9 +26,9 @@ const MenuContent = ({
       },
       {
         key: 'data2',
-        name: 'Discard',
-        action: console.log,
-        data: 'Discard',
+        name: 'Save',
+        action: savePen,
+        data: 'Save',
         disabled: false,
       },
       {
@@ -46,6 +47,7 @@ MenuContent.propTypes = {
   changePreviewMode: PropTypes.func,
   changeViewMode: PropTypes.func,
   closeMenu: PropTypes.func,
+  savePen: PropTypes.func,
 }
 
 MenuContent.defaultProps = {
@@ -53,6 +55,7 @@ MenuContent.defaultProps = {
   changePreviewMode: Function.prototype,
   changeViewMode: Function.prototype,
   closeMenu: Function.prototype,
+  savePen: Function.prototype,
 }
 
 export default MenuContent

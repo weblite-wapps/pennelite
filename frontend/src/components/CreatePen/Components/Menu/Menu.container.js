@@ -2,4 +2,10 @@ import { connect } from 'react-redux'
 
 import Menu from './Menu'
 
-export default connect()(Menu)
+import { dispatchSavePen } from '../../CreatePen.action'
+
+const mapDispatchTpProps = () => ({
+  savePen: dispatchSavePen,
+})
+
+export default connect(mapDispatchTpProps)(Menu)

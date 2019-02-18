@@ -19,11 +19,7 @@ class Recentpens extends Component {
     const { pens, penClick, showSearch, ...props } = this.props
 
     return (
-      <div
-        className={classes.root}
-        style={{ width: '300px', border: '2px solid black' }}
-        role="presentation"
-      >
+      <div className={classes.root}>
         <Header {...props} />
         {showSearch && (
           <input

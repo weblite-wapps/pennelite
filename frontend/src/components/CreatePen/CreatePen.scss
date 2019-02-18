@@ -1,0 +1,95 @@
+.root {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  width: 300px;
+  border: 2px solid black;
+}
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.pennelite {
+  display: flex;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 1000;
+  :hover {
+    cursor: pointer;
+  }
+}
+.lite {
+  background: red;
+  font-size: 10px;
+  letter-spacing: 0px;
+  margin-left: 3px;
+  margin-top: 2px;
+  padding: 1px 6px 8px 6px;
+  text-justify: auto;
+}
+.close {
+  height: 15px;
+  width: 15px;
+}
+.more {
+  height: 20px;
+  width: 20px;
+}
+.title_run {
+  margin-top: 10px;
+  justify-content: space-between;
+  display: flex;
+}
+.run {
+  background: red;
+  border-radius: 0px;
+  padding: 0px 10px;
+}
+
+.title {
+  background: black;
+  color: white;
+  width: 200px;
+  border: 0.5px solid #444343;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+.edit {
+  width: 15px;
+  height: 15px;
+}
+
+.codesPanel {
+  background: #242424;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.codeTitle {
+  margin-left: 5px;
+  color: #d7d7d7;
+}
+.codes {
+  background: #292929;
+  border: none;
+  color: white;
+  :focus {
+    outline: none !important;
+  }
+}
+
+.iframe {
+  background: white;
+
+  color: white;
+  text-decoration-color: #d7d7d7;
+}
+
+.fullScreen {
+  width: 15px;
+  height: 15px;
+}

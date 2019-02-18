@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // local modules
 import { ContextMenu } from 'weblite-web-relite'
+import { navigate, Link } from '@reach/router'
 
 const MenuContent = ({ isMenuOpen, searchClick, closeMenu }) => (
   <ContextMenu
@@ -11,13 +12,13 @@ const MenuContent = ({ isMenuOpen, searchClick, closeMenu }) => (
     y={100}
     onClose={closeMenu}
     menus={[
-      {
-        key: 'data1',
-        name: 'Dashboard',
-        action: console.log,
-        data: 'Dashboard',
-        disabled: false,
-      },
+      // {
+      //   key: 'data1',
+      //   name: 'Dashboard',
+      //   action: console.log,
+      //   data: 'Dashboard',
+      //   disabled: false,
+      // },
       {
         key: 'data2',
         name: 'Search',

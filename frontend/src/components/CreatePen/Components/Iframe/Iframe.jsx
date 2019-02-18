@@ -2,6 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+// local modules
+// import { IconButton } from 'weblite-web-relite'
+import FullScreen from '../Svgs/FullScreen'
+
+// styles
+import classes from '../../CreatePen.scss'
+
 class Iframe extends Component {
   constructor(props) {
     super(props)
@@ -10,13 +17,14 @@ class Iframe extends Component {
   }
 
   run() {
-    const { htmlContent, cssContent, jsContent } = this.props
+    const { htmlContent, cssContent, jsContent, runMode } = this.props
     const iRef = this.iframeRef.contentWindow.document
     iRef.open()
     iRef.write(htmlContent)
     iRef.write(`<style>${cssContent}</style>`)
     iRef.write(`<script>${jsContent}</script>`)
     iRef.close()
+    runMode()
   }
 
   fullScreen() {
@@ -41,18 +49,19 @@ class Iframe extends Component {
     const { previewIsOpen } = this.props
     return (
       <div>
-        <button type="button" onClick={this.fullScreen}>
-          fullScreen
-        </button>
+        <FullScreen className={classes.fullScreen} />
+        {/* <button type="button" onClick={this.fullScreen}> */}
+        {/* fullScreen */}
+        {/* </button> */}
         <button type="button" onClick={this.run}>
           run
         </button>
         <iframe
-          width="300px"
           style={{
-            background: 'white',
-            display: previewIsOpen ? 'inline' : 'none',
+            display: previewIsOpen ? '' : 'none',
           }}
+          className={classes.iframe}
+          width="300px"
           ref={iframe => {
             this.iframeRef = iframe
           }}
@@ -71,6 +80,7 @@ Iframe.propTypes = {
   cssContent: PropTypes.string,
   jsContent: PropTypes.string,
   previewIsOpen: PropTypes.bool,
+  runMode: PropTypes.func,
 }
 
 Iframe.defaultProps = {
@@ -78,6 +88,7 @@ Iframe.defaultProps = {
   cssContent: '',
   jsContent: '',
   previewIsOpen: false,
+  runMode: Function.prototype,
 }
 
 export default Iframe

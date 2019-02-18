@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // material Components
 import { Tab, Tabs } from '@material-ui/core'
+import classes from '../../CreatePen.scss'
 
 export default class CodesContent extends React.PureComponent {
   constructor(props) {
@@ -40,32 +41,48 @@ export default class CodesContent extends React.PureComponent {
             <Tab label="js" />
           </Tabs>
         )}
+
         {(viewMode === 'simple' || tabIndex === 0) && (
-          <textarea
-            onChange={e => this.handleCodeChange(e.target.value, 'html')}
-            value={htmlContent}
-            cols="38"
-            rows="7"
-            placeholder="Html"
-          />
+          <div className={classes.codesPanel}>
+            {viewMode === 'simple' && (
+              <span className={classes.codeTitle}>html</span>
+            )}
+            <textarea
+              className={classes.codes}
+              onChange={e => this.handleCodeChange(e.target.value, 'html')}
+              value={htmlContent}
+              cols="38"
+              rows="7"
+            />
+          </div>
         )}
         {(viewMode === 'simple' || tabIndex === 1) && (
-          <textarea
-            onChange={e => this.handleCodeChange(e.target.value, 'css')}
-            value={cssContent}
-            cols="38"
-            rows="7"
-            placeholder="css"
-          />
+          <div className={classes.codesPanel}>
+            {viewMode === 'simple' && (
+              <span className={classes.codeTitle}>css</span>
+            )}
+            <textarea
+              className={classes.codes}
+              onChange={e => this.handleCodeChange(e.target.value, 'css')}
+              value={cssContent}
+              cols="38"
+              rows="7"
+            />
+          </div>
         )}
         {(viewMode === 'simple' || tabIndex === 2) && (
-          <textarea
-            onChange={e => this.handleCodeChange(e.target.value, 'js')}
-            value={jsContent}
-            cols="38"
-            rows="7"
-            placeholder="js"
-          />
+          <div className={classes.codesPanel}>
+            {viewMode === 'simple' && (
+              <span className={classes.codeTitle}>js</span>
+            )}
+            <textarea
+              className={classes.codes}
+              onChange={e => this.handleCodeChange(e.target.value, 'js')}
+              value={jsContent}
+              cols="38"
+              rows="7"
+            />
+          </div>
         )}
       </div>
     )

@@ -73,3 +73,11 @@ export const dispatchResetState = () => dispatch(resetState())
 export const SET_ISSAVED_TO_TRUE = 'SET_ISSAVED_TO_TRUE'
 export const setIsSavedToTrue = createAction(SET_ISSAVED_TO_TRUE)
 export const dispatchSetIsSavedToTrue = () => dispatch(setIsSavedToTrue())
+
+export const SET_TITLE_EDIT_MODE = 'SET_TITLE_EDIT_MODE'
+export const setTitleEditMode = createAction(SET_TITLE_EDIT_MODE)
+export const dispatchsetTitleEditMode = () => dispatch(setTitleEditMode())
+
+export const SET_RUNNING_MODE = 'SET_RUNNING_MODE'
+export const setRunningMode = createAction(SET_RUNNING_MODE)
+export const dispatchSetRunningMode = () => dispatch(setRunningMode())
