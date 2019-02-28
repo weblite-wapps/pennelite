@@ -4,13 +4,18 @@ import {
   savePen,
   fetchSinglePen,
   fetchWriterPens,
+  incPenLikes,
+  decPenLikes,
 } from './Pen'
+
+import { likePen, dislikePen } from './User'
 
 const router = Router()
 
 router.get('/', (req, res) =>
   fetchLastNinePens()
-    .then(pens => res.send(pens))
+    // .then(pens => console.log( pens, liked: true ))
+    // .then(pens => res.send(pens))
     .catch(() => console.log('there is not nine in db')),
 )
 
@@ -37,5 +42,23 @@ router.get(
     fetchWriterPens(writer).then(pens => res.send(pens)),
   // console.log('query :', query),
 )
+
+router.get('/likePen', ({ query: { user, _id } }, res) => {
+  likePen(user, _id)
+    .then(() => res.send('liked succesfully'))
+    .catch(() => console.log('unable to like'))
+  incPenLikes(_id)
+    .then(() => console.log('increased'))
+    .catch(() => console.log('unable to increase'))
+})
+
+router.get('/dislikePen', ({ query: { user, _id } }, res) => {
+  dislikePen(user, _id)
+    .then(() => res.send('disliked succesfully'))
+    .catch(() => console.log('unable to dislike'))
+  incPenLikes(_id)
+    .then(() => console.log('increased'))
+    .catch(() => console.log('unable to increase'))
+})
 
 export default router

@@ -7,43 +7,41 @@ import classes from '../../RecentPens.scss'
 // svgs
 import Disliked from '../../Svgs/disliked'
 
-const PenItems = ({ pens, send, penClick }) =>
+const PenItems = ({ user, pens, send, like, penClick }) =>
   pens.map(pen => (
     <div className={classes.penItems} key={`${pen.writer}${pen.title}`}>
-      <Link to="/CreatePen">
-        <div
-          className={classes.penHeader}
-          onClick={() => penClick(pen)}
-          role="presentation"
-        >
-          <table>
-            <tbody>
-              <tr style={{ display: 'inline-block' }}>
-                <td>{pen.title}</td>
-              </tr>
-              <tr />
-              <tr style={{ display: 'inline-block' }}>
-                <td>BY: {pen.writer}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </Link>
+      <div className={classes.penHeader} role="presentation">
+        <table>
+          <tbody>
+            <tr style={{ display: 'inline-block' }}>
+              <td>{pen.title}</td>
+            </tr>
+            <tr />
+            <tr style={{ display: 'inline-block' }}>
+              <td>BY: {pen.writer}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div className={classes.penFooter}>
         <div className={classes.buttonPanel}>
-          <IconButton
-            className={classes.edit}
-            onClick={() => console.log('EDIT')}
-          >
-            EDIT
-          </IconButton>
-          <IconButton
-            className={classes.run}
-            onClick={() => console.log('RUN')}
-          >
-            RUN
-          </IconButton>
+          <Link to="/CreatePen">
+            <IconButton
+              className={classes.edit}
+              onClick={() => penClick({ ...pen, mode: 'EDIT' })}
+            >
+              EDIT
+            </IconButton>
+          </Link>
+          <Link to="/CreatePen">
+            <IconButton
+              className={classes.run}
+              onClick={() => penClick({ ...pen, mode: 'RUN' })}
+            >
+              RUN
+            </IconButton>
+          </Link>
           <IconButton
             className={classes.send}
             onClick={() => send(pen.writer, pen.title, 'wis')}
@@ -53,7 +51,12 @@ const PenItems = ({ pens, send, penClick }) =>
         </div>
         <div className={classes.likesPanel}>
           {pen.likeCnt}
-          <Disliked className={classes.disliked} />
+          <div>
+            <Disliked
+              onClick={() => like(user, pen._id)}
+              className={classes.disliked}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -68,11 +71,15 @@ PenItems.propTypes = {
     }),
   ),
   penClick: PropTypes.func,
+  like: PropTypes.func,
+  user: PropTypes.string,
 }
 
 PenItems.defaultProps = {
   send: Function.prototype,
   pens: [],
   penClick: Function.prototype,
+  like: Function.prototype,
+  user: '',
 }
 export default PenItems

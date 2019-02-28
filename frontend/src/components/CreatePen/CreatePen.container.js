@@ -13,6 +13,7 @@ import {
   dispatchSetWriterCurrentPen,
   dispatchResetState,
   dispatchsetTitleEditMode,
+  dispatchSetIframe,
 } from './CreatePen.action'
 import {
   htmlView,
@@ -40,6 +41,7 @@ const mapDispatchTpProps = () => ({
   setWriter: dispatchSetWriterCurrentPen,
   clearState: dispatchResetState,
   titleModeChange: dispatchsetTitleEditMode,
+  updatePen: dispatchSetIframe,
 })
 
 const mapStateToprops = () => ({

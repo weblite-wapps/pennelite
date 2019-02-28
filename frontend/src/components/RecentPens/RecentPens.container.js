@@ -16,7 +16,7 @@ import {
   dispatchSetMenuIsShown,
   dispatchSetCloseMenu,
 } from './RecentPens.action'
-import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
+import { dispatchSetWriterTitle } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: pensView(),
@@ -26,14 +26,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchRecentPens,
-  penClick: dispatchSetWriterAndTitle,
-  send: (user, title, wisId) =>
-    window.W.sendMessageToCurrentChat('wapp', {
-      wappId: '',
-      wisId,
-      user,
-      title,
-    }),
+  penClick: dispatchSetWriterTitle,
   menuClick: dispatchSetMenuIsShown,
   searchClick: dispatchSetSearchIsShown,
   closeMenu: dispatchSetCloseMenu,

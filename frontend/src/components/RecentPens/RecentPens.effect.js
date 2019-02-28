@@ -1,6 +1,6 @@
-import { ofType } from 'redux-observable'
-import { mergeMap, pluck, map } from 'rxjs/operators'
-import { FETCH_RECENT_PENS, setRecentPens } from './RecentPens.action'
+import { ofType, combineEpics } from 'redux-observable'
+import { mergeMap, pluck, map, ignoreElements, tap } from 'rxjs/operators'
+import { FETCH_RECENT_PENS, setRecentPens, LIKE_PEN } from './RecentPens.action'
 import { getRequests } from '../../helper/functions/request.helper'
 
 const effectFetchRecentPensEpic = action$ =>
@@ -11,4 +11,18 @@ const effectFetchRecentPensEpic = action$ =>
     map(setRecentPens),
   )
 
-export default effectFetchRecentPensEpic
+const effectLikePen = action$ =>
+  action$.pipe(
+    ofType(LIKE_PEN),
+    pluck('payload'),
+    // tap(console.log),
+    mergeMap(query =>
+      getRequests('/likePen')
+        .query(query)
+        .then(res => console.log('res :', res.text))
+        .catch(console.log),
+    ),
+    ignoreElements(),
+  )
+
+export default combineEpics(effectFetchRecentPensEpic, effectLikePen)

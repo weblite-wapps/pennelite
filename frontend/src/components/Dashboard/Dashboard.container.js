@@ -3,7 +3,7 @@ import Dashboard from './Dashboard'
 import { dispatchFetchWriterPens } from './Dashboard.action'
 import { userPensView } from './Dashboard.reducer'
 import { appUserView } from '../App/App.reducer'
-import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
+// import { dispatchSetWriterAndTitle } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: userPensView(),
@@ -12,7 +12,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchWriterPens,
-  penClick: dispatchSetWriterAndTitle,
+  penClick: () => {},
   send: (user, title, wisId) =>
     window.W.sendMessageToCurrentChat('wapp', {
       wappId: '',

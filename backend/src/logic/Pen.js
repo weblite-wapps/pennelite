@@ -1,16 +1,34 @@
 import Pen from '../models/Pen'
 
 export const savePen = ({ title, writer, html, css, js }) =>
-  Pen.updateOne({ title, writer }, { html, css, js }, { upsert: true }).exec()
+  Pen.updateOne({ writer, title }, { html, css, js }, { upsert: true }).exec()
+// console.log(
+//   'title: ',
+//   title,
+//   'writer: ',
+//   writer,
+//   'html: ',
+//   html,
+//   'css: ',
+//   css,
+//   'js: ',
+//   js,
+//   '_id: ',
+//   _id,
+// )
+// console.log('_id: ', typeof _id)
 
-export const updatePenLikes = ({ title, writer, likeCnt }) =>
-  Pen.updateOne({ title, writer }, { likeCnt: likeCnt + 1 }).exec()
+export const incPenLikes = _id =>
+  Pen.updateOne({ _id }, { $inc: { likeCnt: 1 } }).exec()
+
+export const decPenLikes = _id =>
+  Pen.updateOne({ _id }, { $dec: { likeCnt: 1 } }).exec()
 
 export const deletePen = ({ writer, title }) =>
   Pen.deleteOne({ title, writer }).exec()
 
 export const fetchLastNinePens = () =>
-  Pen.find({}, { writer: 1, title: 1, likeCnt: 1, _id: 0 })
+  Pen.find({}, { html: 0, css: 0, js: 0, __v: 0 })
     .limit(9)
     .exec()
 

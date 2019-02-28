@@ -16,6 +16,8 @@ import {
   SET_ISSAVED_TO_TRUE,
   SET_TITLE_EDIT_MODE,
   SET_RUNNING_MODE,
+  SET_IFRAME,
+  CHANGE_IFRAME,
 } from './CreatePen.action'
 // import { userView } from '../App/App.reducer'
 
@@ -30,13 +32,17 @@ const initialState = {
   css: '',
   js: '',
   writer: '',
-  title: '',
+  title: 'untitled  ',
   isSaved: 'true',
   menuIsOpen: false,
   previewIsShown: false,
   viewMode: 'simple',
   tabIndex: 0,
   titleEditMode: false,
+  iframeHtml: '',
+  iframeCss: '',
+  iframeJs: '',
+  _id: '',
 }
 
 // lens
@@ -55,6 +61,7 @@ export const codesView = () => ({
   js: R.path(['CreatePen', 'js'])(getState()),
   writer: R.path(['CreatePen', 'writer'])(getState()),
   title: R.path(['CreatePen', 'title'])(getState()),
+  // _id: R.path(['CreatePen', '_id'])(getState()),
 })
 
 export const htmlView = () => R.path(['CreatePen', 'html'])(getState())
@@ -70,12 +77,20 @@ export const viewModeView = () => R.path(['CreatePen', 'viewMode'])(getState())
 export const tabIndexView = () => R.path(['CreatePen', 'tabIndex'])(getState())
 export const titleEditModeView = () =>
   R.path(['CreatePen', 'titleEditMode'])(getState())
+export const iframeHtmlView = () =>
+  R.path(['CreatePen', 'iframeHtml'])(getState())
+export const iframeCssView = () =>
+  R.path(['CreatePen', 'iframeCss'])(getState())
+export const iframeJsView = () => R.path(['CreatePen', 'iframeJs'])(getState())
 
 const reducers = {
-  [SET_WRITER_AND_TITLE]: (state, { writer, title }) => ({
+  [SET_WRITER_AND_TITLE]: (state, { writer, title, mode, _id }) => ({
     ...state,
     writer,
     title,
+    _id,
+    previewIsShown: mode === 'RUN',
+    viewMode: mode === 'RUN' ? 'tabular' : 'simple',
   }),
 
   [CHANGE_PEN]: (state, { value, type }) => ({
@@ -114,6 +129,17 @@ const reducers = {
     ...state,
     previewIsShown: true,
     viewMode: 'tabular',
+  }),
+  [SET_IFRAME]: state => ({
+    ...state,
+    iframeHtml: state.html,
+    iframeCss: state.css,
+    iframeJs: state.js,
+  }),
+
+  [CHANGE_IFRAME]: (state, { value, type }) => ({
+    ...state,
+    [type]: value,
   }),
 }
 

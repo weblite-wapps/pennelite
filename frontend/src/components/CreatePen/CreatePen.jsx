@@ -17,18 +17,25 @@ class CreatePen extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
+    this.iRef = React.createRef()
+    this.runClick = this.runClick.bind(this)
   }
 
   componentWillMount() {
     const { fetchPen, writerName, title, setWriter, appUser } = this.props
     setWriter(appUser)
-    fetchPen(writerName, title)
+    // fetchPen(writerName, title)
   }
 
   handleChange(text, type) {
     const { changePen } = this.props
     changePen(text, type)
     // console.log('text, type :', text, type)
+  }
+
+  runClick() {
+    const { updatePen } = this.props
+    updatePen()
   }
 
   render() {
@@ -52,7 +59,7 @@ class CreatePen extends Component {
       titleModeChange,
       editableTitle,
     } = this.props
-    // console.log('codes 333 : ', codes)
+    // console.log('codes 333 : ', title)
     return (
       <div className={classes.root}>
         <Header clearState={clearState} changeMenu={changeMenu} />
@@ -66,10 +73,10 @@ class CreatePen extends Component {
                 placeholder="title"
                 type="search"
               />
-            )) || <div style={{ width: '50px' }}>title</div>}
+            )) || <div style={{ width: '50px' }}>{title}</div>}
             <Edit onClick={titleModeChange} className={classes.edit} />
           </div>
-          <IconButton onClick={this.handleClick} className={classes.run}>
+          <IconButton onClick={this.runClick} className={classes.run}>
             RUN
           </IconButton>
         </div>
@@ -83,6 +90,9 @@ class CreatePen extends Component {
         <p>written by : {writerName} </p>
 
         <Iframe
+          // ref={this.iRef}
+          writerName={writerName}
+          title={title}
           htmlContent={htmlContent}
           cssContent={cssContent}
           jsContent={jsContent}
@@ -125,6 +135,7 @@ CreatePen.propTypes = {
   isSaved: PropTypes.bool,
   titleModeChange: PropTypes.func,
   editableTitle: PropTypes.bool,
+  updatePen: PropTypes.func,
 }
 
 CreatePen.defaultProps = {
@@ -150,6 +161,7 @@ CreatePen.defaultProps = {
   isSaved: false,
   titleModeChange: Function.prototype,
   editableTitle: false,
+  updatePen: Function.prototype,
 }
 
 export default CreatePen

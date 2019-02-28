@@ -4,12 +4,14 @@ import { dispatch } from '../../setup/redux'
 export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
 export const setWriterAndTitle = createAction(
   SET_WRITER_AND_TITLE,
-  ({ writer, title }) => ({
+  ({ writer, title, mode, _id }) => ({
     writer,
     title,
+    mode,
+    _id,
   }),
 )
-export const dispatchSetWriterAndTitle = (...args) =>
+export const dispatchSetWriterTitle = (...args) =>
   dispatch(setWriterAndTitle(...args))
 
 export const FETCH_PEN = 'FETCH_PEN'
@@ -81,3 +83,18 @@ export const dispatchsetTitleEditMode = () => dispatch(setTitleEditMode())
 export const SET_RUNNING_MODE = 'SET_RUNNING_MODE'
 export const setRunningMode = createAction(SET_RUNNING_MODE)
 export const dispatchSetRunningMode = () => dispatch(setRunningMode())
+
+// export const SET_EDITING_MODE = 'SET_EDITING_MODE'
+// export const setEditingMode = createAction(SET_EDITING_MODE)
+// export const dispatchSetEditingMode = () => dispatch(setEditingMode())
+
+export const SET_IFRAME = 'SET_IFRAME'
+export const setIframe = createAction(SET_IFRAME)
+export const dispatchSetIframe = () => dispatch(setIframe())
+
+export const CHANGE_IFRAME = 'CHANGE_IFRAME'
+export const changeIframe = createAction(CHANGE_IFRAME, (value, type) => ({
+  value,
+  type,
+}))
+export const dispatchChangeIframe = (...args) => dispatch(changeIframe(...args))

@@ -29,7 +29,7 @@ class Recentpens extends Component {
           />
         )}
 
-        <PenItems pens={pens} send={this.Send} penClick={penClick} />
+        <PenItems pens={pens} penClick={penClick} />
       </div>
     )
   }

@@ -26,3 +26,7 @@ export const dispatchSetMenuIsShown = () => dispatch(setMenuIsShown())
 export const SET_CLOSE_MENU = 'SET_CLOSE_MENU'
 export const setCloseMenu = createAction(SET_CLOSE_MENU)
 export const dispatchSetCloseMenu = () => dispatch(setCloseMenu())
+
+export const LIKE_PEN = 'LIKE_PEN'
+export const likePen = createAction(LIKE_PEN, (user, _id) => ({ user, _id }))
+export const dispatchLikePen = (...args) => dispatch(likePen(...args))

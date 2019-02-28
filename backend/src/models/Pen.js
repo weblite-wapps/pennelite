@@ -1,13 +1,19 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
-const PenSchema = new mongoose.Schema({
-  likeCnt: { type: Number, default: 12 },
-  writer: String,
-  title: String,
-  html: String,
-  css: String,
-  js: String,
-})
+const PenSchema = new Schema(
+  {
+    likeCnt: { type: Number, default: 0 },
+    writer: String,
+    title: String,
+    html: String,
+    css: String,
+    js: String,
+  },
+  {
+    timestamps: { createdAt: 'createdat' },
+  },
+)
+
 // timeStamps
 // disable __v
 // composite index of writer, title
