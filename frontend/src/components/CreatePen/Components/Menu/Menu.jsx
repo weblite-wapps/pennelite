@@ -2,47 +2,52 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local modules
-// import { ContextMenu } from 'weblite-web-relite'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
-const MenuContent = ({
+const More = ({
   isMenuOpen,
   changePreviewMode,
   changeViewMode,
   closeMenu,
   savePen,
 }) => (
-  <ContextMenu
+  <Menu
     open={isMenuOpen}
-    x={150}
-    y={125}
+    // x={150}
+    // y={125}
     onClose={closeMenu}
-    menus={[
-      {
-        key: 'data1',
-        name: 'Preview btn',
-        action: changePreviewMode,
-        data: 'Preview btn',
-        disabled: false,
-      },
-      {
-        key: 'data2',
-        name: 'Save',
-        action: savePen,
-        data: 'Save',
-        disabled: false,
-      },
-      {
-        key: 'data3',
-        name: 'Change view mode',
-        action: changeViewMode,
-        data: 'Change view mode',
-        disabled: false,
-      },
-    ]}
-  />
+    // menus={[
+    //   {
+    //     key: 'data1',
+    //     name: 'Preview btn',
+    //     action: ,
+    //     data: 'Preview btn',
+    //     disabled: false,
+    //   },
+    //   {
+    //     key: 'data2',
+    //     name: 'Save',
+    //     action: savePen,
+    //     data: 'Save',
+    //     disabled: false,
+    //   },
+    //   {
+    //     key: 'data3',
+    //     name: 'Change view mode',
+    //     action: changeViewMode,
+    //     data: 'Change view mode',
+    //     disabled: false,
+    //   },
+    // ]}
+  >
+    <MenuItem onClick={changePreviewMode}>Preview btn</MenuItem>
+    <MenuItem onClick={savePen}>Save</MenuItem>
+    <MenuItem onClick={changeViewMode}>Change view mode</MenuItem>
+  </Menu>
 )
 
-MenuContent.propTypes = {
+More.propTypes = {
   isMenuOpen: PropTypes.bool,
   changePreviewMode: PropTypes.func,
   changeViewMode: PropTypes.func,
@@ -50,7 +55,7 @@ MenuContent.propTypes = {
   savePen: PropTypes.func,
 }
 
-MenuContent.defaultProps = {
+More.defaultProps = {
   isMenuOpen: false,
   changePreviewMode: Function.prototype,
   changeViewMode: Function.prototype,
@@ -58,4 +63,4 @@ MenuContent.defaultProps = {
   savePen: Function.prototype,
 }
 
-export default MenuContent
+export default More

@@ -98,3 +98,7 @@ export const changeIframe = createAction(CHANGE_IFRAME, (value, type) => ({
   type,
 }))
 export const dispatchChangeIframe = (...args) => dispatch(changeIframe(...args))
+
+export const RUN_CLICK = 'RUN_CLICK'
+export const runClick = createAction(RUN_CLICK)
+export const dispatchRunClick = () => dispatch(runClick())

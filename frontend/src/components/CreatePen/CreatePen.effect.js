@@ -14,6 +14,9 @@ import {
   SAVE_PEN,
   FETCH_PEN,
   dispatchSetIsSavedToTrue,
+  RUN_CLICK,
+  dispatchSetIframe,
+  dispatchSetRunningMode,
 } from './CreatePen.action'
 import { codesView } from './CreatePen.reducer'
 
@@ -35,6 +38,14 @@ const effectSavePenEpic = action$ =>
     ignoreElements(),
   )
 
+const effectRunPenEpic = action$ =>
+  action$.pipe(
+    ofType(RUN_CLICK),
+    tap(dispatchSetIframe),
+    tap(dispatchSetRunningMode),
+    ignoreElements(),
+  )
+
 // const effectFetchPenEpic = action$ =>
 //   action$.pipe(
 //     ofType(FETCH_PEN),
@@ -48,4 +59,4 @@ const effectSavePenEpic = action$ =>
 //     ignoreElements(),
 //   )
 
-export default combineEpics(effectSavePenEpic)
+export default combineEpics(effectSavePenEpic, effectRunPenEpic)

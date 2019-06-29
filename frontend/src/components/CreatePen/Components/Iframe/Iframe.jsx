@@ -117,6 +117,8 @@ class Iframe extends Component {
         <div
           style={{
             display: previewIsOpen ? '' : 'none',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           <FullScreen
@@ -125,7 +127,7 @@ class Iframe extends Component {
           />
           <iframe
             className={classes.iframe}
-            width="300px"
+            width="100%"
             // ref={ref}
             ref={iframe => {
               this.iframeRef = iframe

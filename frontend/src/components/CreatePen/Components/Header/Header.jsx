@@ -24,7 +24,7 @@ class Header extends Component {
   }
 
   render() {
-    const { editableTitle, title, titleModeChange, updatePen } = this.props
+    const { editableTitle, title, titleModeChange, run } = this.props
     return (
       <div className={classes.penTitleBar}>
         <div style={{ display: 'flex' }}>
@@ -39,7 +39,7 @@ class Header extends Component {
           )) || <div style={{ width: '50px' }}>{title}</div>}
           <Edit onClick={titleModeChange} className={classes.edit} />
         </div>
-        <IconButton onClick={updatePen} className={classes.run}>
+        <IconButton onClick={run} className={classes.run}>
           RUN
         </IconButton>
       </div>

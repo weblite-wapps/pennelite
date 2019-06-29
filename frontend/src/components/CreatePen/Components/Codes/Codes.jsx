@@ -35,7 +35,11 @@ export default class CodesContent extends React.PureComponent {
     return (
       <div>
         {viewMode === 'tabular' && (
-          <Tabs scrollable value={tabIndex} onChange={this.handleTabChange}>
+          <Tabs
+            variant="scrollable"
+            value={tabIndex}
+            onChange={this.handleTabChange}
+          >
             <Tab label="html" />
             <Tab label="css" />
             <Tab label="js" />

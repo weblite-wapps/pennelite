@@ -14,6 +14,7 @@ import {
   dispatchResetState,
   dispatchsetTitleEditMode,
   dispatchSetIframe,
+  dispatchRunClick,
 } from './CreatePen.action'
 import {
   htmlView,
@@ -28,7 +29,7 @@ import {
   isSavedView,
   titleEditModeView,
 } from './CreatePen.reducer'
-import { appUserView } from '../App/App.reducer'
+import { appUserView, pageView } from '../App/App.reducer'
 
 const mapDispatchTpProps = () => ({
   fetchPen: dispatchFetchPen,
@@ -41,8 +42,8 @@ const mapDispatchTpProps = () => ({
   setWriter: dispatchSetWriterCurrentPen,
   clearState: dispatchResetState,
   titleModeChange: dispatchsetTitleEditMode,
-  updatePen: dispatchSetIframe,
-  // updatePen: () => console.log('hello'),
+  run: dispatchRunClick,
+  // updatePen: dispatchSetIframe,
 })
 
 const mapStateToprops = () => ({
@@ -58,6 +59,7 @@ const mapStateToprops = () => ({
   tabIndex: tabIndexView(),
   appUser: appUserView(),
   editableTitle: titleEditModeView(),
+  page: pageView(),
 })
 
 export default connect(

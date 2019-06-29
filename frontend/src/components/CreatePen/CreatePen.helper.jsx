@@ -3,19 +3,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Codes from './Components/Codes/Codes.container'
 import Iframe from './Components/Iframe/Iframe.container'
+import More from './Components/Menu/Menu.container'
 
 class Content extends Component {
   render() {
-    const { writerName } = this.props
+    const { writerName, page } = this.props
     return (
       <>
-        {/* <Menu
-          closeMenu={closeMenu}
-          isMenuOpen={isMenuOpen}
-          changePreviewMode={changePreviewMode}
-          changeViewMode={changeViewMode}
-        /> */}
-        <p>written by : {writerName} </p>
+        <More {...this.props} />
+        {/* <p>written by : {writerName} </p> */}
         <Iframe
           // ref={this.iRef}
           {...this.props}
