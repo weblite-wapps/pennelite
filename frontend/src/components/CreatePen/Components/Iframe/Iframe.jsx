@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 // local modules
 // import { IconButton } from 'weblite-web-relite'
-import FullScreen from '../Svgs/FullScreen'
+import FullScreen from './../../../Svgs/FullScreen'
 
 // styles
 import classes from '../../CreatePen.scss'

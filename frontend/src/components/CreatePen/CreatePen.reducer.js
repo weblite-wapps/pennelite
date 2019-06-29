@@ -31,9 +31,9 @@ const initialState = {
   html: defaultHtml,
   css: '',
   js: '',
-  writer: '',
-  title: 'untitled  ',
-  isSaved: 'true',
+  writer: 'javad',
+  title: 'untitled',
+  isSaved: true,
   menuIsOpen: false,
   previewIsShown: false,
   viewMode: 'simple',
@@ -96,7 +96,7 @@ const reducers = {
   [CHANGE_PEN]: (state, { value, type }) => ({
     ...state,
     [type]: value,
-    isSaved: 'false',
+    isSaved: false,
   }),
 
   [CLOSE_MENU]: state => R.set(menuIsOpenLens, false, state),
@@ -130,6 +130,7 @@ const reducers = {
     previewIsShown: true,
     viewMode: 'tabular',
   }),
+
   [SET_IFRAME]: state => ({
     ...state,
     iframeHtml: state.html,

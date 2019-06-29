@@ -42,6 +42,7 @@ const mapDispatchTpProps = () => ({
   clearState: dispatchResetState,
   titleModeChange: dispatchsetTitleEditMode,
   updatePen: dispatchSetIframe,
+  // updatePen: () => console.log('hello'),
 })
 
 const mapStateToprops = () => ({

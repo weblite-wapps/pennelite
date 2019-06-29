@@ -1,9 +1,15 @@
 import { connect } from 'react-redux'
 import App from './App'
 import { dispatchSetData } from './App.action'
+import { pageView } from './App.reducer'
 
 const mapDispatchToProps = () => ({
   setData: dispatchSetData,
 })
-
-export default connect(mapDispatchToProps)(App)
+const mapStateToProps = () => ({
+  page: pageView(),
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App)

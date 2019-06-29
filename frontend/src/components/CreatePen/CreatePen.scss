@@ -2,13 +2,18 @@
   background-color: black;
   color: white;
   padding: 15px;
-  width: 300px;
+  width: 100%;
   border: 2px solid black;
 }
 
 .header {
   display: flex;
 
+  justify-content: space-between;
+}
+
+.penTitleBar {
+  display: flex;
   justify-content: space-between;
 }
 

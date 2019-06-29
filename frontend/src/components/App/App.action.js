@@ -7,3 +7,7 @@ export const setData = createAction(SET_DATA, (user, wisId) => ({
   wisId,
 }))
 export const dispatchSetData = (...args) => dispatch(setData(...args))
+
+export const SET_PAGE = 'SET_PAGE'
+export const setPage = createAction(SET_PAGE)
+export const dispatchSetPage = (...args) => dispatch(setPage(...args))

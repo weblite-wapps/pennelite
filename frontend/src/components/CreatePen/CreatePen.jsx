@@ -3,12 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 // local modules
-import { IconButton } from 'weblite-web-relite'
-import Menu from './Components/Menu/Menu.container'
-import Codes from './Components/Codes/Codes.container'
-import Iframe from './Components/Iframe/Iframe.container'
 import Header from './Components/Header/Header.container'
-import Edit from './Components/Svgs/Edit'
+import Content from './CreatePen.helper'
 
 // styles
 import classes from './CreatePen.scss'
@@ -16,97 +12,22 @@ import classes from './CreatePen.scss'
 class CreatePen extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.iRef = React.createRef()
-    this.runClick = this.runClick.bind(this)
+    // this.iRef = React.createRef()
   }
 
-  componentWillMount() {
-    const { fetchPen, writerName, title, setWriter, appUser } = this.props
-    setWriter(appUser)
-    // fetchPen(writerName, title)
-  }
-
-  handleChange(text, type) {
-    const { changePen } = this.props
-    changePen(text, type)
-    // console.log('text, type :', text, type)
-  }
-
-  runClick() {
-    const { updatePen } = this.props
-    updatePen()
-  }
+  // componentWillMount() {
+  //   const { fetchPen, writerName, title, setWriter, appUser } = this.props
+  //   setWriter(appUser)
+  //   // fetchPen(writerName, title)
+  // }
 
   render() {
-    const {
-      isMenuOpen,
-      changeMenu,
-      closeMenu,
-      changePreviewMode,
-      previewIsOpen,
-      changeViewMode,
-      viewMode,
-      tabIndex,
-      clearState,
-      writerName,
-      title,
-      htmlContent,
-      cssContent,
-      jsContent,
-      changeTab,
-      changePen,
-      titleModeChange,
-      editableTitle,
-    } = this.props
-    // console.log('codes 333 : ', title)
+    const { ...props } = this.props
     return (
-      <div className={classes.root}>
-        <Header clearState={clearState} changeMenu={changeMenu} />
-        <div className={classes.title_run}>
-          <div style={{ display: 'flex' }}>
-            {(editableTitle && (
-              <input
-                className={classes.title}
-                onChange={e => this.handleChange(e.target.value, 'title')}
-                value={title}
-                placeholder="title"
-                type="search"
-              />
-            )) || <div style={{ width: '50px' }}>{title}</div>}
-            <Edit onClick={titleModeChange} className={classes.edit} />
-          </div>
-          <IconButton onClick={this.runClick} className={classes.run}>
-            RUN
-          </IconButton>
-        </div>
-        <Menu
-          closeMenu={closeMenu}
-          isMenuOpen={isMenuOpen}
-          changePreviewMode={changePreviewMode}
-          changeViewMode={changeViewMode}
-        />
-
-        <p>written by : {writerName} </p>
-
-        <Iframe
-          // ref={this.iRef}
-          writerName={writerName}
-          title={title}
-          htmlContent={htmlContent}
-          cssContent={cssContent}
-          jsContent={jsContent}
-          previewIsOpen={previewIsOpen}
-        />
-        <Codes
-          viewMode={viewMode}
-          tabIndex={tabIndex}
-          htmlContent={htmlContent}
-          cssContent={cssContent}
-          jsContent={jsContent}
-          changeTab={changeTab}
-          changePen={changePen}
-        />
+      <div>
+        {/* className={classes.root} */}
+        <Header {...props} />
+        <Content {...props} />
       </div>
     )
   }

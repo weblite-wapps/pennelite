@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local modules
-import { ContextMenu } from 'weblite-web-relite'
+// import { ContextMenu } from 'weblite-web-relite'
 
 const MenuContent = ({
   isMenuOpen,

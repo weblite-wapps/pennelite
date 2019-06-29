@@ -2,8 +2,8 @@
   "name": "pennelite-backend",
   "version": "1.0.0",
   "scripts": {
-    "build": "node ../../../tools/buildlite/src/index.js default build",
-    "dev": "node ../../../tools/buildlite/src/index.js default dev"
+    "build": "buildlite default build",
+    "dev": "buildlite default dev"
   },
   "buildlite": {
     "default": {
