@@ -17,6 +17,7 @@ import {
   SET_IFRAME,
   CHANGE_IFRAME,
   SET_CURRENTPEN_ID,
+  SET_CLICKEDPEN_ID,
 } from './CreatePen.action'
 // import { userView } from '../App/App.reducer'
 
@@ -78,12 +79,11 @@ export const iframeHtmlView = () =>
 export const iframeCssView = () =>
   R.path(['CreatePen', 'iframeCss'])(getState())
 export const iframeJsView = () => R.path(['CreatePen', 'iframeJs'])(getState())
+export const _idView = () => R.path(['CreatePen', '_id'])(getState())
 
 const reducers = {
-  [SET_WRITER_AND_TITLE]: (state, { writer, title, mode, _id }) => ({
+  [SET_CLICKEDPEN_ID]: (state, { mode, _id }) => ({
     ...state,
-    writer,
-    title,
     _id,
     previewIsShown: mode === 'RUN',
     viewMode: mode === 'RUN' ? 'tabular' : 'simple',

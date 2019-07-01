@@ -16,7 +16,7 @@ class Recentpens extends Component {
   }
 
   render() {
-    const { pens, penClick, showSearch, ...props } = this.props
+    const { pens, penClick, showSearch } = this.props
 
     return (
       <div className={classes.root}>

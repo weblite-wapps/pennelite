@@ -22,12 +22,11 @@ class CreatePen extends Component {
   // }
 
   render() {
-    const { ...props } = this.props
     return (
       <div>
         {/* className={classes.root} */}
-        <Header {...props} />
-        <Content {...props} />
+        <Header {...this.props} />
+        <Content {...this.props} />
       </div>
     )
   }

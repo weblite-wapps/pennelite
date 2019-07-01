@@ -26,6 +26,7 @@ import {
   tabIndexView,
   isSavedView,
   titleEditModeView,
+  _idView,
 } from './CreatePen.reducer'
 import { appUserView, pageView } from '../App/App.reducer'
 
@@ -54,6 +55,7 @@ const mapStateToprops = () => ({
   appUser: appUserView(),
   editableTitle: titleEditModeView(),
   page: pageView(),
+  _id: _idView(),
 })
 
 export default connect(

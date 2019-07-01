@@ -9,6 +9,10 @@ import {
 } from 'rxjs/operators'
 import { FETCH_RECENT_PENS, setRecentPens, LIKE_PEN } from './RecentPens.action'
 import { getRequests } from '../../helper/functions/request.helper'
+import { SET_CLICKEDPEN_ID } from '../CreatePen/CreatePen.action'
+import { navigate } from '@reach/router'
+import push from '../../setup/root'
+import { dispatchSetPage } from '../App/App.action'
 
 const effectFetchRecentPensEpic = action$ =>
   action$.pipe(
@@ -33,6 +37,19 @@ const effectLikePen = action$ =>
     ignoreElements(),
   )
 
-  const effectPenButtonClick = 
+const effectPenButtonsClick = action$ =>
+  action$.pipe(
+    ofType(SET_CLICKEDPEN_ID),
+    tap(() => console.log('go to CreatePen')),
+    // tap(() => console.log('history ', history)),
+    tap(() => push('CreatePen')),
+    tap(() => dispatchSetPage('CreatePen')),
+    // tap(() => navigate('/CreatePen')),
+    ignoreElements(),
+  )
 
-export default combineEpics(effectFetchRecentPensEpic, effectLikePen)
+export default combineEpics(
+  effectFetchRecentPensEpic,
+  effectLikePen,
+  effectPenButtonsClick,
+)

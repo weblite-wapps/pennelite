@@ -27,20 +27,24 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
 
       <div className={classes.penFooter}>
         <div className={classes.buttonPanel}>
-          <Button
-            // color="secondary"
-            // variant="contained"
-            className={classes.edit}
-            onClick={() => penClick({ ...pen, mode: 'EDIT' })}
-          >
-            EDIT
-          </Button>
-          <button
-            className={classes.run}
-            onClick={() => penClick({ ...pen, mode: 'RUN' })}
-          >
-            RUN
-          </button>
+          <Link to="/CreatePen">
+            <button
+              // color="secondary"
+              // variant="contained"
+              className={classes.edit}
+              onClick={() => penClick({ _id: pen._id, mode: 'EDIT' })}
+            >
+              EDIT
+            </button>
+          </Link>
+          <Link to="/CreatePen">
+            <button
+              className={classes.run}
+              onClick={() => penClick({ _id: pen._id, mode: 'RUN' })}
+            >
+              RUN
+            </button>
+          </Link>
           <button
             className={classes.send}
             onClick={() => send(pen.writer, pen.title, 'wis')}

@@ -39,8 +39,7 @@ export const fetchLastNinePens = () =>
     .limit(9)
     .exec()
 
-export const fetchSinglePen = (writer, title) =>
-  Pen.findOne({ writer, title }, { _id: 0, __v: 0 }).exec()
+export const fetchSinglePen = _id => Pen.findOne({ _id }, { __v: 0 }).exec()
 // console.log('writer, title :', writer, title)
 
 export const fetchWriterPens = writer =>

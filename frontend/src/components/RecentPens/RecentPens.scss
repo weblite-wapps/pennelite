@@ -1,6 +1,6 @@
 .root {
   background-color: black;
-  color: white;
+  // color: white;
   padding: 15px;
   width: 100%;
 }
@@ -30,6 +30,7 @@
 
 .edit {
   background: #444343;
+  // background: #aa0000;
   // color: red;
   height: 40px;
   margin-left: 5px;
@@ -61,6 +62,7 @@
   letter-spacing: 1px;
 }
 .likesPanel {
+  color: white;
   height: 30px;
   font-size: 17px;
   display: flex;

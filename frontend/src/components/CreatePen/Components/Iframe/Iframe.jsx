@@ -35,16 +35,17 @@ class Iframe extends Component {
     // iRef.close()
     // const iRef = this.iframeRef.contentWindow.document
 
-    const { fPen, writerName, title, changeIframe } = this.props
+    const { fPen, changeIframe, _id } = this.props
     fPen('/fetchSinglePen')
-      .query({ writer: writerName, title })
+      .query({ _id })
       .then(res => res.body)
-      .then(R.forEachObjIndexed(dispatchChangePen))
-      .then(({ html, css, js }) => {
-        changeIframe(html, 'iframeHtml')
-        changeIframe(css, 'iframeCss')
-        changeIframe(js, 'iframeJs')
-      })
+      .then(console.log)
+      // .then(R.forEachObjIndexed(dispatchChangePen))
+      // .then(({ html, css, js }) => {
+      //   changeIframe(html, 'iframeHtml')
+      //   changeIframe(css, 'iframeCss')
+      //   changeIframe(js, 'iframeJs')
+      // })
       .catch(console.log)
     // R.map(console.log, body)
     // { body }) => {

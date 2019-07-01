@@ -16,7 +16,7 @@ import {
   dispatchSetMenuIsShown,
   dispatchSetCloseMenu,
 } from './RecentPens.action'
-import { dispatchSetWriterTitle } from '../CreatePen/CreatePen.action'
+import { dispatchSetClickedPenId } from '../CreatePen/CreatePen.action'
 
 const mapStateToProps = () => ({
   pens: pensView(),
@@ -26,7 +26,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchRecentPens,
-  penClick: dispatchSetWriterTitle,
+  penClick: dispatchSetClickedPenId,
   menuClick: dispatchSetMenuIsShown,
   searchClick: dispatchSetSearchIsShown,
   closeMenu: dispatchSetCloseMenu,

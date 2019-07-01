@@ -31,8 +31,7 @@ router.post(
 
 router.get(
   '/fetchSinglePen',
-  ({ query: { writer, title } }, res) =>
-    fetchSinglePen(writer, title).then(pen => res.send(pen)),
+  ({ query: { _id } }, res) => fetchSinglePen(_id).then(pen => res.send(pen)),
   // console.log(user, title),
 )
 

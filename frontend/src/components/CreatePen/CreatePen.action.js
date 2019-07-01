@@ -1,18 +1,16 @@
 import { createAction } from 'redux-actions'
 import { dispatch } from '../../setup/redux'
 
-export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
-export const setWriterAndTitle = createAction(
-  SET_WRITER_AND_TITLE,
-  ({ writer, title, mode, _id }) => ({
-    writer,
-    title,
-    mode,
+export const SET_CLICKEDPEN_ID = 'SET_CLICKEDPEN_ID'
+export const setClickedPenId = createAction(
+  SET_CLICKEDPEN_ID,
+  ({ _id, mode }) => ({
     _id,
+    mode,
   }),
 )
-export const dispatchSetWriterTitle = (...args) =>
-  dispatch(setWriterAndTitle(...args))
+export const dispatchSetClickedPenId = (...args) =>
+  dispatch(setClickedPenId(...args))
 
 export const FETCH_PEN = 'FETCH_PEN'
 export const fetchPen = createAction(FETCH_PEN, (writer, title) => ({

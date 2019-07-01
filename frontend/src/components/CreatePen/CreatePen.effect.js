@@ -51,13 +51,16 @@ const effectRunPenEpic = action$ =>
 //   action$.pipe(
 //     ofType(FETCH_PEN),
 //     pluck('payload'),
-//     mergeMap(({ writer, title }) =>
-//       getRequests('/fetchSinglePen').query({ writer, title }),
-//     ),
-//     filter(R.prop('body')),
+//     filter(pluck('_id')),
+//     mergeMap(({ _id }) => getRequests('/fetchSinglePen').query({ _id })),
+//     // filter(R.prop('body')),
 //     map(R.prop('body')),
 //     tap(R.forEachObjIndexed(dispatchChangePen)),
 //     ignoreElements(),
 //   )
 
-export default combineEpics(effectSavePenEpic, effectRunPenEpic)
+export default combineEpics(
+  effectSavePenEpic,
+  effectRunPenEpic,
+  // effectFetchPenEpic,
+)
