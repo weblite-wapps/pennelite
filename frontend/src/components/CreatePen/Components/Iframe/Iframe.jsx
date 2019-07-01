@@ -115,10 +115,9 @@ class Iframe extends Component {
           run
         </button> */}
         <div
+          className={classes.iframePanel}
           style={{
             display: previewIsOpen ? '' : 'none',
-            display: 'flex',
-            flexDirection: 'column',
           }}
         >
           <FullScreen

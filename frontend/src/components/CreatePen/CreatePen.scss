@@ -87,6 +87,11 @@
   }
 }
 
+.iframePanel {
+  display: flex;
+  flex-direction: column;
+}
+
 .iframe {
   background: white;
 

@@ -6,8 +6,6 @@ import { getState } from '../../setup/redux'
 import {
   CHANGE_PEN,
   SET_WRITER_AND_TITLE,
-  CHANGE_MENU_MODE,
-  CLOSE_MENU,
   CHANGE_PREVIEW_MODE,
   CHANGE_PEN_VIEW_MODE,
   CHANGE_TAB_INDEX,
@@ -18,6 +16,7 @@ import {
   SET_RUNNING_MODE,
   SET_IFRAME,
   CHANGE_IFRAME,
+  SET_CURRENTPEN_ID,
 } from './CreatePen.action'
 // import { userView } from '../App/App.reducer'
 
@@ -34,7 +33,6 @@ const initialState = {
   writer: 'javad',
   title: 'untitled',
   isSaved: true,
-  menuIsOpen: false,
   previewIsShown: false,
   viewMode: 'simple',
   tabIndex: 0,
@@ -48,7 +46,6 @@ const initialState = {
 // lens
 const writerLens = R.lensProp('writer')
 const isSavedLens = R.lensProp('isSaved')
-const menuIsOpenLens = R.lensProp('menuIsOpen')
 const previewIsShownLens = R.lensProp('previewIsShown')
 const viewModeLens = R.lensProp('viewMode')
 const tabIndexLens = R.lensProp('tabIndex')
@@ -61,7 +58,7 @@ export const codesView = () => ({
   js: R.path(['CreatePen', 'js'])(getState()),
   writer: R.path(['CreatePen', 'writer'])(getState()),
   title: R.path(['CreatePen', 'title'])(getState()),
-  // _id: R.path(['CreatePen', '_id'])(getState()),
+  _id: R.path(['CreatePen', '_id'])(getState()),
 })
 
 export const htmlView = () => R.path(['CreatePen', 'html'])(getState())
@@ -70,7 +67,6 @@ export const jsView = () => R.path(['CreatePen', 'js'])(getState())
 export const writerView = () => R.path(['CreatePen', 'writer'])(getState())
 export const titleView = () => R.path(['CreatePen', 'title'])(getState())
 export const isSavedView = () => R.path(['CreatePen', 'isSaved'])(getState())
-export const menuView = () => R.path(['CreatePen', 'menuIsOpen'])(getState())
 export const previewView = () =>
   R.path(['CreatePen', 'previewIsShown'])(getState())
 export const viewModeView = () => R.path(['CreatePen', 'viewMode'])(getState())
@@ -98,10 +94,6 @@ const reducers = {
     [type]: value,
     isSaved: false,
   }),
-
-  [CLOSE_MENU]: state => R.set(menuIsOpenLens, false, state),
-
-  [CHANGE_MENU_MODE]: state => R.set(menuIsOpenLens, !state.menuIsOpen, state),
 
   [CHANGE_PREVIEW_MODE]: state =>
     R.set(previewIsShownLens, !state.previewIsShown, state),
@@ -141,6 +133,11 @@ const reducers = {
   [CHANGE_IFRAME]: (state, { value, type }) => ({
     ...state,
     [type]: value,
+  }),
+
+  [SET_CURRENTPEN_ID]: (state, _id) => ({
+    ...state,
+    _id,
   }),
 }
 

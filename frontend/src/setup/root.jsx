@@ -11,7 +11,7 @@ import {
 import store from './redux'
 
 // Component
-// import RecentPens from '../components/RecentPens/RecentPens.container'
+import RecentPens from '../components/RecentPens/RecentPens.container'
 import CreatePen from '../components/CreatePen/CreatePen.container'
 // import Dashboard from '../components/Dashboard/Dashboard.container'
 import App from '../components/App/App.container'
@@ -25,9 +25,9 @@ export default () => (
     <LocationProvider history={history}>
       <App />
       <Router>
-        {/* <RecentPens path="/" /> */}
+        <RecentPens path="/" />
         {/* <Dashboard path="/Dashboard" /> */}
-        <CreatePen path="/" />
+        <CreatePen path="/CreatePen" />
         {/* <PenNaming path="/" /> */}
       </Router>
     </LocationProvider>

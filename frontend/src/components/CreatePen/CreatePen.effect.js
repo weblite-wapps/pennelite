@@ -17,6 +17,7 @@ import {
   RUN_CLICK,
   dispatchSetIframe,
   dispatchSetRunningMode,
+  dispatchSetCurrentPenId,
 } from './CreatePen.action'
 import { codesView } from './CreatePen.reducer'
 
@@ -31,7 +32,7 @@ const effectSavePenEpic = action$ =>
     tap(() =>
       postRequests('/updateCurrentPen')
         .send(codesView())
-        // .then(res => console.log('res: ', res))
+        .then(res => dispatchSetCurrentPenId(R.path(['body', '_id'], res)))
         .catch(() => console.log("couldn't update")),
     ),
     tap(dispatchSetIsSavedToTrue),

@@ -1,12 +1,14 @@
 .header {
+  background-color: black;
   height: 18px;
   display: flex;
   justify-content: space-between;
   //   width: 100%;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .title {
+  color: white;
   display: flex;
   font-size: 18px;
   letter-spacing: 2px;

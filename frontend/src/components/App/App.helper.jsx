@@ -2,15 +2,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // Components
-import More from './../Svgs/more'
+import MoreIcon from './../Svgs/more'
 import Close from './../Svgs/Close'
-
+import Plus from './../Svgs/Plus'
+import Search from './../Svgs/Search'
+import More from '../App/Component/Menu/Menu.container'
+import Button from '@material-ui/core/Button'
 //Styles
 import classes from './App.scss'
 class LeftIcon extends Component {
   render() {
     const { page } = this.props
-    return <>{page === 'CreatePen' && <Close />}</>
+    return (
+      <>
+        {page === 'CreatePen' && <Close />}
+        {page === 'RecentPens' && <Plus />}
+        {/* {page === 'RecentPens' && <Plus />} */}
+      </>
+    )
   }
 }
 
@@ -19,8 +28,20 @@ LeftIcon.defaultProps = {}
 
 class RightIcon extends Component {
   render() {
-    const { page } = this.props
-    return <>{page === 'CreatePen' && <More />}</>
+    const { page, anchorEl, openMenu } = this.props
+    return (
+      <>
+        {page === 'CreatePen' && (
+          <>
+            <MoreIcon onClick={e => openMenu(e.currentTarget)}>
+              <Button aria-controls="simple-menu" aria-haspopup="true" />
+            </MoreIcon>
+            <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
+          </>
+        )}
+        {page === 'RecentPens' && <Search />}
+      </>
+    )
   }
 }
 

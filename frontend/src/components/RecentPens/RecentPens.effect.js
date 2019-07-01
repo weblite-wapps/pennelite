@@ -1,5 +1,12 @@
 import { ofType, combineEpics } from 'redux-observable'
-import { mergeMap, pluck, map, ignoreElements, tap } from 'rxjs/operators'
+import {
+  mergeMap,
+  pluck,
+  map,
+  ignoreElements,
+  tap,
+  filter,
+} from 'rxjs/operators'
 import { FETCH_RECENT_PENS, setRecentPens, LIKE_PEN } from './RecentPens.action'
 import { getRequests } from '../../helper/functions/request.helper'
 
@@ -7,6 +14,7 @@ const effectFetchRecentPensEpic = action$ =>
   action$.pipe(
     ofType(FETCH_RECENT_PENS),
     mergeMap(() => getRequests('/').catch(console.log)),
+    filter(pens => R.prop('body', pens)),
     pluck('body'),
     map(setRecentPens),
   )
@@ -24,5 +32,7 @@ const effectLikePen = action$ =>
     ),
     ignoreElements(),
   )
+
+  const effectPenButtonClick = 
 
 export default combineEpics(effectFetchRecentPensEpic, effectLikePen)

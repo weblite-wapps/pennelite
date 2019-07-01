@@ -15,7 +15,7 @@ const router = Router()
 router.get('/', (req, res) =>
   fetchLastNinePens()
     // .then(pens => console.log( pens, liked: true ))
-    // .then(pens => res.send(pens))
+    .then(pens => res.send(pens))
     .catch(() => console.log('there is not nine in db')),
 )
 

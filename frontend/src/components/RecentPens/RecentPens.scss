@@ -2,33 +2,7 @@
   background-color: black;
   color: white;
   padding: 15px;
-  width: 300px;
-}
-
-.header {
-  height: 18px;
-  display: flex;
-  justify-content: space-between;
-  //   width: 100%;
-  margin-bottom: 10px;
-}
-.title {
-  display: flex;
-  font-size: 18px;
-  letter-spacing: 2px;
-  font-weight: 1000;
-  :hover {
-    cursor: pointer;
-  }
-}
-.lite {
-  background: red;
-  font-size: 10px;
-  letter-spacing: 0px;
-  margin-left: 3px;
-  margin-top: 2px;
-  padding: 1px 6px 8px 6px;
-  text-justify: auto;
+  width: 100%;
 }
 
 .plus {
@@ -56,9 +30,10 @@
 
 .edit {
   background: #444343;
-  height: 20px;
+  // color: red;
+  height: 40px;
   margin-left: 5px;
-  width: 45px;
+  width: 55px;
   padding-left: 10px;
   padding-top: 0px;
   border-radius: 0px;
@@ -67,8 +42,8 @@
 .run {
   background: #aa0000;
   margin-left: 5px;
-  height: 20px;
-  width: 40px;
+  height: 40px;
+  width: 55px;
   padding-left: 7px;
   padding-top: 0px;
   border-radius: 0px;
@@ -78,8 +53,8 @@
 .send {
   background: #0074aa;
   margin-left: 5px;
-  width: 55px;
-  height: 20px;
+  width: 60px;
+  height: 40px;
   padding-left: 10px;
   padding-top: 0px;
   border-radius: 0px;

@@ -5,8 +5,6 @@ import CreatePen from './CreatePen'
 import {
   dispatchChangePen,
   dispatchFetchPen,
-  dispatchChangeMenuMode,
-  dispatchCloseMenu,
   dispatchChangePreviewMode,
   dispatchChangePenViewMode,
   dispatchChangeTabIndex,
@@ -16,13 +14,13 @@ import {
   dispatchSetIframe,
   dispatchRunClick,
 } from './CreatePen.action'
+
 import {
   htmlView,
   cssView,
   jsView,
   writerView,
   titleView,
-  menuView,
   previewView,
   viewModeView,
   tabIndexView,
@@ -34,10 +32,7 @@ import { appUserView, pageView } from '../App/App.reducer'
 const mapDispatchTpProps = () => ({
   fetchPen: dispatchFetchPen,
   changePen: dispatchChangePen,
-  changeMenu: dispatchChangeMenuMode,
-  closeMenu: dispatchCloseMenu,
-  changePreviewMode: dispatchChangePreviewMode,
-  changeViewMode: dispatchChangePenViewMode,
+  // changeMenu: dispatchChangeMenuMode,
   changeTab: dispatchChangeTabIndex,
   setWriter: dispatchSetWriterCurrentPen,
   clearState: dispatchResetState,
@@ -53,7 +48,6 @@ const mapStateToprops = () => ({
   writerName: writerView(),
   title: titleView(),
   isSaved: isSavedView(),
-  isMenuOpen: menuView(),
   previewIsOpen: previewView(),
   viewMode: viewModeView(),
   tabIndex: tabIndexView(),

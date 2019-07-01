@@ -35,14 +35,6 @@ export const SAVE_PEN = 'SAVE_PEN'
 export const savePen = createAction(SAVE_PEN)
 export const dispatchSavePen = () => dispatch(savePen())
 
-export const CHANGE_MENU_MODE = 'CHANGE_MENU_MODE'
-export const changeMenuMode = createAction(CHANGE_MENU_MODE)
-export const dispatchChangeMenuMode = () => dispatch(changeMenuMode())
-
-export const CLOSE_MENU = 'CLOSE_MENU'
-export const closeMenu = createAction(CLOSE_MENU)
-export const dispatchCloseMenu = () => dispatch(closeMenu())
-
 export const CHANGE_PREVIEW_MODE = 'CHANGE_PREVIEW_MODE'
 export const changePreviewMode = createAction(CHANGE_PREVIEW_MODE)
 export const dispatchChangePreviewMode = () => dispatch(changePreviewMode())
@@ -102,3 +94,7 @@ export const dispatchChangeIframe = (...args) => dispatch(changeIframe(...args))
 export const RUN_CLICK = 'RUN_CLICK'
 export const runClick = createAction(RUN_CLICK)
 export const dispatchRunClick = () => dispatch(runClick())
+
+export const SET_CURRENTPEN_ID = 'SET_CURRENTPEN_ID'
+export const setCurrentPenId = createAction(SET_CURRENTPEN_ID)
+export const dispatchSetCurrentPenId = args => dispatch(setCurrentPenId(args))

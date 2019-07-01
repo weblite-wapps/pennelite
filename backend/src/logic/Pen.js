@@ -1,7 +1,14 @@
 import Pen from '../models/Pen'
 
-export const savePen = ({ title, writer, html, css, js }) =>
-  Pen.updateOne({ writer, title }, { html, css, js }, { upsert: true }).exec()
+export const savePen = ({ _id, title, writer, html, css, js }) =>
+  Pen.findOneAndUpdate(
+    _id ? { _id } : {},
+    { writer, title, html, css, js },
+    { upsert: true, new: true },
+  )
+    .select('_id')
+    .exec()
+
 // console.log(
 //   'title: ',
 //   title,

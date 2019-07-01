@@ -9,6 +9,7 @@ import CreatePenReducer from '../components/CreatePen/CreatePen.reducer'
 import AppReducer from '../components/App/App.reducer'
 
 // epics
+import AppEffect from '../components/App/App.effect'
 import CreatePensEffect from '../components/CreatePen/CreatePen.effect'
 import RecentPensEffect from '../components/RecentPens/RecentPens.effect'
 // import DashboardEffect from '../components/Dashboard/Dashboard.effect'
@@ -23,6 +24,7 @@ const composeEnhancers =
 /* eslint-enable */
 
 const rootEpic = combineEpics(
+  AppEffect,
   CreatePensEffect,
   // DashboardEffect,
   RecentPensEffect,
@@ -31,7 +33,7 @@ const epicMiddleware = createEpicMiddleware()
 
 const store = createStore(
   combineReducers({
-    // RecentPens: RecentPensReducer,
+    RecentPens: RecentPensReducer,
     CreatePen: CreatePenReducer,
     // Dashboard: DashboardReducer,
     App: AppReducer,

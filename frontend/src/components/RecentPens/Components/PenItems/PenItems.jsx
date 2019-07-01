@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 // local modules
-import { IconButton } from 'weblite-web-relite'
+import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 import classes from '../../RecentPens.scss'
 // svgs
-import Disliked from '../../Svgs/disliked'
+import Disliked from '../../../Svgs/disliked'
 
 const PenItems = ({ user, pens, send, like, penClick }) =>
   pens.map(pen => (
@@ -26,28 +27,26 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
 
       <div className={classes.penFooter}>
         <div className={classes.buttonPanel}>
-          <Link to="/CreatePen">
-            <IconButton
-              className={classes.edit}
-              onClick={() => penClick({ ...pen, mode: 'EDIT' })}
-            >
-              EDIT
-            </IconButton>
-          </Link>
-          <Link to="/CreatePen">
-            <IconButton
-              className={classes.run}
-              onClick={() => penClick({ ...pen, mode: 'RUN' })}
-            >
-              RUN
-            </IconButton>
-          </Link>
-          <IconButton
+          <Button
+            // color="secondary"
+            // variant="contained"
+            className={classes.edit}
+            onClick={() => penClick({ ...pen, mode: 'EDIT' })}
+          >
+            EDIT
+          </Button>
+          <button
+            className={classes.run}
+            onClick={() => penClick({ ...pen, mode: 'RUN' })}
+          >
+            RUN
+          </button>
+          <button
             className={classes.send}
             onClick={() => send(pen.writer, pen.title, 'wis')}
           >
             SEND
-          </IconButton>
+          </button>
         </div>
         <div className={classes.likesPanel}>
           {pen.likeCnt}
