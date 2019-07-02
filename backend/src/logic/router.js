@@ -19,15 +19,13 @@ router.get('/', (req, res) =>
     .catch(() => console.log('there is not nine in db')),
 )
 
-router.post(
-  '/updateCurrentPen',
-  ({ body }, res) =>
-    savePen(body)
-      .then(resp => res.send(resp))
-      .catch(() => console.log("couldn't save current pen")),
-
-  // console.log('body :', typeof body),
-)
+router.post('/updateCurrentPen', ({ body }, res) => {
+  // console.log('body :', body),
+  savePen(body)
+    // .then(resp => console.log(resp))
+    .then(resp => res.send(resp))
+    .catch(() => console.log("couldn't save current pen"))
+})
 
 router.get(
   '/fetchSinglePen',
@@ -43,6 +41,7 @@ router.get(
 )
 
 router.get('/likePen', ({ query: { user, _id } }, res) => {
+  // console.log(user, _id)
   likePen(user, _id)
     .then(() => res.send('liked succesfully'))
     .catch(() => console.log('unable to like'))

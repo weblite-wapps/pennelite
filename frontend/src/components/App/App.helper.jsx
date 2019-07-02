@@ -8,15 +8,26 @@ import Plus from './../Svgs/Plus'
 import Search from './../Svgs/Search'
 import More from '../App/Component/Menu/Menu.container'
 import Button from '@material-ui/core/Button'
+
+import { Link } from '@reach/router'
 //Styles
 import classes from './App.scss'
 class LeftIcon extends Component {
   render() {
-    const { page } = this.props
+    const { page, changePage } = this.props
+    // console.log('changePage ', changePage)
     return (
       <>
-        {page === 'CreatePen' && <Close />}
-        {page === 'RecentPens' && <Plus />}
+        {page === 'CreatePen' && (
+          <Link to="/">
+            <Close onClick={() => changePage('RecentPens')} />
+          </Link>
+        )}
+        {page === 'RecentPens' && (
+          <Link to="/CreatePen">
+            <Plus onClick={() => changePage('CreatePen')} />
+          </Link>
+        )}
         {/* {page === 'RecentPens' && <Plus />} */}
       </>
     )
@@ -28,7 +39,7 @@ LeftIcon.defaultProps = {}
 
 class RightIcon extends Component {
   render() {
-    const { page, anchorEl, openMenu } = this.props
+    const { page, anchorEl, openMenu, searchClick } = this.props
     return (
       <>
         {page === 'CreatePen' && (
@@ -39,7 +50,7 @@ class RightIcon extends Component {
             <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
           </>
         )}
-        {page === 'RecentPens' && <Search />}
+        {page === 'RecentPens' && <Search onClick={searchClick} />}
       </>
     )
   }

@@ -19,6 +19,7 @@ const initialState = {
 const menuIsOpenLens = R.lensProp('menuIsOpen')
 
 export const appUserView = () => R.path(['App', 'user'])(getState())
+export const wisView = () => R.path(['App', 'wisId'])(getState())
 export const pageView = () => R.path(['App', 'page'])(getState())
 export const anchorElView = () => R.path(['App', 'anchorEl'])(getState())
 export const menuView = () => R.path(['App', 'menuIsOpen'])(getState())

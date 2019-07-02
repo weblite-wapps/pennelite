@@ -13,10 +13,7 @@ export const dispatchSetClickedPenId = (...args) =>
   dispatch(setClickedPenId(...args))
 
 export const FETCH_PEN = 'FETCH_PEN'
-export const fetchPen = createAction(FETCH_PEN, (writer, title) => ({
-  writer,
-  title,
-}))
+export const fetchPen = createAction(FETCH_PEN)
 export const dispatchFetchPen = (...args) => dispatch(fetchPen(...args))
 // console.log(...args)
 

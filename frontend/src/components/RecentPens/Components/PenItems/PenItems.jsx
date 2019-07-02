@@ -10,7 +10,7 @@ import Disliked from '../../../Svgs/disliked'
 
 const PenItems = ({ user, pens, send, like, penClick }) =>
   pens.map(pen => (
-    <div className={classes.penItems} key={`${pen.writer}${pen.title}`}>
+    <div className={classes.penItems} key={`${pen._id}`}>
       <div className={classes.penHeader} role="presentation">
         <table>
           <tbody>

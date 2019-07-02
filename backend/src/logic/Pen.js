@@ -1,13 +1,20 @@
 import Pen from '../models/Pen'
 
-export const savePen = ({ _id, title, writer, html, css, js }) =>
-  Pen.findOneAndUpdate(
-    _id ? { _id } : {},
-    { writer, title, html, css, js },
-    { upsert: true, new: true },
-  )
-    .select('_id')
-    .exec()
+export const savePen = async ({ _id, title, writer, html, css, js }) => {
+  if (_id) {
+    return Pen.findOneAndUpdate(
+      { _id },
+      { writer, title, html, css, js },
+      { upsert: true, new: true },
+    )
+      .select({ _id, writer })
+      .exec()
+  } else {
+    var pen = await new Pen({ title, writer, html, css, js }).save()
+    // console.log('pen ', pen)
+    return { _id: pen._id, writer: pen.writer }
+  }
+}
 
 // console.log(
 //   'title: ',

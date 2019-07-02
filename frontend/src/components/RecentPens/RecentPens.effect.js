@@ -42,7 +42,7 @@ const effectPenButtonsClick = action$ =>
     ofType(SET_CLICKEDPEN_ID),
     tap(() => console.log('go to CreatePen')),
     // tap(() => console.log('history ', history)),
-    tap(() => push('CreatePen')),
+    // tap(() => push('CreatePen')),
     tap(() => dispatchSetPage('CreatePen')),
     // tap(() => navigate('/CreatePen')),
     ignoreElements(),

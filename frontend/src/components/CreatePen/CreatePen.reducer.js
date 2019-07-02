@@ -31,7 +31,7 @@ const initialState = {
   html: defaultHtml,
   css: '',
   js: '',
-  writer: 'javad',
+  writer: '',
   title: 'untitled',
   isSaved: true,
   previewIsShown: false,
@@ -135,9 +135,10 @@ const reducers = {
     [type]: value,
   }),
 
-  [SET_CURRENTPEN_ID]: (state, _id) => ({
+  [SET_CURRENTPEN_ID]: (state, { _id, writer }) => ({
     ...state,
     _id,
+    writer,
   }),
 }
 

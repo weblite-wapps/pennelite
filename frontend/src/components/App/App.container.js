@@ -4,6 +4,7 @@ import {
   dispatchSetData,
   dispatchChangeMenuMode,
   dispatchCloseMenu,
+  dispatchSetPage,
 } from './App.action'
 import { pageView, anchorElView, menuView } from './App.reducer'
 import {
@@ -11,6 +12,7 @@ import {
   dispatchSavePen,
   dispatchChangePenViewMode,
 } from '../CreatePen/CreatePen.action'
+import { dispatchSetSearchIsShown } from '../RecentPens/RecentPens.action'
 
 const mapDispatchToProps = () => ({
   setData: dispatchSetData,
@@ -19,6 +21,8 @@ const mapDispatchToProps = () => ({
   savePen: dispatchSavePen,
   changePreviewMode: dispatchChangePreviewMode,
   changeViewMode: dispatchChangePenViewMode,
+  changePage: newPage => dispatchSetPage(newPage),
+  searchClick: dispatchSetSearchIsShown,
 })
 const mapStateToProps = () => ({
   page: pageView(),

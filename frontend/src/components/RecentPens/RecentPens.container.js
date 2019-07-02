@@ -12,7 +12,6 @@ import {
 // actions
 import {
   dispatchFetchRecentPens,
-  dispatchSetSearchIsShown,
   dispatchSetMenuIsShown,
   dispatchSetCloseMenu,
 } from './RecentPens.action'
@@ -28,7 +27,6 @@ const mapDispatchToProps = () => ({
   fetchPens: dispatchFetchRecentPens,
   penClick: dispatchSetClickedPenId,
   menuClick: dispatchSetMenuIsShown,
-  searchClick: dispatchSetSearchIsShown,
   closeMenu: dispatchSetCloseMenu,
 })
 

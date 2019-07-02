@@ -23,6 +23,7 @@ class Recentpens extends Component {
         {showSearch && (
           <input
             className={classes.searchBar}
+            autoFocus
             type="text"
             placeholder="Search here ..."
           />

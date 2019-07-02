@@ -16,7 +16,7 @@ const PenItems = ({ pens, penClick, send, user }) =>
         </Link>
       </div>
       <div>
-        <button type="button" onClick={() => send(user, pen.title, 'wis')}>
+        <button type="button" onClick={() => send(pen._id, 'wis')}>
           Send
         </button>
       </div>

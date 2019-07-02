@@ -42,6 +42,7 @@
 .more {
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 .title_run {
   margin-top: 10px;
@@ -50,8 +51,11 @@
 }
 .run {
   background: red;
+  color: white;
   border-radius: 0px;
   padding: 0px 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .title {

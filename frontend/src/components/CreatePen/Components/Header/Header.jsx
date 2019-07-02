@@ -39,9 +39,9 @@ class Header extends Component {
           )) || <div style={{ width: '50px' }}>{title}</div>}
           <Edit onClick={titleModeChange} className={classes.edit} />
         </div>
-        <IconButton onClick={run} className={classes.run}>
+        <button onClick={run} className={classes.run}>
           RUN
-        </IconButton>
+        </button>
       </div>
     )
   }

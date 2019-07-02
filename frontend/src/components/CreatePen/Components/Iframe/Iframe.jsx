@@ -24,29 +24,30 @@ class Iframe extends Component {
   // }
 
   componentDidMount() {
+    const { fetchPen } = this.props
+    fetchPen()
+    // console.log('fetchPen ', fetchPen)
     // const { htmlContent, cssContent, jsContent } = this.props
-    // console.log('htmlContent ', htmlContent)
     // const iRef = this.iframeRef.contentWindow.document
-
     // iRef.open()
     // iRef.write(htmlContent)
     // iRef.write(`<style>${cssContent}</style>`)
     // iRef.write(`<script>${jsContent}</script>`)
     // iRef.close()
     // const iRef = this.iframeRef.contentWindow.document
-
-    const { fPen, changeIframe, _id } = this.props
-    fPen('/fetchSinglePen')
-      .query({ _id })
-      .then(res => res.body)
-      .then(console.log)
-      // .then(R.forEachObjIndexed(dispatchChangePen))
-      // .then(({ html, css, js }) => {
-      //   changeIframe(html, 'iframeHtml')
-      //   changeIframe(css, 'iframeCss')
-      //   changeIframe(js, 'iframeJs')
-      // })
-      .catch(console.log)
+    // const { fPen, changeIframe, _id } = this.props
+    // console.log('_id', _id)
+    // fPen('/fetchSinglePen')
+    // .query({ _id })
+    // .then(res => res.body)
+    // .then(console.log)
+    // .then(R.forEachObjIndexed(dispatchChangePen))
+    // .then(({ html, css, js }) => {
+    //   changeIframe(html, 'iframeHtml')
+    //   changeIframe(css, 'iframeCss')
+    //   changeIframe(js, 'iframeJs')
+    // })
+    // .catch(console.log)
     // R.map(console.log, body)
     // { body }) => {
     // console.log(html)
