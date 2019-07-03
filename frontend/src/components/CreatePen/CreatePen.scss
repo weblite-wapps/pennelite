@@ -1,14 +1,9 @@
 .root {
-  background-color: black;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  border: 2px solid black;
+  margin: 15px;
 }
 
 .header {
   display: flex;
-
   justify-content: space-between;
 }
 
@@ -26,29 +21,7 @@
     cursor: pointer;
   }
 }
-.lite {
-  background: red;
-  font-size: 10px;
-  letter-spacing: 0px;
-  margin-left: 3px;
-  margin-top: 2px;
-  padding: 1px 6px 8px 6px;
-  text-justify: auto;
-}
-.close {
-  height: 15px;
-  width: 15px;
-}
-.more {
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-}
-.title_run {
-  margin-top: 10px;
-  justify-content: space-between;
-  display: flex;
-}
+
 .run {
   background: red;
   color: white;
@@ -80,7 +53,7 @@
 }
 .codeTitle {
   margin-left: 5px;
-  color: #d7d7d7;
+  color: #f5f5f5;
 }
 .codes {
   background: #292929;
@@ -97,7 +70,7 @@
 }
 
 .iframe {
-  background: white;
+  background: #292929;
 
   color: white;
   text-decoration-color: #d7d7d7;

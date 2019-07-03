@@ -8,14 +8,13 @@ const effectInitPenEpic = action$ =>
   action$.pipe(
     ofType(FETCH_PEN),
     map(R.prop('payload')),
-    mergeMap(({ user, title }) =>
+    mergeMap(({ _id }) =>
       getRequests('/fetchSinglePen')
-        .query({ user, title })
-        .then(Promise.resolve('Dummy response to keep the console quiet'))
+        .query({ _id })
         .catch(() => console.log('couldnt fetch')),
     ),
     map(R.prop('body')),
-    map(R.head),
+    tap(console.log),
     tap(dispatchSetPen),
     ignoreElements(),
   )

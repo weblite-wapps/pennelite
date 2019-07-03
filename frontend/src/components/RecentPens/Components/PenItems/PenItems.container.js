@@ -7,7 +7,7 @@ import { appUserView, wisView } from '../../../App/App.reducer'
 const mapdispatchToProps = () => ({
   send: _id =>
     window.W.sendMessageToCurrentChat('wapp', {
-      // TODO : FILL WITH INLINE WISID
+      // TODO : FILL WITH INLINE WAPPID
       wappId: '',
       wisId: wisView(),
       _id,

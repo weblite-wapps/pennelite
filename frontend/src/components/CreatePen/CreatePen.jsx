@@ -15,16 +15,9 @@ class CreatePen extends Component {
     // this.iRef = React.createRef()
   }
 
-  // componentWillMount() {
-  //   const { fetchPen, writerName, title, setWriter, appUser } = this.props
-  //   setWriter(appUser)
-  //   // fetchPen(writerName, title)
-  // }
-
   render() {
     return (
-      <div>
-        {/* className={classes.root} */}
+      <div className={classes.root}>
         <Header {...this.props} />
         <Content {...this.props} />
       </div>

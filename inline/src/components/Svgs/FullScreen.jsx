@@ -7,8 +7,8 @@ export default props => (
     id="Capa_1"
     x="0px"
     y="0px"
-    width="25px"
-    height="25px"
+    width="512px"
+    height="512px"
     viewBox="0 0 357 357"
     {...props}
   >

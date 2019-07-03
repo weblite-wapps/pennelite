@@ -31,7 +31,8 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
             <button
               // color="secondary"
               // variant="contained"
-              className={classes.edit}
+              style={{ background: '#2C2C2C', color: '#F5F5F5' }}
+              className={classes.penButton}
               onClick={() => penClick({ _id: pen._id, mode: 'EDIT' })}
             >
               EDIT
@@ -39,20 +40,22 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
           </Link>
           <Link to="/CreatePen">
             <button
-              className={classes.run}
+              style={{ background: '#AA0000', color: '#F5F5F5' }}
+              className={classes.penButton}
               onClick={() => penClick({ _id: pen._id, mode: 'RUN' })}
             >
               RUN
             </button>
           </Link>
           <button
-            className={classes.send}
+            style={{ background: '#0074AA', color: '#F5F5F5' }}
+            className={classes.penButton}
             onClick={() => send(pen.writer, pen.title, 'wis')}
           >
             SEND
           </button>
         </div>
-        <div className={classes.likesPanel}>
+        {/* <div className={classes.likesPanel}>
           {pen.likeCnt}
           <div>
             <Disliked
@@ -60,7 +63,7 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
               className={classes.disliked}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   ))

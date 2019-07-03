@@ -30,9 +30,9 @@ const reducer = {
     user,
     wisId,
   }),
-  [SET_PAGE]: (state, page) => ({
+  [SET_PAGE]: (state, { oldPage, newPage }) => ({
     ...state,
-    page,
+    page: newPage,
   }),
   [SET_ANCHOREL]: (state, anchorEl) => ({
     ...state,

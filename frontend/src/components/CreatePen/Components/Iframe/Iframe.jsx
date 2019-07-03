@@ -9,7 +9,6 @@ import FullScreen from './../../../Svgs/FullScreen'
 
 // styles
 import classes from '../../CreatePen.scss'
-import { dispatchChangePen } from '../../CreatePen.action'
 
 class Iframe extends Component {
   constructor(props) {
@@ -110,12 +109,6 @@ class Iframe extends Component {
     const { previewIsOpen } = this.props
     return (
       <div>
-        {/* <button type="button" > */}
-        {/* fullScreen */}
-        {/* </button> */}
-        {/* <button type="button" onClick={this.run}>
-          run
-        </button> */}
         <div
           className={classes.iframePanel}
           style={{
@@ -129,7 +122,6 @@ class Iframe extends Component {
           <iframe
             className={classes.iframe}
             width="100%"
-            // ref={ref}
             ref={iframe => {
               this.iframeRef = iframe
             }}

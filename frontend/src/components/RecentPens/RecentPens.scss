@@ -1,19 +1,21 @@
-.plus {
-  width: 15px;
-  height: 15px;
-}
+// .plus {
+//   width: 15px;
+//   height: 15px;
+// }
 
-.search {
-  width: 15px;
-  height: 15px;
-}
+// .search {
+//   width: 15px;
+//   height: 15px;
+// }
 
 .penItems {
-  border-top: 1px solid #444343;
+  margin: 10px;
+
+  border-bottom: 1px solid #2c2c2c;
 }
 
 .penHeader {
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 .penFooter {
@@ -21,45 +23,44 @@
   justify-content: space-between;
 }
 
-.edit {
-  background: #444343;
+.penButton {
   // background: #aa0000;
   // color: red;
-  height: 40px;
+  height: 20px;
   margin-left: 5px;
-  width: 55px;
-  padding-left: 10px;
-  padding-top: 0px;
+  width: 50px;
   border-radius: 0px;
   letter-spacing: 1px;
   border: none;
   cursor: pointer;
+  margin-bottom: 10px;
 }
-.run {
-  background: #aa0000;
-  margin-left: 5px;
-  height: 40px;
-  width: 55px;
-  padding-left: 7px;
-  padding-top: 0px;
-  border-radius: 0px;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-}
+// .run {
+//   background: #aa0000;
+//   margin-left: 5px;
+//   height: 40px;
+//   width: 55px;
+//   padding-left: 7px;
+//   padding-top: 0px;
+//   border-radius: 0px;
+//   letter-spacing: 1px;
+//   border: none;
+//   cursor: pointer;
+// }
 
-.send {
-  background: #0074aa;
-  margin-left: 5px;
-  width: 60px;
-  height: 40px;
-  padding-left: 10px;
-  padding-top: 0px;
-  border-radius: 0px;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-}
+// .send {
+//   background: #0074aa;
+//   margin-left: 5px;
+//   width: 60px;
+//   height: 40px;
+//   padding-left: 10px;
+//   padding-top: 0px;
+//   border-radius: 0px;
+//   letter-spacing: 1px;
+//   border: none;
+//   cursor: pointer;
+// }
+
 .likesPanel {
   color: white;
   height: 30px;

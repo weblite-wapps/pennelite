@@ -40,10 +40,9 @@ const effectLikePen = action$ =>
 const effectPenButtonsClick = action$ =>
   action$.pipe(
     ofType(SET_CLICKEDPEN_ID),
-    tap(() => console.log('go to CreatePen')),
     // tap(() => console.log('history ', history)),
     // tap(() => push('CreatePen')),
-    tap(() => dispatchSetPage('CreatePen')),
+    tap(() => dispatchSetPage('RecentPens', 'CreatePen')),
     // tap(() => navigate('/CreatePen')),
     ignoreElements(),
   )

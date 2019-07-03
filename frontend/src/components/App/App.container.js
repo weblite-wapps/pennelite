@@ -21,7 +21,7 @@ const mapDispatchToProps = () => ({
   savePen: dispatchSavePen,
   changePreviewMode: dispatchChangePreviewMode,
   changeViewMode: dispatchChangePenViewMode,
-  changePage: newPage => dispatchSetPage(newPage),
+  changePage: (oldPage, newPage) => dispatchSetPage(oldPage, newPage),
   searchClick: dispatchSetSearchIsShown,
 })
 const mapStateToProps = () => ({

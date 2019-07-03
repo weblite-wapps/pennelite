@@ -17,19 +17,25 @@ class LeftIcon extends Component {
     const { page, changePage } = this.props
     // console.log('changePage ', changePage)
     return (
-      <>
+      <div className={classes.leftIcon}>
         {page === 'CreatePen' && (
           <Link to="/">
-            <Close onClick={() => changePage('RecentPens')} />
+            <Close
+              className={classes.button}
+              onClick={() => changePage('CreatePen', 'RecentPens')}
+            />
           </Link>
         )}
         {page === 'RecentPens' && (
           <Link to="/CreatePen">
-            <Plus onClick={() => changePage('CreatePen')} />
+            <Plus
+              className={classes.button}
+              onClick={() => changePage('RecentPens', 'CreatePen')}
+            />
           </Link>
         )}
         {/* {page === 'RecentPens' && <Plus />} */}
-      </>
+      </div>
     )
   }
 }
@@ -44,13 +50,18 @@ class RightIcon extends Component {
       <>
         {page === 'CreatePen' && (
           <>
-            <MoreIcon onClick={e => openMenu(e.currentTarget)}>
+            <MoreIcon
+              className={classes.button}
+              onClick={e => openMenu(e.currentTarget)}
+            >
               <Button aria-controls="simple-menu" aria-haspopup="true" />
             </MoreIcon>
             <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
           </>
         )}
-        {page === 'RecentPens' && <Search onClick={searchClick} />}
+        {page === 'RecentPens' && (
+          <Search className={classes.button} onClick={searchClick} />
+        )}
       </>
     )
   }

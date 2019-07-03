@@ -9,7 +9,10 @@ export const setData = createAction(SET_DATA, (user, wisId) => ({
 export const dispatchSetData = (...args) => dispatch(setData(...args))
 
 export const SET_PAGE = 'SET_PAGE'
-export const setPage = createAction(SET_PAGE)
+export const setPage = createAction(SET_PAGE, (oldPage, newPage) => ({
+  oldPage,
+  newPage,
+}))
 export const dispatchSetPage = (...args) => dispatch(setPage(...args))
 
 export const SET_ANCHOREL = 'SET_ANCHOREL'

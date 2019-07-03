@@ -8,8 +8,8 @@ export default props => (
     x="0px"
     y="0px"
     viewBox="0 0 491.86 491.86"
-    width="25px"
-    height="25px"
+    width="20px"
+    height="20px"
     {...props}
   >
     <g>
