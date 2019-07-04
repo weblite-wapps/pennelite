@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Edit from './../../../Svgs/Edit'
 
 // style
-import classes from '../../CreatePen.scss'
+import '../../CreatePen.scss'
 
 class Header extends Component {
   constructor(props) {
@@ -26,20 +26,20 @@ class Header extends Component {
   render() {
     const { editableTitle, title, titleModeChange, run } = this.props
     return (
-      <div className={classes.penTitleBar}>
+      <div className="penTitleBar">
         <div style={{ display: 'flex' }}>
           {(editableTitle && (
             <input
-              className={classes.title}
+              className="title"
               onChange={e => this.handleChange(e.target.value, 'title')}
               value={title}
               placeholder="title"
               type="search"
             />
           )) || <div style={{ width: '50px' }}>{title}</div>}
-          <Edit onClick={titleModeChange} className={classes.edit} />
+          <Edit onClick={titleModeChange} className="edit" />
         </div>
-        <button onClick={run} className={classes.run}>
+        <button onClick={run} className="run">
           RUN
         </button>
       </div>

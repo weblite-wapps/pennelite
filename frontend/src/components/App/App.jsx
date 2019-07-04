@@ -10,8 +10,6 @@ export default class App extends Component {
   // }
 
   componentDidMount() {
-    // if (window.W && window.W.wisId) this.handleWappMode()
-    // else this.handleNormalMode()
     if (process.env.NODE_ENV === 'production') this.handleWappMode()
     else this.handleNormalMode()
   }
@@ -19,10 +17,11 @@ export default class App extends Component {
   handleWappMode() {
     const { setData } = this.props
     window.W.loadData().then(({ user: { name } }) => {
+
       setData(name, window.W.wisId)
+      console.log('wappmode : userName ', name)
       // TODO SET USER AND WIS ID
     })
-    console.log('wappmode :')
   }
 
   handleNormalMode() {

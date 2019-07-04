@@ -18,7 +18,7 @@ export default class App extends React.Component {
         console.log('_id ', _id)
         if (_id) fetchPen({ _id })
       })
-    } else fetchPen({ _id: '5d19353d316e8f5678313c10' })
+    } else fetchPen({ _id: '' })
   }
 
   componentDidUpdate() {
@@ -40,7 +40,7 @@ export default class App extends React.Component {
         .catch(err => {
           console.log(
             `Error attempting to enable full-screen mode: ${err.message} (${
-              err.name
+            err.name
             })`,
           )
         })

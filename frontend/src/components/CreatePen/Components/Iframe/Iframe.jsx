@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import FullScreen from './../../../Svgs/FullScreen'
 
 // styles
-import classes from '../../CreatePen.scss'
+import '../../CreatePen.scss'
 
 class Iframe extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class Iframe extends Component {
     const { html, css, js } = this.props
     const iRef = this.iframeRef.contentWindow.document
     iRef.open()
-    iRef.write(html)
+    iRef.write(`<html><body>${html}</body></html>`)
     iRef.write(`<style>${css}</style>`)
     iRef.write(`<script>${js}</script>`)
     iRef.close()
@@ -110,21 +110,19 @@ class Iframe extends Component {
     return (
       <div>
         <div
-          className={classes.iframePanel}
+          className="iframePanel"
           style={{
             display: previewIsOpen ? '' : 'none',
           }}
         >
-          <FullScreen
-            onClick={this.fullScreen}
-            className={classes.fullScreen}
-          />
+          <FullScreen onClick={this.fullScreen} className="fullScreen" />
           <iframe
-            className={classes.iframe}
+            className="iframe"
             width="100%"
             ref={iframe => {
               this.iframeRef = iframe
             }}
+            color="white"
             allowFullScreen
             height="200px"
             title="penneliteIframe"

@@ -7,17 +7,12 @@ import Header from './Components/Header/Header.container'
 import Content from './CreatePen.helper'
 
 // styles
-import classes from './CreatePen.scss'
+import './CreatePen.scss'
 
 class CreatePen extends Component {
-  constructor(props) {
-    super(props)
-    // this.iRef = React.createRef()
-  }
-
   render() {
     return (
-      <div className={classes.root}>
+      <div className="root">
         <Header {...this.props} />
         <Content {...this.props} />
       </div>

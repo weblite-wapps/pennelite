@@ -7,7 +7,7 @@ import PenItems from './Components/PenItems/PenItems.container'
 // import Header from './Components/Header/Header.container'
 
 // styles
-import classes from './RecentPens.scss'
+import './RecentPens.scss'
 
 class Recentpens extends Component {
   componentDidMount() {
@@ -19,10 +19,10 @@ class Recentpens extends Component {
     const { pens, penClick, showSearch } = this.props
 
     return (
-      <div className={classes.root}>
+      <div className="root">
         {showSearch && (
           <input
-            className={classes.searchBar}
+            className="searchBar"
             autoFocus
             type="text"
             placeholder="Search here ..."

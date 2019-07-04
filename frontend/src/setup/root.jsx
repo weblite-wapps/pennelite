@@ -8,7 +8,9 @@ import {
   createMemorySource,
 } from '@reach/router'
 // Setup
+import './root.scss'
 import store from './redux'
+// Styles
 
 // Component
 import RecentPens from '../components/RecentPens/RecentPens.container'
@@ -20,8 +22,6 @@ import App from '../components/App/App.container'
 const source = createMemorySource()
 const history = createHistory(source)
 export const push = history.push
-
-import './root.scss'
 
 export default () => (
   <Provider store={store}>
