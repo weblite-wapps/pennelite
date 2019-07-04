@@ -14,38 +14,58 @@ import {
   SAVE_PEN,
   FETCH_PEN,
   dispatchSetIsSavedToTrue,
+  RUN_CLICK,
+  dispatchSetIframe,
+  dispatchSetRunningMode,
+  dispatchSetCurrentPenId,
 } from './CreatePen.action'
-import { codesView } from './CreatePen.reducer'
+import { codesView, _idView, writerView } from './CreatePen.reducer'
 
 import {
   postRequests,
   getRequests,
 } from '../../helper/functions/request.helper'
+import { appUserView } from '../App/App.reducer'
 
 const effectSavePenEpic = action$ =>
   action$.pipe(
     ofType(SAVE_PEN),
     tap(() =>
       postRequests('/updateCurrentPen')
-        .send(codesView())
-        // .then(res => console.log('res: ', res))
+        .send(
+          appUserView() === writerView()
+            ? codesView()
+            : { ...codesView(), _id: '', writer: appUserView() },
+        )
+        .then(res => dispatchSetCurrentPenId(R.prop('body', res)))
+        // .then(res => console.log(R.prop('body', res)))
         .catch(() => console.log("couldn't update")),
     ),
     tap(dispatchSetIsSavedToTrue),
     ignoreElements(),
   )
 
-// const effectFetchPenEpic = action$ =>
-//   action$.pipe(
-//     ofType(FETCH_PEN),
-//     pluck('payload'),
-//     mergeMap(({ writer, title }) =>
-//       getRequests('/fetchSinglePen').query({ writer, title }),
-//     ),
-//     filter(R.prop('body')),
-//     map(R.prop('body')),
-//     tap(R.forEachObjIndexed(dispatchChangePen)),
-//     ignoreElements(),
-//   )
+const effectRunPenEpic = action$ =>
+  action$.pipe(
+    ofType(RUN_CLICK),
+    tap(dispatchSetIframe),
+    tap(dispatchSetRunningMode),
+    ignoreElements(),
+  )
 
-export default combineEpics(effectSavePenEpic)
+const effectFetchPenEpic = action$ =>
+  action$.pipe(
+    ofType(FETCH_PEN),
+    filter(() => _idView()),
+    mergeMap(() => getRequests('/fetchSinglePen').query({ _id: _idView() })),
+    map(R.prop('body')),
+    tap(R.forEachObjIndexed(dispatchChangePen)),
+    tap(dispatchSetIframe),
+    ignoreElements(),
+  )
+
+export default combineEpics(
+  effectSavePenEpic,
+  effectRunPenEpic,
+  effectFetchPenEpic,
+)

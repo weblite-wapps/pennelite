@@ -13,8 +13,7 @@ import {
 } from '../../CreatePen.reducer'
 
 const mapDispatchToProps = () => ({
-  runMode: dispatchSetRunningMode,
-  fPen: getRequests,
+  // fPen: getRequests,
   changeIframe: dispatchChangeIframe,
 })
 

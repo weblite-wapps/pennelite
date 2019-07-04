@@ -2,15 +2,15 @@ import { connect } from 'react-redux'
 
 import PenItems from './PenItems'
 import { dispatchLikePen } from '../../RecentPens.action'
-import { appUserView } from '../../../App/App.reducer'
+import { appUserView, wisView } from '../../../App/App.reducer'
 
 const mapdispatchToProps = () => ({
-  send: (user, title, wisId) =>
+  send: _id =>
     window.W.sendMessageToCurrentChat('wapp', {
+      // TODO : FILL WITH INLINE WAPPID
       wappId: '',
-      wisId,
-      user,
-      title,
+      wisId: wisView(),
+      _id,
     }),
 
   like: (user, _id) => dispatchLikePen(user, _id),

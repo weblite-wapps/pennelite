@@ -1,7 +1,21 @@
 import Pen from '../models/Pen'
 
-export const savePen = ({ title, writer, html, css, js }) =>
-  Pen.updateOne({ writer, title }, { html, css, js }, { upsert: true }).exec()
+export const savePen = async ({ _id, title, writer, html, css, js }) => {
+  if (_id) {
+    return Pen.findOneAndUpdate(
+      { _id },
+      { writer, title, html, css, js },
+      { upsert: true, new: true },
+    )
+      .select({ _id, writer })
+      .exec()
+  } else {
+    var pen = await new Pen({ title, writer, html, css, js }).save()
+    // console.log('pen ', pen)
+    return { _id: pen._id, writer: pen.writer }
+  }
+}
+
 // console.log(
 //   'title: ',
 //   title,
@@ -28,12 +42,9 @@ export const deletePen = ({ writer, title }) =>
   Pen.deleteOne({ title, writer }).exec()
 
 export const fetchLastNinePens = () =>
-  Pen.find({}, { html: 0, css: 0, js: 0, __v: 0 })
-    .limit(9)
-    .exec()
+  Pen.find({}, { html: 0, css: 0, js: 0, __v: 0 }).exec()
 
-export const fetchSinglePen = (writer, title) =>
-  Pen.findOne({ writer, title }, { _id: 0, __v: 0 }).exec()
+export const fetchSinglePen = _id => Pen.findOne({ _id }, { __v: 0 }).exec()
 // console.log('writer, title :', writer, title)
 
 export const fetchWriterPens = writer =>

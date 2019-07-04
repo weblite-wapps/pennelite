@@ -5,8 +5,6 @@ import CreatePen from './CreatePen'
 import {
   dispatchChangePen,
   dispatchFetchPen,
-  dispatchChangeMenuMode,
-  dispatchCloseMenu,
   dispatchChangePreviewMode,
   dispatchChangePenViewMode,
   dispatchChangeTabIndex,
@@ -14,34 +12,34 @@ import {
   dispatchResetState,
   dispatchsetTitleEditMode,
   dispatchSetIframe,
+  dispatchRunClick,
 } from './CreatePen.action'
+
 import {
   htmlView,
   cssView,
   jsView,
   writerView,
   titleView,
-  menuView,
   previewView,
   viewModeView,
   tabIndexView,
   isSavedView,
   titleEditModeView,
+  _idView,
 } from './CreatePen.reducer'
-import { appUserView } from '../App/App.reducer'
+import { appUserView, pageView } from '../App/App.reducer'
 
 const mapDispatchTpProps = () => ({
   fetchPen: dispatchFetchPen,
   changePen: dispatchChangePen,
-  changeMenu: dispatchChangeMenuMode,
-  closeMenu: dispatchCloseMenu,
-  changePreviewMode: dispatchChangePreviewMode,
-  changeViewMode: dispatchChangePenViewMode,
+  // changeMenu: dispatchChangeMenuMode,
   changeTab: dispatchChangeTabIndex,
   setWriter: dispatchSetWriterCurrentPen,
   clearState: dispatchResetState,
   titleModeChange: dispatchsetTitleEditMode,
-  updatePen: dispatchSetIframe,
+  run: dispatchRunClick,
+  // updatePen: dispatchSetIframe,
 })
 
 const mapStateToprops = () => ({
@@ -51,12 +49,13 @@ const mapStateToprops = () => ({
   writerName: writerView(),
   title: titleView(),
   isSaved: isSavedView(),
-  isMenuOpen: menuView(),
   previewIsOpen: previewView(),
   viewMode: viewModeView(),
   tabIndex: tabIndexView(),
   appUser: appUserView(),
   editableTitle: titleEditModeView(),
+  page: pageView(),
+  _id: _idView(),
 })
 
 export default connect(

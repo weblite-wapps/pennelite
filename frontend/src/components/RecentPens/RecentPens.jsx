@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // local modules
 import PenItems from './Components/PenItems/PenItems.container'
-import Header from './Components/Header/Header.container'
+// import Header from './Components/Header/Header.container'
 
 // styles
 import classes from './RecentPens.scss'
@@ -16,19 +16,18 @@ class Recentpens extends Component {
   }
 
   render() {
-    const { pens, penClick, showSearch, ...props } = this.props
+    const { pens, penClick, showSearch } = this.props
 
     return (
       <div className={classes.root}>
-        <Header {...props} />
         {showSearch && (
           <input
             className={classes.searchBar}
+            autoFocus
             type="text"
             placeholder="Search here ..."
           />
         )}
-
         <PenItems pens={pens} penClick={penClick} />
       </div>
     )

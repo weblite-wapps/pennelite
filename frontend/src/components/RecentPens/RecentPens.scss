@@ -1,52 +1,10 @@
-.root {
-  background-color: black;
-  color: white;
-  padding: 15px;
-  width: 300px;
-}
-
-.header {
-  height: 18px;
-  display: flex;
-  justify-content: space-between;
-  //   width: 100%;
-  margin-bottom: 10px;
-}
-.title {
-  display: flex;
-  font-size: 18px;
-  letter-spacing: 2px;
-  font-weight: 1000;
-  :hover {
-    cursor: pointer;
-  }
-}
-.lite {
-  background: red;
-  font-size: 10px;
-  letter-spacing: 0px;
-  margin-left: 3px;
-  margin-top: 2px;
-  padding: 1px 6px 8px 6px;
-  text-justify: auto;
-}
-
-.plus {
-  width: 15px;
-  height: 15px;
-}
-
-.search {
-  width: 15px;
-  height: 15px;
-}
-
 .penItems {
-  border-top: 1px solid #444343;
+  margin: 10px;
+  border-bottom: 1px solid #2c2c2c;
 }
 
 .penHeader {
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
 .penFooter {
@@ -54,38 +12,19 @@
   justify-content: space-between;
 }
 
-.edit {
-  background: #444343;
+.penButton {
   height: 20px;
   margin-left: 5px;
-  width: 45px;
-  padding-left: 10px;
-  padding-top: 0px;
+  width: 50px;
   border-radius: 0px;
   letter-spacing: 1px;
-}
-.run {
-  background: #aa0000;
-  margin-left: 5px;
-  height: 20px;
-  width: 40px;
-  padding-left: 7px;
-  padding-top: 0px;
-  border-radius: 0px;
-  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-.send {
-  background: #0074aa;
-  margin-left: 5px;
-  width: 55px;
-  height: 20px;
-  padding-left: 10px;
-  padding-top: 0px;
-  border-radius: 0px;
-  letter-spacing: 1px;
-}
 .likesPanel {
+  color: white;
   height: 30px;
   font-size: 17px;
   display: flex;
@@ -95,7 +34,6 @@
   height: 15px;
   margin-right: 0px;
   padding-right: 0px;
-  //   background: #ffffff;
 }
 
 .searchBar {

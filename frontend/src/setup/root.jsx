@@ -13,12 +13,15 @@ import store from './redux'
 // Component
 import RecentPens from '../components/RecentPens/RecentPens.container'
 import CreatePen from '../components/CreatePen/CreatePen.container'
-import Dashboard from '../components/Dashboard/Dashboard.container'
+// import Dashboard from '../components/Dashboard/Dashboard.container'
 import App from '../components/App/App.container'
 // import PenNaming from '../components/App/App.container'
 
 const source = createMemorySource()
 const history = createHistory(source)
+export const push = history.push
+
+import './root.scss'
 
 export default () => (
   <Provider store={store}>
@@ -26,7 +29,7 @@ export default () => (
       <App />
       <Router>
         <RecentPens path="/" />
-        <Dashboard path="/Dashboard" />
+        {/* <Dashboard path="/Dashboard" /> */}
         <CreatePen path="/CreatePen" />
         {/* <PenNaming path="/" /> */}
       </Router>

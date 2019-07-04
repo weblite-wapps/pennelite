@@ -15,12 +15,10 @@ export default class CodesContent extends React.PureComponent {
   handleTabChange(event, value) {
     const { changeTab } = this.props
     changeTab(value)
-    // console.log('event, value', event, value)
   }
 
   handleCodeChange(text, type) {
     const { changePen } = this.props
-    // console.log('text, type :', text, type)
     changePen(text, type)
   }
 
@@ -35,7 +33,11 @@ export default class CodesContent extends React.PureComponent {
     return (
       <div>
         {viewMode === 'tabular' && (
-          <Tabs scrollable value={tabIndex} onChange={this.handleTabChange}>
+          <Tabs
+            variant="scrollable"
+            value={tabIndex}
+            onChange={this.handleTabChange}
+          >
             <Tab label="html" />
             <Tab label="css" />
             <Tab label="js" />

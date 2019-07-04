@@ -2,8 +2,8 @@
   "name": "inline",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node ../../../tools/buildlite/src/index.js default dev",
-    "build": "../../../tools/buildlite/src/index.js default build"
+    "dev": "buildlite default dev",
+    "build": "buildlite default build"
   },
   "buildlite": {
     "default": {

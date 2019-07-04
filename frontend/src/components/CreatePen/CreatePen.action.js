@@ -1,24 +1,19 @@
 import { createAction } from 'redux-actions'
 import { dispatch } from '../../setup/redux'
 
-export const SET_WRITER_AND_TITLE = 'SET_WRITER_AND_TITLE'
-export const setWriterAndTitle = createAction(
-  SET_WRITER_AND_TITLE,
-  ({ writer, title, mode, _id }) => ({
-    writer,
-    title,
-    mode,
+export const SET_CLICKEDPEN_ID = 'SET_CLICKEDPEN_ID'
+export const setClickedPenId = createAction(
+  SET_CLICKEDPEN_ID,
+  ({ _id, mode }) => ({
     _id,
+    mode,
   }),
 )
-export const dispatchSetWriterTitle = (...args) =>
-  dispatch(setWriterAndTitle(...args))
+export const dispatchSetClickedPenId = (...args) =>
+  dispatch(setClickedPenId(...args))
 
 export const FETCH_PEN = 'FETCH_PEN'
-export const fetchPen = createAction(FETCH_PEN, (writer, title) => ({
-  writer,
-  title,
-}))
+export const fetchPen = createAction(FETCH_PEN)
 export const dispatchFetchPen = (...args) => dispatch(fetchPen(...args))
 // console.log(...args)
 
@@ -34,14 +29,6 @@ export const dispatchChangePen = (...args) => dispatch(changePen(...args))
 export const SAVE_PEN = 'SAVE_PEN'
 export const savePen = createAction(SAVE_PEN)
 export const dispatchSavePen = () => dispatch(savePen())
-
-export const CHANGE_MENU_MODE = 'CHANGE_MENU_MODE'
-export const changeMenuMode = createAction(CHANGE_MENU_MODE)
-export const dispatchChangeMenuMode = () => dispatch(changeMenuMode())
-
-export const CLOSE_MENU = 'CLOSE_MENU'
-export const closeMenu = createAction(CLOSE_MENU)
-export const dispatchCloseMenu = () => dispatch(closeMenu())
 
 export const CHANGE_PREVIEW_MODE = 'CHANGE_PREVIEW_MODE'
 export const changePreviewMode = createAction(CHANGE_PREVIEW_MODE)
@@ -98,3 +85,11 @@ export const changeIframe = createAction(CHANGE_IFRAME, (value, type) => ({
   type,
 }))
 export const dispatchChangeIframe = (...args) => dispatch(changeIframe(...args))
+
+export const RUN_CLICK = 'RUN_CLICK'
+export const runClick = createAction(RUN_CLICK)
+export const dispatchRunClick = () => dispatch(runClick())
+
+export const SET_CURRENTPEN_ID = 'SET_CURRENTPEN_ID'
+export const setCurrentPenId = createAction(SET_CURRENTPEN_ID)
+export const dispatchSetCurrentPenId = args => dispatch(setCurrentPenId(args))

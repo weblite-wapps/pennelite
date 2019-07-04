@@ -5,11 +5,10 @@ import PropTypes from 'prop-types'
 
 // local modules
 // import { IconButton } from 'weblite-web-relite'
-import FullScreen from '../Svgs/FullScreen'
+import FullScreen from './../../../Svgs/FullScreen'
 
 // styles
 import classes from '../../CreatePen.scss'
-import { dispatchChangePen } from '../../CreatePen.action'
 
 class Iframe extends Component {
   constructor(props) {
@@ -24,28 +23,30 @@ class Iframe extends Component {
   // }
 
   componentDidMount() {
+    const { fetchPen } = this.props
+    fetchPen()
+    // console.log('fetchPen ', fetchPen)
     // const { htmlContent, cssContent, jsContent } = this.props
-    // console.log('htmlContent ', htmlContent)
     // const iRef = this.iframeRef.contentWindow.document
-
     // iRef.open()
     // iRef.write(htmlContent)
     // iRef.write(`<style>${cssContent}</style>`)
     // iRef.write(`<script>${jsContent}</script>`)
     // iRef.close()
     // const iRef = this.iframeRef.contentWindow.document
-
-    const { fPen, writerName, title, changeIframe } = this.props
-    fPen('/fetchSinglePen')
-      .query({ writer: writerName, title })
-      .then(res => res.body)
-      .then(R.forEachObjIndexed(dispatchChangePen))
-      .then(({ html, css, js }) => {
-        changeIframe(html, 'iframeHtml')
-        changeIframe(css, 'iframeCss')
-        changeIframe(js, 'iframeJs')
-      })
-      .catch(console.log)
+    // const { fPen, changeIframe, _id } = this.props
+    // console.log('_id', _id)
+    // fPen('/fetchSinglePen')
+    // .query({ _id })
+    // .then(res => res.body)
+    // .then(console.log)
+    // .then(R.forEachObjIndexed(dispatchChangePen))
+    // .then(({ html, css, js }) => {
+    //   changeIframe(html, 'iframeHtml')
+    //   changeIframe(css, 'iframeCss')
+    //   changeIframe(js, 'iframeJs')
+    // })
+    // .catch(console.log)
     // R.map(console.log, body)
     // { body }) => {
     // console.log(html)
@@ -69,7 +70,7 @@ class Iframe extends Component {
     const { html, css, js } = this.props
     const iRef = this.iframeRef.contentWindow.document
     iRef.open()
-    iRef.write(html)
+    iRef.write(`<html><body>${html}</body></html>`)
     iRef.write(`<style>${css}</style>`)
     iRef.write(`<script>${js}</script>`)
     iRef.close()
@@ -108,13 +109,8 @@ class Iframe extends Component {
     const { previewIsOpen } = this.props
     return (
       <div>
-        {/* <button type="button" > */}
-        {/* fullScreen */}
-        {/* </button> */}
-        {/* <button type="button" onClick={this.run}>
-          run
-        </button> */}
         <div
+          className={classes.iframePanel}
           style={{
             display: previewIsOpen ? '' : 'none',
           }}
@@ -125,11 +121,11 @@ class Iframe extends Component {
           />
           <iframe
             className={classes.iframe}
-            width="300px"
-            // ref={ref}
+            width="100%"
             ref={iframe => {
               this.iframeRef = iframe
             }}
+            color="white"
             allowFullScreen
             height="200px"
             title="penneliteIframe"

@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from '@reach/router'
 // local modules
-import { IconButton } from 'weblite-web-relite'
+import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 import classes from '../../RecentPens.scss'
 // svgs
-import Disliked from '../../Svgs/disliked'
+import Disliked from '../../../Svgs/disliked'
 
 const PenItems = ({ user, pens, send, like, penClick }) =>
   pens.map(pen => (
-    <div className={classes.penItems} key={`${pen.writer}${pen.title}`}>
+    <div className={classes.penItems} key={`${pen._id}`}>
       <div className={classes.penHeader} role="presentation">
         <table>
           <tbody>
@@ -27,29 +28,34 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
       <div className={classes.penFooter}>
         <div className={classes.buttonPanel}>
           <Link to="/CreatePen">
-            <IconButton
-              className={classes.edit}
-              onClick={() => penClick({ ...pen, mode: 'EDIT' })}
+            <button
+              // color="secondary"
+              // variant="contained"
+              style={{ background: '#2C2C2C', color: '#F5F5F5' }}
+              className={classes.penButton}
+              onClick={() => penClick({ _id: pen._id, mode: 'EDIT' })}
             >
               EDIT
-            </IconButton>
+            </button>
           </Link>
           <Link to="/CreatePen">
-            <IconButton
-              className={classes.run}
-              onClick={() => penClick({ ...pen, mode: 'RUN' })}
+            <button
+              style={{ background: '#AA0000', color: '#F5F5F5' }}
+              className={classes.penButton}
+              onClick={() => penClick({ _id: pen._id, mode: 'RUN' })}
             >
               RUN
-            </IconButton>
+            </button>
           </Link>
-          <IconButton
-            className={classes.send}
+          <button
+            style={{ background: '#0074AA', color: '#F5F5F5' }}
+            className={classes.penButton}
             onClick={() => send(pen.writer, pen.title, 'wis')}
           >
             SEND
-          </IconButton>
+          </button>
         </div>
-        <div className={classes.likesPanel}>
+        {/* <div className={classes.likesPanel}>
           {pen.likeCnt}
           <div>
             <Disliked
@@ -57,7 +63,7 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
               className={classes.disliked}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   ))

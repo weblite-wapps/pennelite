@@ -1,6 +1,7 @@
 // modules
-import { Component } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Header from './App.helper'
 export default class App extends Component {
   // constructor(props) {
   //   super(props)
@@ -31,7 +32,7 @@ export default class App extends Component {
   }
 
   render() {
-    return null
+    return <Header {...this.props} />
   }
 }
 
