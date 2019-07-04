@@ -47,7 +47,7 @@ class RightIcon extends Component {
   render() {
     const { page, anchorEl, openMenu, searchClick } = this.props
     return (
-      <>
+      <div className={classes.rightIcon}>
         {page === 'CreatePen' && (
           <>
             <MoreIcon
@@ -59,10 +59,10 @@ class RightIcon extends Component {
             <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
           </>
         )}
-        {page === 'RecentPens' && (
+        {/* {page === 'RecentPens' && (
           <Search className={classes.button} onClick={searchClick} />
-        )}
-      </>
+        )} */}
+      </div>
     )
   }
 }

@@ -70,7 +70,7 @@ class Iframe extends Component {
     const { html, css, js } = this.props
     const iRef = this.iframeRef.contentWindow.document
     iRef.open()
-    iRef.write(html)
+    iRef.write(`<html><body>${html}</body></html>`)
     iRef.write(`<style>${css}</style>`)
     iRef.write(`<script>${js}</script>`)
     iRef.close()
@@ -125,6 +125,7 @@ class Iframe extends Component {
             ref={iframe => {
               this.iframeRef = iframe
             }}
+            color="white"
             allowFullScreen
             height="200px"
             title="penneliteIframe"

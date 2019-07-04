@@ -21,14 +21,14 @@ import {
 } from './CreatePen.action'
 // import { userView } from '../App/App.reducer'
 
-const defaultHtml = `<html>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>`
+// const defaultHtml = `<html>
+//   <body>
+//     <div id="root"></div>
+//   </body>
+// </html>`
 // state
 const initialState = {
-  html: defaultHtml,
+  html: '',
   css: '',
   js: '',
   writer: '',
