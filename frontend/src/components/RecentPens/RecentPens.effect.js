@@ -18,6 +18,7 @@ import { dispatchSetPage } from '../App/App.action'
 const effectFetchRecentPensEpic = action$ =>
   action$.pipe(
     ofType(FETCH_RECENT_PENS),
+    tap(() => console.log("start fetching")),
     mergeMap(() => getRequests('/').catch(console.log)),
     filter(pens => R.prop('body', pens)),
     pluck('body'),

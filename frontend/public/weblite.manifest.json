@@ -1,10 +1,10 @@
 {
     "name": "pennelite",
-    "id": "",
+    "id": "5d1e07bd4e843d1078d59f88",
     "searchable": true,
     "instantiable": true,
     "creator": true,
-    "inline": true,
+    "inline": false,
     "shareDB": false,
     "userInfo": true,
     "servIndexes": {

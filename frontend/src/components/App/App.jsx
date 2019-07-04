@@ -17,10 +17,11 @@ export default class App extends Component {
   handleWappMode() {
     const { setData } = this.props
     window.W.loadData().then(({ user: { name } }) => {
+
       setData(name, window.W.wisId)
+      console.log('wappmode : userName ', name)
       // TODO SET USER AND WIS ID
     })
-    console.log('wappmode :')
   }
 
   handleNormalMode() {
