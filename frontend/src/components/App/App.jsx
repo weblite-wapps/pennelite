@@ -10,8 +10,6 @@ export default class App extends Component {
   // }
 
   componentDidMount() {
-    // if (window.W && window.W.wisId) this.handleWappMode()
-    // else this.handleNormalMode()
     if (process.env.NODE_ENV === 'production') this.handleWappMode()
     else this.handleNormalMode()
   }

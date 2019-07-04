@@ -146,6 +146,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mong
 
 /***/ }),
 
+/***/ "./setup/dev.index.js":
+/*!****************************!*\
+  !*** ./setup/dev.index.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(4200, () => console.log('listening  4200'));\n\n//# sourceURL=webpack:///./setup/dev.index.js?");
+
+/***/ }),
+
 /***/ "./setup/mongodb.js":
 /*!**************************!*\
   !*** ./setup/mongodb.js ***!
@@ -155,18 +167,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mong
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nmongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connect('mongodb://localhost:27017/Pennelite', {\n  useNewUrlParser: true\n});\nconst db = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connection;\ndb.on('connected', () => console.log('Connection to MongoDb is established!'));\ndb.on('error', console.log);\n\n//# sourceURL=webpack:///./setup/mongodb.js?");
-
-/***/ }),
-
-/***/ "./setup/prod.index.js":
-/*!*****************************!*\
-  !*** ./setup/prod.index.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(4200, () => console.log('listening  4200'));\n\n//# sourceURL=webpack:///./setup/prod.index.js?");
 
 /***/ }),
 
@@ -183,13 +183,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var expr
 /***/ }),
 
 /***/ 0:
-/*!***********************************!*\
-  !*** multi ./setup/prod.index.js ***!
-  \***********************************/
+/*!**********************************!*\
+  !*** multi ./setup/dev.index.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./setup/prod.index.js */\"./setup/prod.index.js\");\n\n\n//# sourceURL=webpack:///multi_./setup/prod.index.js?");
+eval("module.exports = __webpack_require__(/*! ./setup/dev.index.js */\"./setup/dev.index.js\");\n\n\n//# sourceURL=webpack:///multi_./setup/dev.index.js?");
 
 /***/ }),
 

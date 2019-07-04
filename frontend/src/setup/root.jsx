@@ -8,9 +8,9 @@ import {
   createMemorySource,
 } from '@reach/router'
 // Setup
+import './root.scss'
 import store from './redux'
 // Styles
-import './root.scss'
 
 // Component
 import RecentPens from '../components/RecentPens/RecentPens.container'
