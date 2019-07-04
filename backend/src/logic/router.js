@@ -14,13 +14,11 @@ const router = Router()
 
 router.get('/', (req, res) =>
   fetchLastNinePens()
-    // .then(pens => console.log( pens, liked: true ))
     .then(pens => res.send(pens))
     .catch(() => console.log('there is not nine in db')),
 )
 
 router.post('/updateCurrentPen', ({ body }, res) => {
-  // console.log('body :', body),
   savePen(body)
     // .then(resp => console.log(resp))
     .then(resp => res.send(resp))
