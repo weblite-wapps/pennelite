@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // Components
-import MoreIcon from './../Svgs/more'
+import MoreIcon from './../Svgs/More'
 import Close from './../Svgs/Close'
 import Plus from './../Svgs/Plus'
 import Search from './../Svgs/Search'

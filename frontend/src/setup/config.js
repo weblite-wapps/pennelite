@@ -1,3 +1,3 @@
 export default (process.env.NODE_ENV === 'production'
   ? 'https://wapp.weblite.me/pennelite'
-  : 'http://localhost:3080')
+  : 'http://localhost:4200')

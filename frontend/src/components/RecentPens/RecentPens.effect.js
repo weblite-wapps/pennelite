@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import { ofType, combineEpics } from 'redux-observable'
 import {
   mergeMap,

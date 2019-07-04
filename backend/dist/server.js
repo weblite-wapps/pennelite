@@ -118,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Pen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pen */ \"./logic/Pen.js\");\n/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ \"./logic/User.js\");\n\n\n\nconst router = Object(express__WEBPACK_IMPORTED_MODULE_0__[\"Router\"])();\nrouter.get('/', (req, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchLastNinePens\"])() // .then(pens => console.log( pens, liked: true ))\n.then(pens => res.send(pens)).catch(() => console.log('there is not nine in db')));\nrouter.post('/updateCurrentPen', ({\n  body\n}, res) => {\n  // console.log('body :', body),\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"savePen\"])(body) // .then(resp => console.log(resp))\n  .then(resp => res.send(resp)).catch(() => console.log(\"couldn't save current pen\"));\n});\nrouter.get('/fetchSinglePen', ({\n  query: {\n    _id\n  }\n}, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchSinglePen\"])(_id).then(pen => res.send(pen)) // console.log(user, title),\n);\nrouter.get('/fetchWriterPens', ({\n  query: {\n    writer\n  }\n}, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchWriterPens\"])(writer).then(pens => res.send(pens)) // console.log('query :', query),\n);\nrouter.get('/likePen', ({\n  query: {\n    user,\n    _id\n  }\n}, res) => {\n  // console.log(user, _id)\n  Object(_User__WEBPACK_IMPORTED_MODULE_2__[\"likePen\"])(user, _id).then(() => res.send('liked succesfully')).catch(() => console.log('unable to like'));\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"incPenLikes\"])(_id).then(() => console.log('increased')).catch(() => console.log('unable to increase'));\n});\nrouter.get('/dislikePen', ({\n  query: {\n    user,\n    _id\n  }\n}, res) => {\n  Object(_User__WEBPACK_IMPORTED_MODULE_2__[\"dislikePen\"])(user, _id).then(() => res.send('disliked succesfully')).catch(() => console.log('unable to dislike'));\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"incPenLikes\"])(_id).then(() => console.log('increased')).catch(() => console.log('unable to increase'));\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (router);\n\n//# sourceURL=webpack:///./logic/router.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Pen__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pen */ \"./logic/Pen.js\");\n/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./User */ \"./logic/User.js\");\n\n\n\nconst router = Object(express__WEBPACK_IMPORTED_MODULE_0__[\"Router\"])();\nrouter.get('/', (req, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchLastNinePens\"])().then(pens => res.send(pens)).catch(() => console.log('there is not nine in db')));\nrouter.post('/updateCurrentPen', ({\n  body\n}, res) => {\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"savePen\"])(body) // .then(resp => console.log(resp))\n  .then(resp => res.send(resp)).catch(() => console.log(\"couldn't save current pen\"));\n});\nrouter.get('/fetchSinglePen', ({\n  query: {\n    _id\n  }\n}, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchSinglePen\"])(_id).then(pen => res.send(pen)) // console.log(user, title),\n);\nrouter.get('/fetchWriterPens', ({\n  query: {\n    writer\n  }\n}, res) => Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"fetchWriterPens\"])(writer).then(pens => res.send(pens)) // console.log('query :', query),\n);\nrouter.get('/likePen', ({\n  query: {\n    user,\n    _id\n  }\n}, res) => {\n  // console.log(user, _id)\n  Object(_User__WEBPACK_IMPORTED_MODULE_2__[\"likePen\"])(user, _id).then(() => res.send('liked succesfully')).catch(() => console.log('unable to like'));\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"incPenLikes\"])(_id).then(() => console.log('increased')).catch(() => console.log('unable to increase'));\n});\nrouter.get('/dislikePen', ({\n  query: {\n    user,\n    _id\n  }\n}, res) => {\n  Object(_User__WEBPACK_IMPORTED_MODULE_2__[\"dislikePen\"])(user, _id).then(() => res.send('disliked succesfully')).catch(() => console.log('unable to dislike'));\n  Object(_Pen__WEBPACK_IMPORTED_MODULE_1__[\"incPenLikes\"])(_id).then(() => console.log('increased')).catch(() => console.log('unable to increase'));\n});\n/* harmony default export */ __webpack_exports__[\"default\"] = (router);\n\n//# sourceURL=webpack:///./logic/router.js?");
 
 /***/ }),
 
@@ -146,18 +146,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mong
 
 /***/ }),
 
-/***/ "./setup/dev.index.js":
-/*!****************************!*\
-  !*** ./setup/dev.index.js ***!
-  \****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(3080, () => console.log('listening  3080'));\n\n//# sourceURL=webpack:///./setup/dev.index.js?");
-
-/***/ }),
-
 /***/ "./setup/mongodb.js":
 /*!**************************!*\
   !*** ./setup/mongodb.js ***!
@@ -167,6 +155,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n\nmongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connect('mongodb://localhost:27017/Pennelite', {\n  useNewUrlParser: true\n});\nconst db = mongoose__WEBPACK_IMPORTED_MODULE_0___default.a.connection;\ndb.on('connected', () => console.log('Connection to MongoDb is established!'));\ndb.on('error', console.log);\n\n//# sourceURL=webpack:///./setup/mongodb.js?");
+
+/***/ }),
+
+/***/ "./setup/prod.index.js":
+/*!*****************************!*\
+  !*** ./setup/prod.index.js ***!
+  \*****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! http */ \"http\");\n/* harmony import */ var http__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _server__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server */ \"./setup/server.js\");\n/* harmony import */ var _mongodb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mongodb */ \"./setup/mongodb.js\");\n// modules\n // components\n\n\n // http.createServer(app).listen(3080)\n\n_server__WEBPACK_IMPORTED_MODULE_1__[\"default\"].listen(4200, () => console.log('listening  4200'));\n\n//# sourceURL=webpack:///./setup/prod.index.js?");
 
 /***/ }),
 
@@ -183,13 +183,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var expr
 /***/ }),
 
 /***/ 0:
-/*!**********************************!*\
-  !*** multi ./setup/dev.index.js ***!
-  \**********************************/
+/*!***********************************!*\
+  !*** multi ./setup/prod.index.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./setup/dev.index.js */\"./setup/dev.index.js\");\n\n\n//# sourceURL=webpack:///multi_./setup/dev.index.js?");
+eval("module.exports = __webpack_require__(/*! ./setup/prod.index.js */\"./setup/prod.index.js\");\n\n\n//# sourceURL=webpack:///multi_./setup/prod.index.js?");
 
 /***/ }),
 
