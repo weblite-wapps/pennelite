@@ -8,7 +8,7 @@ const mapdispatchToProps = () => ({
   send: _id =>
     window.W.sendMessageToCurrentChat('wapp', {
       // TODO : FILL WITH INLINE WAPPID
-      wappId: '5d1e07bd4e843d1078d59f88',
+      wappId: '5d1f352a4e843d1078d59f89',
       wisId: '',
       _id,
     }),
