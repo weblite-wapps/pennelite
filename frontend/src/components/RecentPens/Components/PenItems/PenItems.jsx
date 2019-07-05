@@ -50,7 +50,7 @@ const PenItems = ({ user, pens, send, like, penClick }) =>
           <button
             style={{ background: '#0074AA', color: '#F5F5F5' }}
             className="penButton"
-            onClick={() => send(pen.writer, pen.title, 'wis')}
+            onClick={() => send(pen._id)}
           >
             SEND
           </button>

@@ -14,12 +14,11 @@ export default class App extends React.Component {
   componentWillMount() {
     const { fetchPen } = this.props
     if (window && window.W) {
-      window.W.loadData().then(({ customize }) => {
-        console.log("id inline: ", customize)
-        // if (id) fetchPen({ id })
+      window.W.loadData().then(({ customize: { _id } }) => {
+        if (_id) fetchPen({ _id })
+        window.W.start()
       })
-    // } else fetchPen({ id: '' })
-  }
+    } else fetchPen({ _id: '' })
 }
 
   componentDidUpdate() {
