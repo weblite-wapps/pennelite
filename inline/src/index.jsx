@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 // components
-import Root from './root'
+import Root from './setup/root'
 
 const renderPenneliteInline = () =>
   render(
@@ -16,4 +16,4 @@ const renderPenneliteInline = () =>
 renderPenneliteInline()
 
 // Hot Module Replacement API
-if (module.hot) module.hot.accept('./root', renderPenneliteInline)
+if (module.hot) module.hot.accept('./setup/root', renderPenneliteInline)
