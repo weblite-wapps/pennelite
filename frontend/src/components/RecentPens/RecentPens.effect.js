@@ -7,8 +7,15 @@ import {
   ignoreElements,
   tap,
   filter,
+  debounceTime,
 } from 'rxjs/operators'
-import { FETCH_RECENT_PENS, setRecentPens, LIKE_PEN } from './RecentPens.action'
+import {
+  FETCH_RECENT_PENS,
+  setRecentPens,
+  LIKE_PEN,
+  SET_SEARCH_QUERY,
+  dispatchSetRecentPens,
+} from './RecentPens.action'
 import { getRequests } from '../../helper/functions/request.helper'
 import { SET_CLICKEDPEN_ID } from '../CreatePen/CreatePen.action'
 import { navigate } from '@reach/router'
@@ -48,8 +55,25 @@ const effectPenButtonsClick = action$ =>
     ignoreElements(),
   )
 
+const effectSearchPens = action$ =>
+  action$.pipe(
+    ofType(SET_SEARCH_QUERY),
+    debounceTime(600),
+    pluck('payload'),
+    mergeMap(searchQuery =>
+      getRequests('/searchPen')
+        .query({ searchQuery })
+        // .then(res => console.log(res))
+        .catch(console.log),
+    ),
+    pluck('body'),
+    tap(dispatchSetRecentPens),
+    ignoreElements(),
+  )
+
 export default combineEpics(
   effectFetchRecentPensEpic,
   effectLikePen,
   effectPenButtonsClick,
+  effectSearchPens,
 )

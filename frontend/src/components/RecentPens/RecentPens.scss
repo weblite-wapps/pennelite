@@ -1,29 +1,42 @@
-.penItems {
-  margin: 10px;
+.c--recentPens-root {
+  margin: 0px 26px 0px 26px;
+}
+.c--pen-item {
   border-bottom: 1px solid #2c2c2c;
 }
 
-.penHeader {
-  color: #f5f5f5;
+.c--pen-header {
+  margin-top: 10px;
+  color: #a3a3a3;
 }
 
-.penFooter {
+.c--pen-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.c--pen-writer {
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.c--pen-footer {
   display: flex;
   justify-content: space-between;
 }
 
-.penButton {
+.c--pen-Button {
   height: 20px;
   margin-left: 5px;
-  width: 50px;
-  border-radius: 0px;
-  letter-spacing: 1px;
+  width: auto;
+  letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
   margin-bottom: 10px;
 }
 
-.likesPanel {
+.c--recentPens-likePanel {
   color: white;
   height: 30px;
   font-size: 17px;
@@ -36,13 +49,13 @@
   padding-right: 0px;
 }
 
-.searchBar {
+.c--recentPens-searchBar {
   background: #1a1a1a;
   border: 0.5px solid #444343;
   width: 90%;
-  height: 20px;
+  height: 30px;
   border-radius: 5px;
   color: white;
   padding-left: 15px;
-  margin: 0px 10px 10px 10px;
+  margin: 0px auto 10px auto;
 }

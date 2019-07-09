@@ -16,14 +16,22 @@ class Recentpens extends Component {
   }
 
   render() {
-    const { pens, penClick, showSearch } = this.props
+    const {
+      pens,
+      penClick,
+      showSearch,
+      searchQuery,
+      setSearchQuery,
+    } = this.props
 
     return (
-      <div className="root">
+      <div className="c--recentPens-root">
         {showSearch && (
           <input
-            className="searchBar"
+            className="c--recentPens-searchBar"
             autoFocus
+            onChange={setSearchQuery}
+            value={searchQuery}
             type="text"
             placeholder="Search here ..."
           />

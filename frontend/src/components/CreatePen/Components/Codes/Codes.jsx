@@ -1,10 +1,10 @@
 // Modules
 import React from 'react'
 import PropTypes from 'prop-types'
-import Editor from 'react-simple-code-editor'
-import { highlight, languages } from 'prismjs/components/prism-core'
-import 'prismjs/components/prism-clike'
-import 'prismjs/components/prism-javascript'
+// import Editor from 'react-simple-code-editor'
+// import { highlight, languages } from 'prismjs/components/prism-core'
+// import 'prismjs/components/prism-clike'
+// import 'prismjs/components/prism-javascript'
 // material Components
 import { Tab, Tabs } from '@material-ui/core'
 import '../../CreatePen.scss'
@@ -51,13 +51,13 @@ export default class CodesContent extends React.PureComponent {
         {(viewMode === 'simple' || tabIndex === 0) && (
           <div className="codesPanel">
             {viewMode === 'simple' && <span className="codeTitle">html</span>}
-              <textarea
-                className="codes"
-                onChange={e => this.handleCodeChange(e.target.value, 'html')}
-                value={htmlContent}
-                cols="38"
-                rows="7"
-              />
+            <textarea
+              className="codes"
+              onChange={e => this.handleCodeChange(e.target.value, 'html')}
+              value={htmlContent}
+              cols="38"
+              rows="7"
+            />
           </div>
         )}
         {(viewMode === 'simple' || tabIndex === 1) && (
@@ -76,7 +76,7 @@ export default class CodesContent extends React.PureComponent {
           <div className="codesPanel">
             {viewMode === 'simple' && <span className="codeTitle">js</span>}
             {/* <SyntaxHighlighter language="javascript" style={docco}> */}
-            <Editor
+            {/* <Editor
               className="codes"
               onChange={e => this.handleCodeChange(e.target.value, 'js')}
               value={jsContent}
@@ -88,16 +88,15 @@ export default class CodesContent extends React.PureComponent {
                 fontFamily: '"Fira code", "Fira Mono", monospace',
                 fontSize: 12,
               }}
+            /> */}
+            <textarea
+              className="codes"
+              onChange={e => this.handleCodeChange(e.target.value, 'js')}
+              value={jsContent}
+              cols="38"
+              rows="7"
             />
-              {/* <textarea
-                className="codes"
-                onChange={e => this.handleCodeChange(e.target.value, 'js')}
-                value={jsContent}
-                cols="38"
-                rows="7"
-              /> */}
             {/* </SyntaxHighlighter> */}
-
           </div>
         )}
       </div>

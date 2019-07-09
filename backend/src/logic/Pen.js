@@ -41,8 +41,8 @@ export const decPenLikes = _id =>
 export const deletePen = ({ writer, title }) =>
   Pen.deleteOne({ title, writer }).exec()
 
-export const fetchLastNinePens = () =>
-  Pen.find({}, { html: 0, css: 0, js: 0, __v: 0 }).exec()
+export const fetchLastPens = query =>
+  Pen.find(query, { html: 0, css: 0, js: 0, __v: 0 }).exec()
 
 export const fetchSinglePen = _id => Pen.findOne({ _id }, { __v: 0 }).exec()
 // console.log('writer, title :', writer, title)

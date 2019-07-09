@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import {
-  fetchLastNinePens,
+  fetchLastPens,
   savePen,
   fetchSinglePen,
   fetchWriterPens,
@@ -13,7 +13,7 @@ import { likePen, dislikePen } from './User'
 const router = Router()
 
 router.get('/', (req, res) =>
-  fetchLastNinePens()
+  fetchLastPens({})
     .then(pens => res.send(pens))
     .catch(() => console.log('there is not nine in db')),
 )
@@ -55,6 +55,13 @@ router.get('/dislikePen', ({ query: { user, _id } }, res) => {
   incPenLikes(_id)
     .then(() => console.log('increased'))
     .catch(() => console.log('unable to increase'))
+})
+
+router.get('/searchPen', ({ query: { searchQuery } }, res) => {
+  // console.log('1: ', searchQuery)
+  fetchLastPens({ title: { $regex: searchQuery } })
+    .then(pens => res.send(pens))
+    .catch(console.log)
 })
 
 export default router

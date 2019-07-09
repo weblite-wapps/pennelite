@@ -59,9 +59,9 @@ class RightIcon extends Component {
             <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
           </>
         )}
-        {/* {page === 'RecentPens' && (
-          <Search className={classes.button} onClick={searchClick} />
-        )} */}
+        {page === 'RecentPens' && (
+          <Search className="button" onClick={searchClick} />
+        )}
       </div>
     )
   }
