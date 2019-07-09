@@ -1,7 +1,8 @@
 .c--recentPens-root {
-  margin: 0px 26px 0px 26px;
+  height: calc(100vh - 65px);
+  margin: 0 26px 0 26px;
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .c--pen-items {
   border-bottom: 1px solid #2c2c2c;
