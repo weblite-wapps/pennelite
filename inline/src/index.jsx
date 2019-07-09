@@ -3,9 +3,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 // components
-import Root from './root'
+import Root from './setup/root'
 
-const renderPennelite = () =>
+const renderPenneliteInline = () =>
   render(
     <AppContainer>
       <Root />
@@ -13,7 +13,7 @@ const renderPennelite = () =>
     window.document.getElementById('root'),
   )
 
-renderPennelite()
+renderPenneliteInline()
 
 // Hot Module Replacement API
-if (module.hot) module.hot.accept('./root', renderPennelite)
+if (module.hot) module.hot.accept('./setup/root', renderPenneliteInline)

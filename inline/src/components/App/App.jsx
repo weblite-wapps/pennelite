@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // modules
 import FullScreen from '../Svgs/FullScreen'
 // Styles
-import classes from './App.scss'
+import './App.scss'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
@@ -15,20 +15,20 @@ export default class App extends React.Component {
     const { fetchPen } = this.props
     if (window && window.W) {
       window.W.loadData().then(({ customize: { _id } }) => {
-        console.log('_id ', _id)
         if (_id) fetchPen({ _id })
+        window.W.start()
       })
-    } else fetchPen({ _id: '5d19353d316e8f5678313c10' })
-  }
+    } else fetchPen({ _id: '' })
+}
 
   componentDidUpdate() {
     const { pen } = this.props
-    const iframe = document.getElementById('iframeId')
-    iframe.contentWindow.document.open()
-    iframe.contentWindow.document.write(pen.html)
-    iframe.contentWindow.document.write(`<style>${pen.css}</style>`)
-    iframe.contentWindow.document.write(`<script>${pen.js}</script>`)
-    iframe.contentWindow.document.close()
+    const iframe = this.iframeRef.contentWindow.document
+    iframe.open()
+    iframe.write(`<html><body>${pen.html}</body></html>`)
+    iframe.write(`<style>${pen.css}</style>`)
+    iframe.write(`<script>${pen.js}</script>`)
+    iframe.close()
   }
 
   fullScreen() {
@@ -40,7 +40,7 @@ export default class App extends React.Component {
         .catch(err => {
           console.log(
             `Error attempting to enable full-screen mode: ${err.message} (${
-              err.name
+            err.name
             })`,
           )
         })
@@ -50,12 +50,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {
-      pen: { title },
-    } = this.props
+    const { pen: { title } } = this.props
     return (
-      <div className={classes.root}>
-        <div className={classes.title}>{title}</div>
+      <div className='root'>
+        <div className='title'>{title}</div>
         <iframe
           frameBorder="1"
           style={{ border: 'none', background: 'black' }}
@@ -67,7 +65,7 @@ export default class App extends React.Component {
           }}
           width="100%"
         />
-        <FullScreen onClick={this.fullScreen} className={classes.fullScreen} />
+        <FullScreen onClick={this.fullScreen} className='fullScreen' />
       </div>
     )
   }

@@ -30,3 +30,8 @@ export const dispatchSetCloseMenu = () => dispatch(setCloseMenu())
 export const LIKE_PEN = 'LIKE_PEN'
 export const likePen = createAction(LIKE_PEN, (user, _id) => ({ user, _id }))
 export const dispatchLikePen = (...args) => dispatch(likePen(...args))
+
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
+export const setSearchQuery = createAction(SET_SEARCH_QUERY)
+export const dispatchSetSearchQuery = (...args) =>
+  dispatch(setSearchQuery(...args))

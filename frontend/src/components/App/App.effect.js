@@ -1,7 +1,18 @@
 import { combineEpics, ofType } from 'redux-observable'
-import { CHANGE_MENU_MODE, dispatchSetAnchorEl, SET_PAGE } from './App.action'
+import { CHANGE_MENU_MODE, dispatchSetAnchorEl, SET_PAGE, SET_DATA } from './App.action'
 import { pluck, tap, ignoreElements } from 'rxjs/operators'
 import { dispatchResetState } from '../CreatePen/CreatePen.action'
+
+
+const effectStartWapp = action$ =>
+  action$.pipe(
+    ofType(SET_DATA),
+    pluck('payload'),
+    tap(window.W && window.W.start()),
+    ignoreElements(),
+  )
+
+
 
 const effectMenuButtonClick = action$ =>
   action$.pipe(
@@ -20,4 +31,4 @@ const effectChangePage = action$ =>
     ignoreElements(),
   )
 
-export default combineEpics(effectMenuButtonClick, effectChangePage)
+export default combineEpics(effectMenuButtonClick, effectChangePage, effectStartWapp)

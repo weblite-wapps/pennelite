@@ -1,0 +1,16 @@
+{
+    "name": "pennelite",
+    "id": "5d1e07bd4e843d1078d59f88",
+    "searchable": true,
+    "instantiable": true,
+    "creator": true,
+    "inline": false,
+    "shareDB": false,
+    "userInfo": true,
+    "servIndexes": {
+        "inline": "index",
+        "main": "index",
+        "customize": "index"
+    },
+    "version": "0.1.0"
+}

@@ -2,49 +2,45 @@
   "name": "pennelite",
   "version": "1.0.0",
   "scripts": {
-    "dev": "buildlite default dev",
-    "build": "buildlite default build"
-  },
-  "buildlite": {
-    "default": {
-      "entry": "./src/setup/index.jsx",
-      "outputPath": "dist",
-      "outputName": "[name].[hash].js",
-      "style": "style.[hash].scss",
-      "html": {
-        "templatePath": "./public/index.html"
-      },
-      "copy": [
-        {
-          "from": "./public",
-          "to": "."
-        }
-      ]
-    },
-    "dev": {
-      "react": "dev",
-      "devServer": 8000
-    }
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@reach/router": "^1.2.1",
+    "add": "^2.0.6",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.5",
     "history": "^4.7.2",
     "node-sass": "^4.11.0",
+    "prismjs": "^1.16.0",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-hot-loader": "^4.6.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.1",
+    "react-simple-code-editor": "^0.9.11",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",
     "sass-loader": "^7.1.0",
-    "superagent": "^4.1.0"
-  }
+    "superagent": "^4.1.0",
+    "yarn": "^1.16.0"
+  },
+  "homepage": ".",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import FullScreen from './../../../Svgs/FullScreen'
 
 // styles
-import classes from '../../CreatePen.scss'
+import '../../CreatePen.scss'
 
 class Iframe extends Component {
   constructor(props) {
@@ -110,17 +110,14 @@ class Iframe extends Component {
     return (
       <div>
         <div
-          className={classes.iframePanel}
+          className="iframePanel"
           style={{
             display: previewIsOpen ? '' : 'none',
           }}
         >
-          <FullScreen
-            onClick={this.fullScreen}
-            className={classes.fullScreen}
-          />
+          <FullScreen onClick={this.fullScreen} className="fullScreen" />
           <iframe
-            className={classes.iframe}
+            className="iframe"
             width="100%"
             ref={iframe => {
               this.iframeRef = iframe

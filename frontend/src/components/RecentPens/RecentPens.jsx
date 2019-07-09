@@ -2,12 +2,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// local modules
+// Components
 import PenItems from './Components/PenItems/PenItems.container'
-// import Header from './Components/Header/Header.container'
 
 // styles
-import classes from './RecentPens.scss'
+import './RecentPens.scss'
 
 class Recentpens extends Component {
   componentDidMount() {
@@ -16,14 +15,22 @@ class Recentpens extends Component {
   }
 
   render() {
-    const { pens, penClick, showSearch } = this.props
+    const {
+      pens,
+      penClick,
+      showSearch,
+      searchQuery,
+      setSearchQuery,
+    } = this.props
 
     return (
-      <div className={classes.root}>
+      <div className="c--recentPens-root">
         {showSearch && (
           <input
-            className={classes.searchBar}
+            className="c--recentPens-searchBar"
             autoFocus
+            onChange={setSearchQuery}
+            value={searchQuery}
             type="text"
             placeholder="Search here ..."
           />

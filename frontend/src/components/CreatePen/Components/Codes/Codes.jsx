@@ -1,9 +1,13 @@
 // Modules
 import React from 'react'
 import PropTypes from 'prop-types'
+// import Editor from 'react-simple-code-editor'
+// import { highlight, languages } from 'prismjs/components/prism-core'
+// import 'prismjs/components/prism-clike'
+// import 'prismjs/components/prism-javascript'
 // material Components
 import { Tab, Tabs } from '@material-ui/core'
-import classes from '../../CreatePen.scss'
+import '../../CreatePen.scss'
 
 export default class CodesContent extends React.PureComponent {
   constructor(props) {
@@ -45,12 +49,10 @@ export default class CodesContent extends React.PureComponent {
         )}
 
         {(viewMode === 'simple' || tabIndex === 0) && (
-          <div className={classes.codesPanel}>
-            {viewMode === 'simple' && (
-              <span className={classes.codeTitle}>html</span>
-            )}
+          <div className="codesPanel">
+            {viewMode === 'simple' && <span className="codeTitle">html</span>}
             <textarea
-              className={classes.codes}
+              className="codes"
               onChange={e => this.handleCodeChange(e.target.value, 'html')}
               value={htmlContent}
               cols="38"
@@ -59,12 +61,10 @@ export default class CodesContent extends React.PureComponent {
           </div>
         )}
         {(viewMode === 'simple' || tabIndex === 1) && (
-          <div className={classes.codesPanel}>
-            {viewMode === 'simple' && (
-              <span className={classes.codeTitle}>css</span>
-            )}
+          <div className="codesPanel">
+            {viewMode === 'simple' && <span className="codeTitle">css</span>}
             <textarea
-              className={classes.codes}
+              className="codes"
               onChange={e => this.handleCodeChange(e.target.value, 'css')}
               value={cssContent}
               cols="38"
@@ -73,17 +73,30 @@ export default class CodesContent extends React.PureComponent {
           </div>
         )}
         {(viewMode === 'simple' || tabIndex === 2) && (
-          <div className={classes.codesPanel}>
-            {viewMode === 'simple' && (
-              <span className={classes.codeTitle}>js</span>
-            )}
+          <div className="codesPanel">
+            {viewMode === 'simple' && <span className="codeTitle">js</span>}
+            {/* <SyntaxHighlighter language="javascript" style={docco}> */}
+            {/* <Editor
+              className="codes"
+              onChange={e => this.handleCodeChange(e.target.value, 'js')}
+              value={jsContent}
+              cols="38"
+              rows="7"
+              highlight={code => highlight(code, languages.js)}
+              padding={10}
+              style={{
+                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontSize: 12,
+              }}
+            /> */}
             <textarea
-              className={classes.codes}
+              className="codes"
               onChange={e => this.handleCodeChange(e.target.value, 'js')}
               value={jsContent}
               cols="38"
               rows="7"
             />
+            {/* </SyntaxHighlighter> */}
           </div>
         )}
       </div>

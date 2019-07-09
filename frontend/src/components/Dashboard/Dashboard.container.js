@@ -15,7 +15,7 @@ const mapDispatchToProps = () => ({
   penClick: () => {},
   send: (user, title, wisId) =>
     window.W.sendMessageToCurrentChat('wapp', {
-      wappId: '',
+      wappId: '5d1f352a4e843d1078d59f89',
       wisId,
       user,
       title,

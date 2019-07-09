@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 // Components
-import MoreIcon from './../Svgs/more'
+import MoreIcon from './../Svgs/More'
 import Close from './../Svgs/Close'
 import Plus from './../Svgs/Plus'
 import Search from './../Svgs/Search'
@@ -11,17 +11,17 @@ import Button from '@material-ui/core/Button'
 
 import { Link } from '@reach/router'
 //Styles
-import classes from './App.scss'
+import './App.scss'
 class LeftIcon extends Component {
   render() {
     const { page, changePage } = this.props
     // console.log('changePage ', changePage)
     return (
-      <div className={classes.leftIcon}>
+      <div className="leftIcon">
         {page === 'CreatePen' && (
           <Link to="/">
             <Close
-              className={classes.button}
+              className="button"
               onClick={() => changePage('CreatePen', 'RecentPens')}
             />
           </Link>
@@ -29,7 +29,7 @@ class LeftIcon extends Component {
         {page === 'RecentPens' && (
           <Link to="/CreatePen">
             <Plus
-              className={classes.button}
+              className="button"
               onClick={() => changePage('RecentPens', 'CreatePen')}
             />
           </Link>
@@ -47,11 +47,11 @@ class RightIcon extends Component {
   render() {
     const { page, anchorEl, openMenu, searchClick } = this.props
     return (
-      <div className={classes.rightIcon}>
+      <div className="rightIcon">
         {page === 'CreatePen' && (
           <>
             <MoreIcon
-              className={classes.button}
+              className="button"
               onClick={e => openMenu(e.currentTarget)}
             >
               <Button aria-controls="simple-menu" aria-haspopup="true" />
@@ -59,9 +59,9 @@ class RightIcon extends Component {
             <More anchorEl={anchorEl} id={'simple-menu'} {...this.props} />
           </>
         )}
-        {/* {page === 'RecentPens' && (
-          <Search className={classes.button} onClick={searchClick} />
-        )} */}
+        {page === 'RecentPens' && (
+          <Search className="button" onClick={searchClick} />
+        )}
       </div>
     )
   }
@@ -76,9 +76,9 @@ class HeadTitle extends Component {
     return (
       <>
         {
-          <div className={classes.title} role="presentation">
-            <div className={classes.pene}>PENNE</div>
-            <div className={classes.lite}>LITE</div>
+          <div className="title" role="presentation">
+            <div className="pene">PENNE</div>
+            <div className="lite">LITE</div>
           </div>
         }
       </>
@@ -91,7 +91,7 @@ HeadTitle.defaultProps = {}
 export default class Header extends Component {
   render() {
     return (
-      <div className={classes.header}>
+      <div className="header">
         <LeftIcon {...this.props} />
         <HeadTitle {...this.props} />
         <RightIcon {...this.props} />
