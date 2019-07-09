@@ -2,9 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-// local modules
+// Components
 import PenItems from './Components/PenItems/PenItems.container'
-// import Header from './Components/Header/Header.container'
 
 // styles
 import './RecentPens.scss'

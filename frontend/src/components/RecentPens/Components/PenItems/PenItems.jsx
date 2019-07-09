@@ -10,7 +10,7 @@ import Disliked from '../../../Svgs/disliked'
 
 const PenItems = ({ user, pens, send, like, penClick }) =>
   pens.map(pen => (
-    <div className="c--pen-item" key={`${pen._id}`}>
+    <div className="c--pen-items" key={`${pen._id}`}>
       <div className="c--pen-header" role="presentation">
         <div className="c--pen-title">{pen.title}</div>
         <div className="c--pen-writer">BY: {pen.writer}</div>
