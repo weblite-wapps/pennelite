@@ -30,7 +30,7 @@
     "express": "^4.16.4",
     "http": "^0.0.0",
     "mongodb": "^3.1.10",
-    "mongoose": "^5.4.1",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.18.9",
     "ramda": "^0.26.1"
   }
