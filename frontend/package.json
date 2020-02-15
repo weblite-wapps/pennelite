@@ -31,7 +31,7 @@
     "rxjs": "^6.3.3",
     "sass-loader": "^7.1.0",
     "superagent": "^4.1.0",
-    "yarn": "^1.16.0"
+    "yarn": "^1.22.0"
   },
   "homepage": ".",
   "eslintConfig": {
